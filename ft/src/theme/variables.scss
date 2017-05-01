@@ -1,0 +1,501 @@
+// Ionic Variables and Theming. For more info, please see:
+// http://ionicframework.com/docs/v2/theming/
+$font-path: "../assets/fonts";
+@import "ionic.globals";
+// Shared Variables
+// --------------------------------------------------
+// To customize the look and feel of this app, you can override
+// the Sass variables found in Ionic's source scss files.
+// To view all the possible Ionic variables, see:
+// http://ionicframework.com/docs/v2/theming/overriding-ionic-variables/
+// Named Color Variables
+// --------------------------------------------------
+// Named colors makes it easy to reuse colors on various components.
+// It's highly recommended to change the default colors
+// to match your app's branding. Ionic uses a Sass map of
+// colors so you can add, rename and remove colors as needed.
+// The "primary" color is the only required color in the map.
+$colors: ( primary: #488aff, secondary: #32db64, danger: #f53d3d, light: #f4f4f4, dark: #222, pink:pink, green:green, orange:orange, coffee:#e0620d, yellow:yellow, gray:gray);
+// App iOS Variables
+// --------------------------------------------------
+// iOS only Sass variables can go here
+// App Material Design Variables
+// --------------------------------------------------
+// Material Design only Sass variables can go here
+// App Windows Variables
+// --------------------------------------------------
+// Windows only Sass variables can go here
+// App Theme
+// --------------------------------------------------
+// Ionic apps can have different themes applied, which can
+// then be future customized. This import comes last
+// so that the above variables are used and Ionic's
+// default are overridden.
+@import "ionic.theme.default";
+// Ionicons
+// --------------------------------------------------
+// The premium icon font for Ionic. For more info, please see:
+// http://ionicframework.com/docs/v2/ionicons/
+@import "ionic.ionicons";
+// Fonts
+// --------------------------------------------------
+@import "roboto";
+@import "noto-sans";
+@font-face {
+    font-family: "Ionicons";
+    src: url('../assets/iconfont/iconfont.eot?t=1492523657044');
+    /* IE9*/
+    src: url('../assets/iconfont/iconfont.eot?t=1492523657044#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../assets/iconfont/iconfont.woff?t=1492523657044') format('woff'), /* chrome, firefox */
+    url('../assets/iconfont/iconfont.ttf?t=1492523657044') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+    url('../assets/iconfont/iconfont.svg?t=1492523657044#iconfont') format('svg');
+    /* iOS 4.1- */
+}
+
+.ion-md-dingdan:before,
+.ion-ios-dingdan:before,
+.ion-ios-dingdan-outline:before {
+    content: "\e608";
+}
+
+.ion-md-xiuxian:before,
+.ion-ios-xiuxian:before,
+.ion-ios-xiuxian-outline:before {
+    content: "\e60b";
+}
+
+.ion-md-me:before,
+.ion-ios-me:before,
+.ion-ios-me-outline:before {
+    content: "\e61b";
+}
+
+.ion-md-home1:before,
+.ion-ios-home1:before,
+.ion-ios-home1-outline:before {
+    content: "\e60a";
+}
+
+.ion-md-xiuxianyule:before,
+.ion-ios-xiuxianyule:before,
+.ion-ios-xiuxianyule-outline:before {
+    content: "\e66d";
+}
+
+.ion-md-jiangkang:before,
+.ion-ios-jiangkang:before,
+.ion-ios-jiangkang-outline:before {
+    content: "\e66e";
+}
+
+.ion-md-yinliao:before,
+.ion-ios-yinliao:before,
+.ion-ios-yinliao-outline:before {
+    content: "\e683";
+}
+
+.ion-md-fuwu-copy:before,
+.ion-ios-fuwu-copy:before,
+.ion-ios-fuwu-copy-outline:before {
+    content: "\e60e";
+}
+
+.ion-md-ktv:before,
+.ion-ios-ktv:before,
+.ion-ios-ktv-outline:before {
+    content: "\e645";
+}
+
+.ion-md-meishi:before,
+.ion-ios-meishi:before,
+.ion-ios-meishi-outline:before {
+    content: "\e90d";
+}
+
+.ion-md-lvyou:before,
+.ion-ios-lvyou:before,
+.ion-ios-lvyou-outline:before {
+    content: "\e675";
+}
+
+.ion-md-yundonghuwai2:before,
+.ion-ios-yundonghuwai2:before,
+.ion-ios-yundonghuwai2-outline:before {
+    content: "\e6a2";
+}
+
+.ion-md-dizhi:before,
+.ion-ios-dizhi:before,
+.ion-ios-dizhi-outline:before {
+    content: "\e646";
+}
+
+.ion-md-diqiu:before,
+.ion-ios-diqiu:before,
+.ion-ios-diqiu-outline:before,
+{
+    content: "\e615";
+}
+
+.ion-md-ly:before,
+.ion-ios-ly:before,
+.ion-ios-ly-outline:before {
+    content: "\e609";
+}
+
+.ion-md-fuwu1:before,
+.ion-ios-fuwu1:before,
+.ion-ios-fuwu1-outline:before {
+    content: "\e610";
+}
+
+.ion-md-sports:before,
+.ion-ios-sports:before,
+.ion-ios-sports-outline:before {
+    content: "\e708";
+}
+
+.ion-md-jiankang:before,
+.ion-ios-jiankang:before,
+.ion-ios-jiankang-outline:before {
+    content: "\e60c";
+}
+
+.ion-md-jiudian:before,
+.ion-ios-jiudian:before,
+.ion-ios-jiudian-outline:before {
+    content: "\e600";
+}
+
+.ion-md-ktv1:before,
+.ion-ios-ktv1:before,
+.ion-ios-ktv1-outline:before {
+    content: "\e604";
+}
+
+.ion-md-waimai:before,
+.ion-ios-waimai:before,
+.ion-ios-waimai-outline:before {
+    content: "\e605";
+}
+
+.ion-md-liren1:before,
+.ion-ios-liren1:before,
+.ion-ios-liren1-outline:before {
+    content: "\e607";
+}
+
+.ion-md-feiji:before,
+.ion-ios-feiji:before,
+.ion-ios-feiji-outline:before {
+    content: "\e616";
+}
+
+.ion-md-qinziyou:before,
+.ion-ios-qinziyou:before,
+.ion-ios-qinziyou-outline:before {
+    content: "\e6e5";
+}
+
+.ion-md-xiuxian1:before,
+.ion-ios-xiuxian1:before,
+.ion-ios-xiuxian1-outline:before {
+    content: "\e649";
+}
+
+.ion-md-jiudian2:before,
+.ion-ios-jiudian2:before,
+.ion-ios-jiudian2-outline:before {
+    content: "\e621";
+}
+
+.ion-md-meishi6:before,
+.ion-ios-meishi6:before,
+.ion-ios-meishi6-outline:before {
+    content: "\e622";
+}
+
+.ion-md-quanbu:before {
+    content: "\e64f";
+}
+
+.ion-md-jingdian:before {
+    content: "\e681";
+}
+
+.ion-md-qita:before {
+    content: "\e62f";
+}
+
+.ion-md-all:before {
+    content: "\e619";
+}
+
+.ion-md-anmo:before {
+    content: "\e601";
+}
+
+.ion-md-quanbu1:before {
+    content: "\e63e";
+}
+
+.ion-md-chongwushenghuo:before {
+    content: "\e700";
+}
+
+.ion-md-dianying:before {
+    content: "\e628";
+}
+
+.ion-ios-quanbu:before {
+    content: "\e64f";
+}
+
+.ion-ios-jingdian:before {
+    content: "\e681";
+}
+
+.ion-ios-qita:before {
+    content: "\e62f";
+}
+
+.ion-ios-all:before {
+    content: "\e619";
+}
+
+.ion-ios-anmo:before {
+    content: "\e601";
+}
+
+.ion-ios-quanbu1:before {
+    content: "\e63e";
+}
+
+.ion-ios-chongwushenghuo:before {
+    content: "\e700";
+}
+
+.ion-ios-dianying:before {
+    content: "\e628";
+}
+
+.ion-ios-quanbu-outline:before {
+    content: "\e64f";
+}
+
+.ion-ios-jingdian-outline:before {
+    content: "\e681";
+}
+
+.ion-ios-qita-outline:before {
+    content: "\e62f";
+}
+
+.ion-ios-all-outline:before {
+    content: "\e619";
+}
+
+.ion-ios-anmo-outline:before {
+    content: "\e601";
+}
+
+.ion-ios-quanbu1-outline:before {
+    content: "\e63e";
+}
+
+.ion-ios-chongwushenghuo-outline:before {
+    content: "\e700";
+}
+
+.ion-ios-dianying-outline:before {
+    content: "\e628";
+}
+
+.ion-md-feiji:before {
+    content: "\e672";
+}
+
+.ion-ios-feiji:before {
+    content: "\e672";
+}
+
+.ion-ios-feiji-outline:before {
+    content: "\e672";
+}
+
+
+/**
+ * Eric Meyer's Reset CSS v2.0 (http://meyerweb.com/eric/tools/css/reset/)
+ * http://cssreset.com
+ */
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video,
+input {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font-weight: normal;
+    vertical-align: baseline;
+}
+
+
+/* HTML5 display-role reset for older browsers */
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+menu,
+nav,
+section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+
+/* custom */
+
+a {
+    color: #7e8c8d;
+    text-decoration: none;
+    -webkit-backface-visibility: hidden;
+}
+
+li {
+    list-style: none;
+}
+
+::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+::-webkit-scrollbar-track-piece {
+    background-color: rgba(0, 0, 0, 0.2);
+    -webkit-border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:vertical {
+    height: 5px;
+    background-color: rgba(125, 125, 125, 0.7);
+    -webkit-border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+    width: 5px;
+    background-color: rgba(125, 125, 125, 0.7);
+    -webkit-border-radius: 6px;
+}
+
+html,
+body {
+    width: 100%;
+}
+
+body {
+    -webkit-text-size-adjust: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}

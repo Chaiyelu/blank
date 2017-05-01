@@ -1,0 +1,47 @@
+<div style="display:flex;width:100%;height:100%">
+    <ion-content class="menu-wrapper" #menuwrapper>
+        <ul>
+            <li class="menu-item" *ngFor="let item of sellergoods; let i=index">
+                <span class="text">
+                  <span class="icon"></span>{{item['name']}}
+                </span>
+            </li>
+        </ul>
+    </ion-content>
+    <ion-content class="foods-wrapper" #foodswrapper>
+        <ul>
+            <li *ngFor="let item of sellergoods; let i=index" class="food-list food-list-hook" #foodlists>
+                <div class="title">{{item['name']}}</div>
+                <ul>
+                    <li *ngFor="let food of item['foods']" class="food-item">
+                        <div class="icon">
+                            <img width="57" height="57" [src]="food['image']" alt="">
+                        </div>
+                        <div class="content">
+                            <h2 class="name">{{food['name']}}</h2>
+                            <p class="desc">{{food['description']}}</p>
+                            <div class="extra">
+                                <span class="count">月售{{food['sellCount']}}份</span>
+                                <span>好评率{{food['rating']}}%</span>
+                            </div>
+                            <div class="price">
+                                <span class="now">￥{{food['price']}}</span>
+                                <span class="old" *ngIf="food['oldPrice']">￥{{food['oldPrice']}}</span>
+                            </div>
+                            <div class="cartcontrol-wrapper">
+                                <!--<cartcontrol [food]="food"></cartcontrol>-->
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </ion-content>
+</div>
+
+<!--<ion-content class="menu-wrapper" #menuwrapper>
+    Add your content here!
+</ion-content>
+<ion-content class="foods-wrapper" #foodswrapper>
+    Add your content here!
+</ion-content>-->

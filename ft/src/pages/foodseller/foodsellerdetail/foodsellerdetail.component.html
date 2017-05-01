@@ -1,0 +1,21 @@
+<ion-header class="header-ios">
+    <ion-navbar>
+        <ion-title>
+            Page Title
+        </ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only>
+                <ion-icon name="more"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <sellerheader *ngIf="seller" [seller]="seller"></sellerheader>
+    <super-tabs>
+        <super-tab [root]="sellerGoodsPage" [rootParams]="navParams" title="点菜"></super-tab>
+        <super-tab [root]="SellerRatingsPage" title="评价"></super-tab>
+        <super-tab [root]="sellerDetailpage" title="详情"></super-tab>
+    </super-tabs>
+
+</ion-content>

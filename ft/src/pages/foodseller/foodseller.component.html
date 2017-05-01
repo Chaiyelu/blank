@@ -1,0 +1,49 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            Page Title
+        </ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only (click)="openModal()">
+                <ion-icon name="more"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <ion-list no-lines>
+        <ion-list-header>
+            — 猜你喜欢 —
+        </ion-list-header>
+        <ion-item *ngFor="let item of foodSeller" (click)="goFoodSellerDetail(item)">
+            <ion-thumbnail item-left>
+                <img [src]="item.avatar">
+            </ion-thumbnail>
+            <h2>{{item.name}}</h2>
+            <h3>Don't Know What To Do!</h3>
+            <p>起送 ￥{{item.minPrice}} | 配送 ￥ {{item.deliveryPrice}}</p>
+            <ion-note item-right>
+                <p class="start">7.30Km</p>
+                <p class="end">已售321</p>
+            </ion-note>
+        </ion-item>
+
+        <ion-item-sliding>
+            <ion-item>
+                <ion-thumbnail item-left>
+                    <img src="img/thumbnail-totoro.png">
+                </ion-thumbnail>
+                <h2>Finn</h2>
+                <h3>Don't Know What To Do!</h3>
+                <p>Hayao Miyazaki • 1988</p>
+                <button ion-button item-right>View</button>
+            </ion-item>
+            <ion-item-options>
+                <button ion-button color="danger" icon-left>
+          <ion-icon name="trash"></ion-icon>
+          删除
+        </button>
+            </ion-item-options>
+        </ion-item-sliding>
+    </ion-list>
+</ion-content>
