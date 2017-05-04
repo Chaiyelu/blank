@@ -3,14 +3,14 @@ import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
-import { Sellergoods } from './sellergoods.model';
+import { GoodModel } from '../../../../shared/models/good.model';
 
 @Injectable()
 export class SellergoodsService {
 
 	constructor(private http: Http) { }
 
-	getList(): Observable<Sellergoods[]> {
-		return this.http.get('/api/list').map(res => res.json() as Sellergoods[]);
+	getList(): Observable<GoodModel[]> {
+		return this.http.get('/api/list').map(res => res.json() as GoodModel[]);
 	}
 }

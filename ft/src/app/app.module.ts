@@ -1,11 +1,13 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule ,Http } from '@angular/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpModule, Http } from '@angular/http';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { SuperTabsModule } from 'ionic2-super-tabs';
 import { MyApp } from './app.component';
 
 import { FoodSellerModule } from "../pages/foodseller/foodseller.module";
+import { SharedModule } from "../shared/shared.module";
 import { FoodSellerComponent } from "../pages/foodseller/foodseller.component";
 import { FoodSellerDetailComponent } from '../pages/foodseller/foodsellerdetail/foodsellerdetail.component';
 
@@ -30,16 +32,18 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   imports: [
     HttpModule,
     BrowserModule,
+    BrowserAnimationsModule,
     FoodSellerModule,
-    IonicModule.forRoot(MyApp,{
+    SharedModule,
+    IonicModule.forRoot(MyApp, {
       backButtonText: '',
-    },{
-      links: [
-        // { component: FoodSellerComponent, name: 'FoodSeller', segment: 'foodseller' },
-        // { component: FoodSellerDetailComponent, name: 'FoodSellerDetail', segment: 'foodseller/:id' }
-      ]
-    }),
-    SuperTabsModule.forRoot()
+    }, {
+        links: [
+          // { component: FoodSellerComponent, name: 'FoodSeller', segment: 'foodseller' },
+          // { component: FoodSellerDetailComponent, name: 'FoodSellerDetail', segment: 'foodseller/:id' }
+        ]
+      }),
+    SuperTabsModule.forRoot(),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -53,7 +57,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })
-export class AppModule {}
+export class AppModule { }

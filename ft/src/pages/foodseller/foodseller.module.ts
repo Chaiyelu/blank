@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { IonicModule } from 'ionic-angular';
 import { SuperTabsModule } from 'ionic2-super-tabs';
+import { SharedModule } from "../../shared/shared.module";
 
 import { MyApp } from '../../app/app.component';
 import { FoodSellerComponent } from './foodseller.component';
@@ -29,7 +30,8 @@ import { SellerheaderComponent } from "./foodsellerdetail/sellerheader/sellerhea
         { component: FoodSellerDetailComponent, name: 'FoodSellerDetail', segment: 'foodseller/:id' }
       ]
     }),
-    SuperTabsModule
+    SuperTabsModule,
+    SharedModule
   ],
   entryComponents: [
     FoodSellerComponent,

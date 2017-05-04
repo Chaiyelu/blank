@@ -27,12 +27,12 @@ export class FoodSellerDetailComponent implements OnInit {
   ngOnInit() {
     let id = this.navParams.get('id');
     console.log(this.content.directionY);
-    this.foodSellerDetailService.getGoodsList(id).subscribe(
-      goods => {
-        this.goods = goods;
-        console.log(goods);
-      }
-    );
+    // this.foodSellerDetailService.getGoodsList(id).subscribe(
+    //   goods => {
+    //     this.goods = goods;
+    //     console.log(goods);
+    //   }
+    // );
     this.foodSellerDetailService.getSeller(id).subscribe(
       seller => {
         this.seller = seller;

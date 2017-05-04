@@ -1,0 +1,8 @@
+<div class="cartcontrol">
+    <div class="cart-decrease" (click)="decreaseCart($event)" [class.aa]="food.count>0" *ngIf="food.count>0" [@moveIn]="active">
+        <ion-icon class="inner" name="minus"></ion-icon>
+    </div>
+    <div class="cart-count" *ngIf="food.count>0">{{food.count}}</div>
+    <ion-icon class="cart-add" name="jia" color="danger" (click)="addCart($event)"></ion-icon>
+    <!--<div class="cart-add ion-ios-jia" (click)="addCart($event)"></div>-->
+</div>
