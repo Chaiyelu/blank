@@ -10,12 +10,14 @@
         </ion-buttons>
     </ion-navbar>
 </ion-header>
-<ion-content>
+<ion-content (ionScroll)="onScroll($event)">
     <sellerheader *ngIf="seller" [seller]="seller"></sellerheader>
-    <super-tabs>
-        <super-tab [root]="sellerGoodsPage" [rootParams]="navParams" title="点菜"></super-tab>
-        <super-tab [root]="SellerRatingsPage" title="评价"></super-tab>
-        <super-tab [root]="sellerDetailpage" title="详情"></super-tab>
-    </super-tabs>
+    <div #superTabs style="height:100%">
+        <super-tabs *ngIf="seller">
+            <super-tab [root]="sellerGoodsPage" [rootParams]="seller" title="点菜"></super-tab>
+            <super-tab [root]="SellerRatingsPage" title="评价"></super-tab>
+            <super-tab [root]="sellerDetailpage" title="详情"></super-tab>
+        </super-tabs>
+    </div>
 
 </ion-content>

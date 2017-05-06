@@ -2,7 +2,6 @@
     <ion-content class="menu-wrapper" #menuwrapper>
         <ul>
             <li *ngFor="let item of sellergoods; let i=index" class="menu-item" [class.current]="i===_currentIndex()" (click)="onSelectMenu(i, $event)">
-                <!--<li *ngFor="let item of sellergoods; let i=index" class="menu-item" [class.current]="isCurrent(i)" (click)="selectMenu(i, $event)">-->
                 <span class="text">
                   <span *ngIf="item['type']>0" class="icon" [ngClass]="classMap[item['type']]" ></span>{{item['name']}}
                 </span>
@@ -15,7 +14,7 @@
                 <div class="title">{{item['name']}}</div>
                 <ul>
                     <li *ngFor="let food of item['foods']" class="food-item">
-                        <div class="icon">
+                        <div class="image">
                             <img width="57" height="57" [src]="food['image']" alt="">
                         </div>
                         <div class="content">
@@ -30,7 +29,7 @@
                                 <span class="old" *ngIf="food['oldPrice']">￥{{food['oldPrice']}}</span>
                             </div>
                             <div class="cartcontrol-wrapper">
-                                <mt-cartcontrol [food]="food" (selectFoodsEmit)="chooseFoods($event)"></mt-cartcontrol>
+                                <mt-cartcontrol [food]="food" (chooseFoodsEmit)="chooseFoods($event)"></mt-cartcontrol>
                             </div>
                         </div>
                     </li>
@@ -38,11 +37,7 @@
             </li>
         </ul>
     </ion-content>
+    <div #shopcart>
+        <mt-shopcart class="shopcartwrapper" [choosedFoods]="choosedFoods" [deliveryPrice]="5" [minPrice]="20" (chooseFoodsEmit)="chooseFoods($event)"></mt-shopcart>
+    </div>
 </div>
-
-<!--<ion-content class="menu-wrapper" #menuwrapper>
-    Add your content here!
-</ion-content>
-<ion-content class="foods-wrapper" #foodswrapper>
-    Add your content here!
-</ion-content>-->

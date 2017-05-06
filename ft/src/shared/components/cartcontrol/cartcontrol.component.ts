@@ -10,7 +10,7 @@ import { moveIn, roll } from './carcontrol.animations';
 
 export class CartcontrolComponent implements OnInit {
   @Input() food: FoodModel;
-  @Output() selectFoodsEmit = new EventEmitter();
+  @Output() chooseFoodsEmit = new EventEmitter();
 
   private isRoll: string;
 
@@ -39,7 +39,7 @@ export class CartcontrolComponent implements OnInit {
     } else {
       this.food.count++;
     }
-    this.selectFoodsEmit.emit();
+    this.chooseFoodsEmit.emit();
     console.log(this.food);
   }
 
@@ -48,7 +48,7 @@ export class CartcontrolComponent implements OnInit {
     if (this.food.count) {
       this.food.count--;
     }
-    this.selectFoodsEmit.emit();
+    this.chooseFoodsEmit.emit();
   }
 
 

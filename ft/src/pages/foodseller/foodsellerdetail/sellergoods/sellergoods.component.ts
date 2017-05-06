@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild, ElementRef, AfterViewChecked } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef, AfterViewInit, AfterViewChecked } from '@angular/core';
 import { NavParams, Content, ViewController } from 'ionic-angular';
 import { FoodSellerDetailService } from '../foodsellerdetail.service';
 import { GoodModel } from "../../../../shared/models/good.model";
@@ -8,16 +8,16 @@ import { GoodModel } from "../../../../shared/models/good.model";
   templateUrl: 'sellergoods.component.html'
 })
 
-export class SellergoodsComponent implements OnInit,AfterViewChecked {
+export class SellergoodsComponent implements OnInit,AfterViewInit,AfterViewChecked {
   @ViewChild('menuwrapper') menuWrapper: Content;
   @ViewChild('foodswrapper') foodsWrapper: Content;
-  @ViewChild('foodlists') foodsLists: ElementRef;
+  @ViewChild('shopcart') shopcart: ElementRef;
   sellergoods: GoodModel[] = [];
   listHeight: number[] = [];
   currentIndex: number = 0;
   scrollTop: number = 0;
   afterDataLoad: boolean = false;
-  private choosedFoods: any[];
+  choosedFoods: any[] = [];
 
 
   constructor(
@@ -34,8 +34,11 @@ export class SellergoodsComponent implements OnInit,AfterViewChecked {
     this.foodSellerDetailService.getGoodsList(id).subscribe((res) => {
       this.sellergoods = res;
       this.afterDataLoad = true;
-      console.log(res);
     });
+  }
+
+  ngAfterViewInit() {
+    console.log(this.shopcart.nativeElement);
   }
 
   ngAfterViewChecked() {

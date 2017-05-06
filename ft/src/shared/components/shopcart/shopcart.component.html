@@ -1,0 +1,42 @@
+<div class="shopcart">
+    <div class="content-wrapper" (click)="toggleList()">
+        <div class="content-left">
+            <div class="logo-wrapper">
+                <div class="logo" [class.highlight]="totalCount>0">
+                    <i class="fa fa-shopping-cart"></i>
+                </div>
+                <div class="num" *ngIf="ttCount>0">{{ttCount}}</div>
+            </div>
+            <div class="price" [class.highlight]="ttCount>0">￥{{ttPrice}}</div>
+            <div class="desc">另需配送费￥{{deliveryPrice}}元</div>
+        </div>
+        <div class="content-right" (click)="pay()">
+            <div class="pay" [ngClass]="payStateClass">{{payStateText}}</div>
+        </div>
+    </div>
+    <div class="shopcart-list" [@fold]="status">
+        <div class="list-header">
+            <h1 class="title">购物车</h1>
+            <span class="empty" (click)="empty()">清空</span>
+        </div>
+        <!--<div class="list-content" #listcontent>-->
+        <div class="list-content-wrapper">
+            <ion-content>
+                <div class="list-content" #listcontent>
+                    <ul>
+                        <li *ngFor="let food of choosedFoods" class="food">
+                            <span class="name">{{food.name}}</span>
+                            <div class="price">
+                                <span>￥{{food.price*food.count}}</span>
+                            </div>
+                            <div class="cartcontrol-wrapper">
+                                <mt-cartcontrol [food]="food" (chooseFoodsEmit)="chooseFoods($event)"></mt-cartcontrol>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </ion-content>
+        </div>
+    </div>
+</div>
+<div class="list-mask" [@fade]="status" (click)="hideList()"></div>

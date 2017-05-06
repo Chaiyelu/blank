@@ -37,6 +37,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     SharedModule,
     IonicModule.forRoot(MyApp, {
       backButtonText: '',
+      showBackdrop: true,
+      enableBackdropDismiss: true
     }, {
         links: [
           // { component: FoodSellerComponent, name: 'FoodSeller', segment: 'foodseller' },

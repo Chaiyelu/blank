@@ -57,6 +57,9 @@ sellergoods {
         background: #fff;
     }
     .foods-wrapper .title {
+        position: sticky;
+        top: 0;
+        z-index: 5;
         padding-left: 14px;
         height: 26px;
         line-height: 26px;
@@ -76,7 +79,7 @@ sellergoods {
         border: none;
         margin-bottom: 0;
     }
-    .foods-wrapper .food-item .icon {
+    .foods-wrapper .food-item .image {
         flex: 0 0 57px;
         margin-right: 10px;
     }

@@ -11,20 +11,20 @@ import { FoodSellerModel } from "./foodseller.model";
 export class FoodSellerComponent implements OnInit {
   private foodSeller: any[] = [];
   constructor(
-    public foodSellerService:FoodSellerService,
+    public foodSellerService: FoodSellerService,
     public navCtrl: NavController
   ) { }
 
   ngOnInit() {
     this.foodSellerService.getSeller().subscribe(
-      seller =>{
+      seller => {
         this.foodSeller = seller;
         console.log(seller);
       }
     )
   }
 
-  goFoodSellerDetail(item:FoodSellerModel){
+  goFoodSellerDetail(item: FoodSellerModel) {
     this.navCtrl.push(FoodSellerDetailComponent, {id:item.id});
   }
 }
