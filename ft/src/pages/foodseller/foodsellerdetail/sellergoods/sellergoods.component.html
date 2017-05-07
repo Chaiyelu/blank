@@ -13,7 +13,7 @@
             <li *ngFor="let item of sellergoods; let i=index" class="food-list food-list-hook" #foodlists>
                 <div class="title">{{item['name']}}</div>
                 <ul>
-                    <li *ngFor="let food of item['foods']" class="food-item">
+                    <li *ngFor="let food of item['foods']" (click)="onBrowseFood(food,$event)" class="food-item">
                         <div class="image">
                             <img width="57" height="57" [src]="food['image']" alt="">
                         </div>
@@ -37,7 +37,7 @@
             </li>
         </ul>
     </ion-content>
-    <div #shopcart>
-        <mt-shopcart class="shopcartwrapper" [choosedFoods]="choosedFoods" [deliveryPrice]="5" [minPrice]="20" (chooseFoodsEmit)="chooseFoods($event)"></mt-shopcart>
-    </div>
+    <!--<div #shopcart>-->
+    <mt-shopcart class="shopcartwrapper" [choosedFoods]="choosedFoods" [deliveryPrice]="5" [minPrice]="20" (chooseFoodsEmit)="chooseFoods($event)"></mt-shopcart>
+    <!--</div>-->
 </div>

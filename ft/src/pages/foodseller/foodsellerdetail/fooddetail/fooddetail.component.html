@@ -1,0 +1,53 @@
+<!--<div class="food" [@flyShowRight]="showFlag" #fooddetail>-->
+<div class="food">
+    <ion-content class="food-content">
+        <div class="image-header">
+            <img [src]="food.image" alt="">
+            <div class="back" (click)="dismiss()">
+                <i class="fa fa-chevron-left"></i>
+            </div>
+        </div>
+        <div class="content">
+            <h1 class="title">{{food.name}}</h1>
+            <div class="detail">
+                <span class="sell-count">月售{{food.sellCount}}份</span><span class="rating">好评率{{food.sellCount}}%</span>
+            </div>
+            <div class="price">
+                <span class="now">￥{{food.price}}</span>
+                <span class="old" *ngIf="food.oldPrice">￥{{food.oldPrice}}</span>
+            </div>
+            <div class="cartcontrol-wrapper">
+                <mt-cartcontrol [food]="food" (chooseFoodsEmit)="chooseFoods($event)"></mt-cartcontrol>
+            </div>
+            <div class="buy" (click)="onAddFirst()" *ngIf="!food.count || food.count === 0">加入购物车</div>
+        </div>
+        <!--<wm-split *ngIf="food.info"></wm-split>-->
+        <div class="info" *ngIf="food.info">
+            <h1 class="title">商品信息</h1>
+            <p class="text">{{food.info}}</p>
+        </div>
+        <!--<wm-split></wm-split>-->
+        <div class="rating">
+            <h1 class="title">商品评价1</h1>
+            <!--<wm-ratingselect [selectType]="selectType" [onlyContent]="onlyContent" [desc]="desc" [ratings]="food.ratings" (contentToggle)="onToggleContent($event)" (typeSelect)="onSelectType($event)"></wm-ratingselect>-->
+            <div class="rating-wrapper">
+                <ul *ngIf="food.ratings && food.ratings.length">
+                    <ng-container *ngFor="let rating of food?.ratings">
+                        <li *ngIf="needShow(rating.rateType,rating.text)" class="rating-item border-1px">
+                            <div class="user">
+                                <span class="name">{{rating?.username}}</span>
+                                <img class="avatar" width="12" height="12" :src="rating.avatar">
+                            </div>
+                            <div class="time">{{rating?.rateTime | date: "y-MM-dd HH:mm"}}</div>
+                            <p class="text">
+                                <i class="fa" [class.fa-thumbs-up]="rating?.rateType===0" [class.fa-thumbs-down]="rating?.rateType===1"></i>{{rating.text}}
+                            </p>
+                        </li>
+                    </ng-container>
+                </ul>
+                <div class="no-rating" *ngIf="!food?.ratings || !food?.ratings.length">暂无评价</div>
+            </div>
+        </div>
+    </ion-content>
+    <mt-shopcart class="shopcartwrapper" [choosedFoods]="choosedFoods" [deliveryPrice]="5" [minPrice]="20" (chooseFoodsEmit)="chooseFoods($event)"></mt-shopcart>
+</div>

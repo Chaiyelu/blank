@@ -1,17 +1,17 @@
 import { Component, OnInit, Input, ViewChild, ElementRef, AfterViewInit, AfterViewChecked } from '@angular/core';
-import { NavParams, Content, ViewController } from 'ionic-angular';
+import { NavParams, Content, ViewController, ModalController } from 'ionic-angular';
 import { FoodSellerDetailService } from '../foodsellerdetail.service';
 import { GoodModel } from "../../../../shared/models/good.model";
+import { FooddetailComponent } from '../fooddetail/fooddetail.component';
 
 @Component({
   selector: 'sellergoods',
   templateUrl: 'sellergoods.component.html'
 })
 
-export class SellergoodsComponent implements OnInit,AfterViewInit,AfterViewChecked {
+export class SellergoodsComponent implements OnInit, AfterViewInit, AfterViewChecked {
   @ViewChild('menuwrapper') menuWrapper: Content;
   @ViewChild('foodswrapper') foodsWrapper: Content;
-  @ViewChild('shopcart') shopcart: ElementRef;
   sellergoods: GoodModel[] = [];
   listHeight: number[] = [];
   currentIndex: number = 0;
@@ -21,11 +21,15 @@ export class SellergoodsComponent implements OnInit,AfterViewInit,AfterViewCheck
 
 
   constructor(
-    private foodSellerDetailService: FoodSellerDetailService,
+    public foodSellerDetailService: FoodSellerDetailService,
     public navParams: NavParams,
-    private elementRef: ElementRef,
-    public viewCtrl: ViewController
+    public elementRef: ElementRef,
+    public viewCtrl: ViewController,
+    public modalCtrl: ModalController
   ) {
+    this.foodSellerDetailService.doChoose.subscribe(()=>{
+      this.chooseFoods();
+    });
     this.sellergoods = [];
   }
 
@@ -38,14 +42,14 @@ export class SellergoodsComponent implements OnInit,AfterViewInit,AfterViewCheck
   }
 
   ngAfterViewInit() {
-    console.log(this.shopcart.nativeElement);
+
   }
 
   ngAfterViewChecked() {
     if (this.afterDataLoad) {
       this._calculateHeight();
+      this.afterDataLoad = false;
     }
-    this.afterDataLoad = false;
     this._currentIndex();
   }
 
@@ -53,10 +57,24 @@ export class SellergoodsComponent implements OnInit,AfterViewInit,AfterViewCheck
   //   this._calculateHeight();
   // }
 
-  onSelectMenu(index: number, $event: any) {
-    let foodLists = this.foodsWrapper._elementRef.nativeElement.getElementsByClassName('food-list-hook');
-    let hg = foodLists[index].offsetTop;
-    this.foodsWrapper.scrollTo(0, hg, 300).then(()=>this._currentIndex());
+  onBrowseFood(food:object){
+    console.log(food);
+
+    let foodDetailModal = this.modalCtrl.create(FooddetailComponent,{food:food,choosedFoods:this.choosedFoods,sellergoods:this.sellergoods});
+    foodDetailModal.present().then(()=>{
+      //this.foodSellerDetailService.doChoose1.emit(this.choosedFoods);
+    });
+  }
+
+  _currentIndex() {
+    for (let i = 0; i < this.listHeight.length; i++) {
+      let height1 = this.listHeight[i];
+      let height2 = this.listHeight[i + 1];
+      if ((this.scrollTop >= height1 && this.scrollTop < height2)) {
+        return i;
+      }
+    }
+    return 0;
   }
 
   _calculateHeight() {
@@ -71,23 +89,19 @@ export class SellergoodsComponent implements OnInit,AfterViewInit,AfterViewCheck
     console.log(this.listHeight);
   }
 
+  onSelectMenu(index: number, $event: any) {
+    let foodLists = this.foodsWrapper._elementRef.nativeElement.getElementsByClassName('food-list-hook');
+    let hg = foodLists[index].offsetTop;
+    this.foodsWrapper.scrollTo(0, hg, 300).then(() => this._currentIndex());
+  }
+
+
   onFoodsScroll() {
     this.scrollTop = Math.abs(Math.round(this.foodsWrapper.scrollTop));
   }
 
-  _currentIndex() {
-    for (let i = 0; i < this.listHeight.length; i++) {
-      let height1 = this.listHeight[i];
-      let height2 = this.listHeight[i + 1];
-      if ((this.scrollTop >= height1 && this.scrollTop < height2)) {
-        return i;
-      }
-    }
-    return 0;
-  }
-
-  chooseFoods(){
-    let foods:any[] = [];
+  chooseFoods() {
+    let foods: any[] = [];
     this.sellergoods.forEach((good) => {
       good.foods.forEach((food) => {
         if (food.count) {
@@ -96,6 +110,7 @@ export class SellergoodsComponent implements OnInit,AfterViewInit,AfterViewCheck
       })
     });
     this.choosedFoods = foods;
+    this.foodSellerDetailService.doChoose1.emit(foods);
     console.log(this.choosedFoods);
   }
 }

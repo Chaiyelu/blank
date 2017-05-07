@@ -126,4 +126,12 @@ sellergoods {
         right: 0;
         bottom: 12px;
     }
+    .shopcartwrapper {
+        position: fixed;
+        left: 0;
+        bottom: 134px;
+        width: 100%;
+        z-index: 50;
+        height: 48px;
+    }
 }
