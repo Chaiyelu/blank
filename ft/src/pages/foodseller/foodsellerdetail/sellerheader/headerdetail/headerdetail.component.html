@@ -1,0 +1,33 @@
+<div class="seller-header-detail">
+    <div class="detail-wrapper clearfix">
+        <div class="detail-main">
+            <h1 class="name">{{seller['name']}}</h1>
+            <div class="star-wrapper">
+                <rating [(ngModel)]="seller['score']" readOnly="true" max="5"></rating>
+                <!--<wm-plugins-star [size]="48" [score]="seller['score']"></wm-plugins-star>-->
+            </div>
+            <div class="title">
+                <div class="line"></div>
+                <div class="text">优惠信息</div>
+                <div class="line"></div>
+            </div>
+            <!--<ul *ngIf="seller['supports']" class="supports">
+                <li class="support-item" *ngFor="let item of seller['supports']; let i=index">
+                    <span class="icon" [ngClass]="classMap[seller['supports'][i]['type']]"></span>
+                    <span class="text">{{seller['supports'][i]['description']}}</span>
+                </li>
+            </ul>-->
+            <div class="title">
+                <div class="line"></div>
+                <div class="text">商家公告</div>
+                <div class="line"></div>
+            </div>
+            <div class="bulletin">
+                <p class="content">{{seller['bulletin']}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="detail-close" (click)="hideDetail()">
+        <ion-icon class="detail-close" name="guanbi"></ion-icon>
+    </div>
+</div>

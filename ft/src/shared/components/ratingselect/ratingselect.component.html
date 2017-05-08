@@ -1,0 +1,8 @@
+<div class="el-rate">
+    <span *ngFor="let starIndex of starIndexes; leti = index" class="el-rate__item" (mouseover)="setCurrentValue(i,$event)" (mouseout)="resetCurrentValue()" (click)="selectValue(i)" [style.cursor]="{disabled?'auto':'pointer'}">
+    <i [class]="[classes[item - 1], { 'hover': hoverIndex === item }]" class="el-rate__icon" [style]="getIconStyle(i)">
+      <i *ngIf="showDecimalIcon(i)" [class]="decimalIconClass()" [style]="decimalStyle()" class="el-rate__decimal"></i>
+    </i>
+  </span>
+    <span *ngIf="showText()" class="el-rate__text" [style.color]="textColor">{{ text }}</span>
+</div>

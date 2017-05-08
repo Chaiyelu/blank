@@ -1,6 +1,5 @@
 import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, Renderer, Renderer2 } from '@angular/core';
-import { Content } from 'ionic-angular';
-import { NavParams } from 'ionic-angular';
+import { Content, NavParams } from 'ionic-angular';
 import { FoodSellerDetailService } from './foodsellerdetail.service';
 
 import { SellerdetailComponent } from "./sellerdetail/sellerdetail.component";

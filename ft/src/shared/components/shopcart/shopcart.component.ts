@@ -108,6 +108,7 @@ export class ShopcartComponent implements OnInit, OnChanges, AfterViewChecked {
     this.status = this.listShow();
     this.ttPrice = this.totalPrice();
     this.ttCount = this.totalCount();
+    this.chooseFoods();
     this.payState();
   }
   hideList() {

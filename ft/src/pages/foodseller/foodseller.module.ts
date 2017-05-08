@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { IonicModule } from 'ionic-angular';
 import { SuperTabsModule } from 'ionic2-super-tabs';
+import { Ionic2RatingModule } from 'ionic2-rating';
 import { SharedModule } from "../../shared/shared.module";
 
 import { FoodSellerService } from "./foodseller.service";
@@ -13,7 +14,8 @@ import { SellerdetailComponent } from "./foodsellerdetail/sellerdetail/sellerdet
 import { SellergoodsComponent } from "./foodsellerdetail/sellergoods/sellergoods.component";
 import { SellerratingsComponent } from "./foodsellerdetail/sellerratings/sellerratings.component";
 import { SellerheaderComponent } from "./foodsellerdetail/sellerheader/sellerheader.component";
-import { FooddetailComponent } from './foodsellerdetail/fooddetail/fooddetail.component'
+import { FooddetailComponent } from './foodsellerdetail/fooddetail/fooddetail.component';
+import { HeaderdetailComponent } from "./foodsellerdetail/sellerheader/headerdetail/headerdetail.component";
 
 
 @NgModule({
@@ -24,7 +26,8 @@ import { FooddetailComponent } from './foodsellerdetail/fooddetail/fooddetail.co
     SellergoodsComponent,
     SellerratingsComponent,
     SellerheaderComponent,
-    FooddetailComponent
+    FooddetailComponent,
+    HeaderdetailComponent
   ],
   imports: [
     IonicModule.forRoot(MyApp, {}, {
@@ -34,7 +37,8 @@ import { FooddetailComponent } from './foodsellerdetail/fooddetail/fooddetail.co
       ]
     }),
     SuperTabsModule,
-    SharedModule
+    SharedModule,
+    Ionic2RatingModule
   ],
   entryComponents: [
     FoodSellerComponent,
@@ -43,7 +47,8 @@ import { FooddetailComponent } from './foodsellerdetail/fooddetail/fooddetail.co
     SellergoodsComponent,
     SellerratingsComponent,
     SellerheaderComponent,
-    FooddetailComponent
+    FooddetailComponent,
+    HeaderdetailComponent
   ],
   providers: [
     FoodSellerService,

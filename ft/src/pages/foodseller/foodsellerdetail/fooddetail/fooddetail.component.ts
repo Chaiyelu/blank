@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewChecked } from '@angular/core';
 import { NavParams, ViewController } from 'ionic-angular';
 import { FoodSellerDetailService } from "../foodsellerdetail.service";
 import { FoodModel } from "../../../../shared/models/food.model";
@@ -8,7 +8,7 @@ import { FoodModel } from "../../../../shared/models/food.model";
   templateUrl: 'fooddetail.component.html'
 })
 
-export class FooddetailComponent implements OnInit {
+export class FooddetailComponent implements OnInit, AfterViewChecked {
 
   food: FoodModel;
   choosedFoods: any[] = [];
@@ -28,6 +28,10 @@ export class FooddetailComponent implements OnInit {
 
   }
 
+  ngAfterViewChecked(){
+    //this.foodSellerDetailService.doChoose.emit();
+  }
+
   onAddFirst() {
     this.food.count = 1;
     this.chooseFoods();
@@ -35,18 +39,9 @@ export class FooddetailComponent implements OnInit {
 
   chooseFoods() {
     this.foodSellerDetailService.doChoose.emit();
-
-    // console.log(this.choosedFoods);
-    // for (var i = 0; i < this.choosedFoods.length; i++) {
-    //   if (this.choosedFoods[i].count == 0) {
-    //     this.choosedFoods.splice(i, 1);
-    //     break;
-    //   }
-    // }
   }
 
   dismiss() {
-    // let data = { 'foo': 'bar' };
     this.viewCtrl.dismiss();
   }
 }

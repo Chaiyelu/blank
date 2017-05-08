@@ -2,8 +2,8 @@
     <div class="content-wrapper" (click)="toggleList()">
         <div class="content-left">
             <div class="logo-wrapper">
-                <div class="logo" [class.highlight]="totalCount>0">
-                    <i class="fa fa-shopping-cart"></i>
+                <div class="logo" [class.highlight]="ttCount>0">
+                    <ion-icon name="cart"></ion-icon>
                 </div>
                 <div class="num" *ngIf="ttCount>0">{{ttCount}}</div>
             </div>

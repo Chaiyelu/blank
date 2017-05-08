@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ModalController } from "ionic-angular";
+import { HeaderdetailComponent } from "./headerdetail/headerdetail.component";
 
 @Component({
 	selector: 'sellerheader',
@@ -10,7 +12,9 @@ export class SellerheaderComponent implements OnInit {
 
   private classMap:String[];
   detailShow: boolean = false;
-  constructor(){
+  constructor(
+    public modalCtrl:ModalController
+  ){
     this.classMap = ['decrease','discount','special','invoice','guarantee'];
   }
 
@@ -19,10 +23,12 @@ export class SellerheaderComponent implements OnInit {
   }
 
   showDetail(){
-    this.detailShow = true;
+    let headerDetailModal = this.modalCtrl.create(HeaderdetailComponent,{seller:this.seller});
+    headerDetailModal.present();
+    // this.detailShow = true;
   }
 
-  hideDetail(){
-    this.detailShow = false;
-  }
+  // hideDetail(){
+  //   this.detailShow = false;
+  // }
 }
