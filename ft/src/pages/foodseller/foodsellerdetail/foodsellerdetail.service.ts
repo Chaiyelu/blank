@@ -1,6 +1,7 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { Http, Response, URLSearchParams } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import { RatingQueryParams } from "../../../shared/models/rating.model";
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
@@ -25,4 +26,12 @@ export class FoodSellerDetailService {
       .catch((error: any) => Observable.throw(error || 'Server error'));
   }
 
+  getRatings(queryParams:RatingQueryParams) {
+    let params = new URLSearchParams();
+    params.set('sellerId', queryParams.sellerId);
+    console.log(params.toString()) // name=huge
+    return this.http.get('http://localhost:3011/food_ratings', { search: params })
+      .map((res: Response) => res.json())
+      .catch((error: any) => Observable.throw(error || 'Server error'));
+  }
 }

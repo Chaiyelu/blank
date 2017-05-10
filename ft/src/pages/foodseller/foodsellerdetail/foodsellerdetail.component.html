@@ -15,8 +15,8 @@
     <div #superTabs style="height:100%">
         <super-tabs *ngIf="seller">
             <super-tab [root]="sellerGoodsPage" [rootParams]="seller" title="点菜"></super-tab>
-            <super-tab [root]="SellerRatingsPage" title="评价"></super-tab>
-            <super-tab [root]="sellerDetailpage" title="详情"></super-tab>
+            <super-tab [root]="SellerRatingsPage" [rootParams]="seller" title="评价"></super-tab>
+            <super-tab [root]="sellerDetailpage" [rootParams]="seller" title="详情"></super-tab>
         </super-tabs>
     </div>
 </ion-content>

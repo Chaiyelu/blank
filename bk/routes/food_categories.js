@@ -8,7 +8,7 @@ router.get('/', function(req, res) {
     //console.log(req);
     FoodCategories.findAll({
         where: {
-            sellerId: req.query.sellerId
+            sellerId: req.query.sellerId,
         },
         include: [{ model: Foods, as: 'foods' }]
     }).then(function(data) {

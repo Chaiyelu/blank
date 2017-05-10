@@ -1,19 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-
-import { Sellerdetail } from './shared/sellerdetail.model';
-import { SellerdetailService } from './sellerdetail.service';
+import { NavParams } from "ionic-angular";
+import { FoodSellerDetailService } from "../foodsellerdetail.service";
 
 @Component({
 	selector: 'sellerdetail',
-	templateUrl: 'sellerdetail.component.html',
-	providers: [SellerdetailService]
+	templateUrl: 'sellerdetail.component.html'
 })
 
 export class SellerdetailComponent implements OnInit {
-
-	constructor(private sellerdetailService: SellerdetailService) { }
+  seller:object = {};
+	constructor(
+    private foodSellerDetailService: FoodSellerDetailService,
+    public navParams:NavParams
+  ) { }
 
 	ngOnInit() {
-
+    console.log(this.navParams.data);
+    this.seller = this.navParams.data;
 	}
 }

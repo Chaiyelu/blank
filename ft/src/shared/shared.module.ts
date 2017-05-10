@@ -4,12 +4,14 @@ import { IonicModule } from 'ionic-angular';
 import { CartcontrolComponent } from "./components/cartcontrol/cartcontrol.component";
 import { ShopcartComponent } from "./components/shopcart/shopcart.component";
 import { ShopcartList } from "./components/shopcart/shopcart-list/shopcart-list";
+import { SplitComponent } from "./components/split/split.component";
 
 @NgModule({
   declarations: [
     CartcontrolComponent,
     ShopcartComponent,
-    ShopcartList
+    ShopcartList,
+    SplitComponent
   ],
   imports: [
     IonicModule
@@ -17,12 +19,14 @@ import { ShopcartList } from "./components/shopcart/shopcart-list/shopcart-list"
   entryComponents: [
     CartcontrolComponent,
     ShopcartComponent,
-    ShopcartList
+    ShopcartList,
+    SplitComponent
   ],
   exports: [
     CartcontrolComponent,
     ShopcartComponent,
     ShopcartList,
+    SplitComponent,
     IonicModule
   ],
   providers: [

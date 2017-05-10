@@ -1,8 +1,9 @@
 import { Component, OnInit, Input, ViewChild, ElementRef, AfterViewInit, AfterViewChecked } from '@angular/core';
-import { NavParams, Content, ViewController, ModalController } from 'ionic-angular';
+import { NavParams, Content, ViewController, ModalController, Config } from 'ionic-angular';
 import { FoodSellerDetailService } from '../foodsellerdetail.service';
 import { GoodModel } from "../../../../shared/models/good.model";
 import { FooddetailComponent } from '../fooddetail/fooddetail.component';
+import { ModalSlideInFromRight, ModalSlideOutToRight } from "../../../../shared/animations/custom-transitions";
 
 @Component({
   selector: 'sellergoods',
@@ -19,18 +20,20 @@ export class SellergoodsComponent implements OnInit, AfterViewInit, AfterViewChe
   afterDataLoad: boolean = false;
   choosedFoods: any[] = [];
 
-
   constructor(
     public foodSellerDetailService: FoodSellerDetailService,
     public navParams: NavParams,
     public elementRef: ElementRef,
     public viewCtrl: ViewController,
-    public modalCtrl: ModalController
+    public modalCtrl: ModalController,
+    config: Config
   ) {
-    this.foodSellerDetailService.doChoose.subscribe(()=>{
+    this.foodSellerDetailService.doChoose.subscribe(() => {
       this.chooseFoods();
     });
     this.sellergoods = [];
+    config.setTransition('modal-slide-in-from-right', ModalSlideInFromRight);
+    config.setTransition('modal-slide-out-to-right', ModalSlideOutToRight);
   }
 
   ngOnInit() {
@@ -57,11 +60,14 @@ export class SellergoodsComponent implements OnInit, AfterViewInit, AfterViewChe
   //   this._calculateHeight();
   // }
 
-  onBrowseFood(food:object){
+  onBrowseFood(food: object) {
     console.log(food);
 
-    let foodDetailModal = this.modalCtrl.create(FooddetailComponent,{food:food,choosedFoods:this.choosedFoods,sellergoods:this.sellergoods});
-    foodDetailModal.present().then(()=>{
+    let foodDetailModal = this.modalCtrl.create(FooddetailComponent,
+      { food: food, choosedFoods: this.choosedFoods, sellergoods: this.sellergoods },
+      { enterAnimation: 'modal-slide-in-from-right', leaveAnimation: 'modal-slide-out-to-right' }
+    );
+    foodDetailModal.present().then(() => {
       //this.foodSellerDetailService.doChoose1.emit(this.choosedFoods);
     });
   }

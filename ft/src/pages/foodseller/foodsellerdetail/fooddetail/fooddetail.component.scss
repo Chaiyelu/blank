@@ -26,9 +26,11 @@
 }
 
 .food .image-header .back {
-    position: absolute;
+    position: fixed;
     top: 10px;
-    left: 0;
+    left: 10px;
+    border-radius: 20px;
+    background: rgba(7, 17, 27, 0.4);
 }
 
 .food .image-header .back .fa {

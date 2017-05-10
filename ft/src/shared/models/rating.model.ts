@@ -8,3 +8,8 @@ export interface RatingModel {
   avatar: string;
   recommend:string[];
 }
+
+export interface RatingQueryParams {
+  sellerId?: string;
+  rateType?: number;
+}

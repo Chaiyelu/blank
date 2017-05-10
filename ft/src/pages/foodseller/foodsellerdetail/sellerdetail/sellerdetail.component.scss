@@ -1,0 +1,234 @@
+// .seller {
+//     position: absolute;
+//     top: 174px;
+//     bottom: 0;
+//     left: 0;
+//     width: 100%;
+//     overflow: hidden;
+//     background: #fff;
+// }
+.seller .overview {
+    position: relative;
+    padding: 18px;
+}
+
+.seller .overview .title {
+    margin: 0 0 8px 0;
+    line-height: 14px;
+    color: rgb(7, 17, 27);
+    font-size: 14px;
+}
+
+.seller .overview .desc {
+    padding-bottom: 18px;
+    border-bottom: 1px solod rgba(7, 17, 27, 0.1);
+    font-size: 0;
+}
+
+.seller .overview .desc .star {
+    display: inline-block;
+    margin-right: 8px;
+    vertical-align: top;
+}
+
+.seller .overview .desc .text {
+    display: inline-block;
+    margin-right: 12px;
+    line-height: 15px;
+    vertical-align: top;
+    font-size: 10px;
+    color: rgb(77, 85, 93);
+}
+
+.seller .overview .remark {
+    display: flex;
+    padding-top: 18px;
+}
+
+.seller .overview .remark .block {
+    flex: 1;
+    text-align: center;
+    border-right: 1px solid rgba(7, 17, 27, 0.1);
+}
+
+.seller .overview .remark .block:last-child {
+    border: none;
+}
+
+.seller .overview .remark .block h2 {
+    margin: 0 0 4px 0;
+    line-height: 10px;
+    font-size: 10px;
+    color: rgb(147, 153, 159);
+}
+
+.seller .overview .remark .block .content {
+    line-height: 24px;
+    font-size: 10px;
+    color: rgb(7, 17, 27);
+}
+
+.seller .overview .remark .block .content .stress {
+    font-size: 24px;
+}
+
+.seller .overview .fa-heart {
+    position: absolute;
+    width: 50px;
+    right: 11px;
+    top: 18px;
+    text-align: center;
+}
+
+.seller .overview .fa-heart {
+    display: block;
+    margin-bottom: 4px;
+    line-height: 24px;
+    font-size: 24px;
+    color: #d4d6d9;
+}
+
+.seller .overview .fa-heart.active {
+    color: rgb(240, 20, 20);
+}
+
+.seller .overview .fa-heart .text {
+    line-height: 10px;
+    font-size: 10px;
+    color: rgb(77, 85, 93);
+}
+
+.seller .bulletin {
+    padding: 18px 18px 0 18px;
+}
+
+.seller .bulletin .title {
+    margin-bottom: 8px;
+    line-height: 14px;
+    color: rgb(7, 17, 27);
+    font-size: 14px;
+}
+
+.seller .bulletin .content-wrapper {
+    padding: 0 12px 16px 12px;
+    border-bottom: 1px solid rgba(7, 17, 27, 0.1);
+}
+
+.seller .bulletin .content-wrapper .content {
+    line-height: 24px;
+    font-size: 12px;
+    color: rgb(240, 20, 20);
+}
+
+.seller .bulletin .supports .support-item {
+    padding: 16px 12px;
+    border-bottom: 1px solid rgba(7, 17, 27, 0.1);
+    font-size: 0;
+}
+
+.seller .bulletin .supports .support-item:last-child {
+    border: none;
+}
+
+.seller .bulletin .supports .icon {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    vertical-align: top;
+    margin-right: 6px;
+    background-size: 16px 16px;
+    background-repeat: no-repeat;
+}
+
+.seller .bulletin .supports .icon.decrease {
+    background-image: url(./img/decrease_4@2x.png);
+}
+
+.seller .bulletin .supports .icon.discount {
+    background-image: url(./img/discount_4@2x.png);
+}
+
+.seller .bulletin .supports .icon.special {
+    background-image: url(./img/special_4@2x.png);
+}
+
+.seller .bulletin .supports .icon.invoice {
+    background-image: url(./img/invoice_4@2x.png);
+}
+
+.seller .bulletin .supports .icon.guarantee {
+    background-image: url(./img/guarantee_4@2x.png);
+}
+
+.seller .bulletin .supports .text {
+    line-height: 16px;
+    font-size: 12px;
+    color: rgb(7, 17, 27);
+}
+
+.seller .pics {
+    padding: 18px;
+}
+
+.seller .pics .title {
+    margin-bottom: 12px;
+    line-height: 14px;
+    color: rgb(7, 17, 27);
+    font-size: 14px;
+}
+
+.seller .pics .pic-wrapper {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.seller .pics .pic-wrapper .pic-list {
+    font-size: 0;
+}
+
+.seller .pics .pic-wrapper .pic-list .pic-item {
+    display: inline-block;
+    margin-right: 6px;
+    width: 120px;
+    height: 90px;
+}
+
+.seller .pics .pic-wrapper .pic-list .pic-item:last-child {
+    margin: 0;
+}
+
+.seller .info {
+    padding: 18px 18px 0 18px;
+    color: rgb(7, 17, 27);
+}
+
+.seller .info .title {
+    padding-bottom: 12px;
+    line-height: 14px;
+    border-bottom: 1px solid rgba(7, 17, 27, 0.1);
+    font-size: 14px;
+}
+
+.seller .info .info-item {
+    padding: 16px 12px;
+    line-height: 16px;
+    border-bottom: 1px solid rgba(7, 17, 27, 0.1);
+    font-size: 12px;
+}
+
+.seller .info .info-item:last-child {
+    border: none;
+}
+
+.desc ul {
+    padding: 0px;
+    &.rating li {
+        padding: 0 3px !important;
+        background: none;
+        color: #ffb400;
+        ion-icon {
+            font-size: 15px;
+        }
+    }
+}

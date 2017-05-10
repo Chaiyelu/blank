@@ -10,6 +10,7 @@ var users = require('./routes/users');
 var seller = require('./routes/seller');
 var tag = require('./routes/tag');
 var food_categories = require('./routes/food_categories');
+var food_ratings = require('./routes/food_ratings');
 var cors = require('cors');
 var app = express();
 
@@ -31,6 +32,7 @@ app.use('/users', users);
 app.use('/seller', seller);
 app.use('/tag', tag);
 app.use('/food_categories', food_categories);
+app.use('/food_ratings', food_ratings);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

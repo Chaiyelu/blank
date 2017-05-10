@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewChecked } from '@angular/core';
-import { NavParams, ViewController } from 'ionic-angular';
+import { NavParams, ViewController} from 'ionic-angular';
 import { FoodSellerDetailService } from "../foodsellerdetail.service";
 import { FoodModel } from "../../../../shared/models/food.model";
 
@@ -22,6 +22,7 @@ export class FooddetailComponent implements OnInit, AfterViewChecked {
     this.foodSellerDetailService.doChoose1.subscribe(foods => {
       this.choosedFoods = foods;
     });
+
   }
 
   ngOnInit() {
