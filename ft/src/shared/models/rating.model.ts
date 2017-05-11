@@ -12,4 +12,6 @@ export interface RatingModel {
 export interface RatingQueryParams {
   sellerId?: string;
   rateType?: number;
+  page?: number;
+  offset?: number;
 }

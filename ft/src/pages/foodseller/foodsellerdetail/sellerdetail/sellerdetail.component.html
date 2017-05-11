@@ -28,8 +28,8 @@
                 </li>
             </ul>
             <div class="favorite" (click)="toggleFavorite">
-                <span class="fa fa-heart" [class.active]="favorite"></span>
-                <span class="text">{{favoriteText}}</span>
+                <ion-icon name="favorite" class="fa-heart" [class.active]="isFavorite"></ion-icon>
+                <span class="text">{{favoriteText}}收藏</span>
             </div>
         </div>
         <mt-split></mt-split>

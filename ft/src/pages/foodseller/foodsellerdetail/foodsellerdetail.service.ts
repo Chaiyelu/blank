@@ -26,10 +26,15 @@ export class FoodSellerDetailService {
       .catch((error: any) => Observable.throw(error || 'Server error'));
   }
 
+  //根据条件获取评论
   getRatings(queryParams:RatingQueryParams) {
     let params = new URLSearchParams();
-    params.set('sellerId', queryParams.sellerId);
-    console.log(params.toString()) // name=huge
+    for (var key in queryParams) {
+      if (queryParams.hasOwnProperty(key)) {
+        params.append(key, queryParams[key]);
+      }
+    }
+    console.log(params.toString())
     return this.http.get('http://localhost:3011/food_ratings', { search: params })
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error || 'Server error'));

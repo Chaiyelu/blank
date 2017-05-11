@@ -24,6 +24,7 @@ module.exports = function(sequelize, DataTypes) {
             associate: function(models) {
                 // associations can be defined here
                 models.Seller.hasMany(models.FoodCategories, { as: 'Goods', foreignKey: 'sellerId' });
+                models.Seller.hasMany(models.Supports, { as: 'supports', foreignKey: 'sellerId' });
             }
         }
     });

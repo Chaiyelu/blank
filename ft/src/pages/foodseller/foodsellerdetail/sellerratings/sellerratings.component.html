@@ -1,4 +1,4 @@
-<div class="ratings" #elratings>
+<ion-content class="ratings">
     <div class="ratings-content">
         <div class="overview">
             <div class="overview-left">
@@ -9,12 +9,12 @@
             <div class="overview-right">
                 <div class="score-wrapper">
                     <span class="title">服务态度</span>
-                    <rating [(ngModel)]="seller.serviceScore" readOnly="true" max="5"></rating>
-                    <span class="score">{{seller.serviceScore}}</span>
+                    <rating [(ngModel)]="seller.serviceScore" readOnly="true" max="5" class="star"></rating>
+                    <span class=" score ">{{seller.serviceScore}}</span>
                 </div>
-                <div class="score-wrapper">
-                    <span class="title">商品评分</span>
-                    <rating [(ngModel)]="seller.foodScore" readOnly="true" max="5"></rating>
+                <div class="score-wrapper ">
+                    <span class="title ">商品评分</span>
+                    <rating [(ngModel)]="seller.foodScore " readOnly="true " max="5 " class="star"></rating>
                     <span class="score">{{seller.foodScore}}</span>
                 </div>
                 <div class="delivery-wrapper">
@@ -24,31 +24,50 @@
             </div>
         </div>
         <mt-split></mt-split>
+        <div class="ratingselect">
+            <div class="rating-type border-1px">
+                <span (click)="doFilter(0)" class="block positive" [class.active]="selectType===0">全部<span
+          class="count">1231</span></span>
+                <span (click)="doFilter(3)" class="block positive" [class.active]="selectType===3">好评<span
+          class="count">132</span></span>
+                <span (click)="doFilter(2)" class="block ordinary" [class.active]="selectType===2">中评<span
+          class="count">111</span></span>
+                <span (click)="doFilter(1)" class="block negative" [class.active]="selectType===1">差评<span
+          class="count">11</span></span>
+            </div>
+            <!--<div (click)="toggleContent()" class="switch" [class.on]="onlyContent">
+                <i class="fa fa-check-circle"></i>
+                <span class="text">只看有内容的评价</span>
+            </div>-->
+        </div>
         <!--<wm-ratingselect [selectType]="selectType" [onlyContent]="onlyContent" [desc]="desc" [ratings]="ratings" (contentToggle)="onToggleContent($event)" (typeSelect)="onSelectType($event)"></wm-ratingselect>-->
-        <!--<div class="rating-wrapper">
+        <div class="rating-wrapper">
             <ul>
                 <li *ngFor="let rating of ratings" [class.hidden]="!needShow(rating.rateType, rating.text)" class="rating-item">
                     <div class="avatar">
-                        <img width="28" height="28" [src]="rating.avatar">
+                        <img width="28" height="28" [src]="rating.User.avatar">
                     </div>
                     <div class="content">
-                        <h1 class="name">{{rating.username}}</h1>
+                        <h1 class="name">{{rating.User.username}}</h1>
                         <div class="star-wrapper">
-                            <wm-plugins-star [size]="24" [score]="rating.score" class="star"></wm-plugins-star>
-                            <span class="delivery" [class.hidden]="!rating.deliveryTime">{{rating.deliveryTime}}</span>
+                            <rating [(ngModel)]="rating.score" readOnly="true" max="5" class="star"></rating>
+                            <span class=" delivery " [class.hidden]="!rating.deliveryTime ">{{rating.deliveryTime}}</span>
                         </div>
-                        <p class="text">{{rating.text}}</p>
-                        <div class="recommend" [class.hidden]="!(rating.recommend && rating.recommend.length)">
-                            <i class="fa" [class.fa-thumbs-up]="rating?.rateType===0" [class.fa-thumbs-down]="rating?.rateType===1"></i>
-                            <span class="item" *ngFor="let item of rating.recommend">{{item}}</span>
+                        <p class="text ">{{rating.text}}</p>
+                        <div class="recommend " [class.hidden]="!(rating.recommend && rating.recommend.length) ">
+                            <i class="fa " [class.fa-thumbs-up]="rating?.rateType===0 " [class.fa-thumbs-down]="rating?.rateType===1 "></i>
+                            <!--<span class="item " *ngFor="let item of rating.recommend ">{{item}}</span>-->
                         </div>
-                        <div class="time">
-                            {{rating.rateTime | date: "y-MM-dd HH:mm"}}
+                        <div class="time ">
+                            <!--{{rating.rateTime | date: "y-MM-dd HH:mm "}}-->
                         </div>
                     </div>
                 </li>
             </ul>
-        </div>-->
+        </div>
 
     </div>
-</div>
+    <ion-infinite-scroll (ionInfinite)="doLoadMore($event) ">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</ion-content>

@@ -24,13 +24,12 @@ export class SellerratingsComponent implements OnInit, OnChanges, AfterViewCheck
     public foodSellerDetailService:FoodSellerDetailService,
     public navParams:NavParams
   ){
-    this.seller = {};
     this.ratings = [];
-    // this.queryParams = {
-    //   sellerId :'',
-    //   rateType : 1
-    // }
+    this.selectType = 0;
+    this.queryParams.page = 1;
+    this.queryParams.offset = 20;
   }
+
 
   ngOnChanges(){
 
@@ -40,7 +39,9 @@ export class SellerratingsComponent implements OnInit, OnChanges, AfterViewCheck
     this.selectType = ALL;
     this.onlyContent = false;
     this.desc = { all: '全部', positive: '满意', negative: '不满意' };
-    this.queryParams['sellerId'] = this.navParams.get('id');
+    this.seller = this.navParams.data;
+
+    this.queryParams.sellerId = this.navParams.get('id');
     this.foodSellerDetailService.getRatings(this.queryParams).subscribe(
       ratings => {
         this.ratings = ratings;
@@ -75,5 +76,13 @@ export class SellerratingsComponent implements OnInit, OnChanges, AfterViewCheck
     this.selectType = type;
     console.log(type);
     //this.allowInitScroll = true;
+  }
+
+  doLoadMore(){
+
+  }
+
+  doFilter(){
+
   }
 }

@@ -127,28 +127,28 @@
     color: rgb(77, 85, 93);
 }
 
-.rating {
+.food .rating {
     padding-top: 18px;
 }
 
-.rating .title {
+.food .rating .title {
     line-height: 14px;
     margin-left: 18px;
     font-size: 14px;
     color: rgb(7, 17, 27);
 }
 
-.rating-wrapper {
+.food .rating-wrapper {
     padding: 0 18px;
 }
 
-.rating-wrapper .rating-item {
+.food .rating-wrapper .rating-item {
     position: relative;
     padding: 16px 0;
     border-bottom: 1px solid rgba(7, 17, 27, 0.1);
 }
 
-.rating-wrapper .rating-item .user {
+.food .rating-wrapper .rating-item .user {
     position: absolute;
     right: 0;
     top: 16px;
@@ -156,7 +156,7 @@
     font-size: 0;
 }
 
-.rating-wrapper .rating-item .user .name {
+.food .rating-wrapper .rating-item .user .name {
     display: inline-block;
     margin-right: 6px;
     vertical-align: top;
@@ -164,40 +164,40 @@
     color: rgb(147, 153, 159);
 }
 
-.rating-wrapper .rating-item .user .avatar {
+.food .rating-wrapper .rating-item .user .avatar {
     border-radius: 50%;
 }
 
-.rating-wrapper .rating-item .time {
+.food .rating-wrapper .rating-item .time {
     margin-bottom: 6px;
     line-height: 12px;
     font-size: 10px;
     color: rgb(147, 153, 159);
 }
 
-.rating-wrapper .rating-item .text {
+.food .rating-wrapper .rating-item .text {
     line-height: 16px;
     font-size: 12px;
     color: rgb(7, 17, 27);
 }
 
-.rating-wrapper .rating-item .text .icon-thumb_up {
+.food .rating-wrapper .rating-item .text .icon-thumb_up {
     margin-right: 4px;
     line-height: 16px;
     font-size: 12px;
 }
 
-.rating-wrapper .rating-item .text .icon-thumb_down {
+.food .rating-wrapper .rating-item .text .icon-thumb_down {
     margin-right: 4px;
     line-height: 16px;
     font-size: 12px;
 }
 
-.rating-wrapper .rating-item .text .icon-thumb_up {
+.food .rating-wrapper .rating-item .text .icon-thumb_up {
     color: rgb(0, 160, 220);
 }
 
-.rating-wrapper .rating-item .text .icon-thumb_down {
+.food .rating-wrapper .rating-item .text .icon-thumb_down {
     color: rgb(147, 153, 159);
 }
 

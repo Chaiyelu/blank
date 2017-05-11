@@ -16,6 +16,7 @@
     "mysql": "^2.13.0",
     "sequelize": "^3.30.4",
     "sequelize-cli": "^2.7.0",
-    "serve-favicon": "~2.4.2"
+    "serve-favicon": "~2.4.2",
+    "utils": "^0.3.1"
   }
 }

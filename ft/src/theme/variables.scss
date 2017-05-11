@@ -371,6 +371,14 @@ $colors: ( primary: #488aff, secondary: #32db64, danger: #f53d3d, light: #f4f4f4
     content: "\e684";
 }
 
+.ion-md-favorite:before {
+    content: "\e66f";
+}
+
+.ion-ios-favorite:before {
+    content: "\e66f";
+}
+
 
 /**
  * Eric Meyer's Reset CSS v2.0 (http://meyerweb.com/eric/tools/css/reset/)

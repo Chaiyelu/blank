@@ -9,10 +9,13 @@ import { FoodSellerDetailService } from "../foodsellerdetail.service";
 
 export class SellerdetailComponent implements OnInit {
   seller:object = {};
+  private classMap: string[];
 	constructor(
     private foodSellerDetailService: FoodSellerDetailService,
     public navParams:NavParams
-  ) { }
+  ) {
+    this.classMap = ['decrease', 'discount', 'special', 'invoice', 'guarantee'];
+  }
 
 	ngOnInit() {
     console.log(this.navParams.data);
