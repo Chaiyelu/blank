@@ -5,13 +5,15 @@ import { CartcontrolComponent } from "./components/cartcontrol/cartcontrol.compo
 import { ShopcartComponent } from "./components/shopcart/shopcart.component";
 import { ShopcartList } from "./components/shopcart/shopcart-list/shopcart-list";
 import { SplitComponent } from "./components/split/split.component";
+import { RatingselectComponent } from "./components/ratingselect/ratingselect.component";
 
 @NgModule({
   declarations: [
     CartcontrolComponent,
     ShopcartComponent,
     ShopcartList,
-    SplitComponent
+    SplitComponent,
+    RatingselectComponent
   ],
   imports: [
     IonicModule
@@ -20,13 +22,15 @@ import { SplitComponent } from "./components/split/split.component";
     CartcontrolComponent,
     ShopcartComponent,
     ShopcartList,
-    SplitComponent
+    SplitComponent,
+    RatingselectComponent
   ],
   exports: [
     CartcontrolComponent,
     ShopcartComponent,
     ShopcartList,
     SplitComponent,
+    RatingselectComponent,
     IonicModule
   ],
   providers: [

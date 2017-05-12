@@ -18,14 +18,21 @@ router.get('/', function(req, res, next) {
     delete req.query.page;
     delete req.query.offset;
     console.log(req.query);
-    console.log(page);
-    console.log(offset);
-    FoodRatings.findAll({
+    FoodRatings.findAndCountAll({
         where: req.query,
         offset: (page - 1) * offset, //开始的数据索引，比如当page=2 时offset=10 ，而pagesize我们定义为10，则现在为索引为10，也就是从第11条开始返回数据条目
         limit: offset,
         include: [{ model: Users, required: true, exclude: ['token'] }]
     }).then(function(data) {
+        // if (data.length != 0) {
+        //     console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~');
+        //     console.log(data);
+        //     res.send(res, { rows: data.rows, total: data.count });
+        // } else {
+        //     utils.send(res, {
+        //         err: '没有找到文章，请先创建'
+        //     })
+        // }
         res.json(data);
     });
 });

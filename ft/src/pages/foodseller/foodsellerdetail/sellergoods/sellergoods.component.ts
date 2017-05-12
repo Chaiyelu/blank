@@ -102,7 +102,7 @@ export class SellergoodsComponent implements OnInit, AfterViewInit, AfterViewChe
   }
 
 
-  onFoodsScroll() {
+  onFoodsScroll($event) {
     this.scrollTop = Math.abs(Math.round(this.foodsWrapper.scrollTop));
   }
 

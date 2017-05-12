@@ -5,37 +5,37 @@ import { RatingModel, RatingQueryParams } from "../../../../shared/models/rating
 
 const ALL = 2;
 @Component({
-	selector: 'sellerratings',
-	templateUrl: 'sellerratings.component.html'
+  selector: 'sellerratings',
+  templateUrl: 'sellerratings.component.html'
 })
 
-export class SellerratingsComponent implements OnInit, OnChanges, AfterViewChecked{
+export class SellerratingsComponent implements OnInit, OnChanges, AfterViewChecked {
 
   private seller: object;
-  private ratings: RatingModel[];
+  private ratings: Array<RatingModel>;
   private selectType: number;
   private onlyContent: boolean = false;
   private desc: object;
   private scroll: any;
-  private allowInitScroll:boolean = false;
   private queryParams: RatingQueryParams = <RatingQueryParams>{};
+  hasMore : boolean = true;
 
   constructor(
-    public foodSellerDetailService:FoodSellerDetailService,
-    public navParams:NavParams
-  ){
+    public foodSellerDetailService: FoodSellerDetailService,
+    public navParams: NavParams
+  ) {
     this.ratings = [];
     this.selectType = 0;
     this.queryParams.page = 1;
-    this.queryParams.offset = 20;
+    this.queryParams.offset = 5;
   }
 
 
-  ngOnChanges(){
+  ngOnChanges() {
 
   }
 
-  ngOnInit(){
+  ngOnInit() {
     this.selectType = ALL;
     this.onlyContent = false;
     this.desc = { all: '全部', positive: '满意', negative: '不满意' };
@@ -56,7 +56,7 @@ export class SellerratingsComponent implements OnInit, OnChanges, AfterViewCheck
 
   }
 
-  needShow(type?: number, text?:string){
+  needShow(type?: number, text?: string) {
     if (this.onlyContent && !text) {
       return false;
     }
@@ -67,7 +67,7 @@ export class SellerratingsComponent implements OnInit, OnChanges, AfterViewCheck
     }
   }
 
-  onToggleContent(onlyCon:boolean){
+  onToggleContent(onlyCon: boolean) {
     console.log(onlyCon);
     this.onlyContent = onlyCon;
   }
@@ -78,11 +78,24 @@ export class SellerratingsComponent implements OnInit, OnChanges, AfterViewCheck
     //this.allowInitScroll = true;
   }
 
-  doLoadMore(){
-
+  doLoadMore($event) {
+    this.queryParams.page = this.queryParams.page + 1;
+    console.log(this.queryParams);
+    this.foodSellerDetailService.getRatings(this.queryParams).subscribe(
+      ratings => {
+        if (ratings.length != 0){
+          this.ratings = this.ratings.concat(ratings);
+          $event.complete();
+        }else {
+          this.hasMore = false;
+        }
+        console.log(this.ratings);
+      },
+      error => console.log(error)
+    );
   }
 
-  doFilter(){
+  doFilter() {
 
   }
 }

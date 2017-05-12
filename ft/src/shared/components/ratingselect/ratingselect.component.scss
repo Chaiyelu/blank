@@ -1,0 +1,57 @@
+mt-ratingselect {
+    .ratingselect .rating-type {
+        padding: 18px 0;
+        margin: 0 18px;
+        border-bottom: 1px solid rgba(7, 17, 27, 0.1);
+        font-size: 0
+    }
+    .ratingselect .rating-type .block {
+        display: inline-block;
+        padding: 8px 12px;
+        margin-right: 8px;
+        line-height: 16px;
+        border-radius: 1px;
+        font-size: 12px;
+        color: rgb(77, 85, 93);
+    }
+    .ratingselect .rating-type .block.active {
+        color: #fff;
+    }
+    .ratingselect .rating-type .block .count {
+        margin-left: 2px;
+        font-size: 8px;
+    }
+    .ratingselect .rating-type .block.positive {
+        background: rgba(0, 160, 220, 0.2);
+    }
+    .ratingselect .rating-type .block.positive.active {
+        background: rgb(0, 160, 220);
+    }
+    .ratingselect .rating-type .block.negative {
+        background: rgba(77, 85, 93, 0.2);
+    }
+    .ratingselect .rating-type .block.negative.active {
+        background: rgb(77, 85, 93);
+    }
+    .ratingselect .switch {
+        padding: 12px 18px;
+        line-height: 24px;
+        border-bottom: 1px solid rgba(7, 17, 27, 0.1);
+        color: rgb(147, 153, 159);
+        font-size: 0;
+    }
+    .ratingselect .switch.on .fa-check-circle {
+        color: #00c850;
+    }
+    .ratingselect .switch .fa-check-circle {
+        display: inline-block;
+        vertical-align: top;
+        margin-right: 4px;
+        font-size: 24px;
+    }
+    .ratingselect .switch .text {
+        display: inline-block;
+        vertical-align: top;
+        font-size: 12px;
+    }
+}

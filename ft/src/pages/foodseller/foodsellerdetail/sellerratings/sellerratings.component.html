@@ -24,23 +24,8 @@
             </div>
         </div>
         <mt-split></mt-split>
-        <div class="ratingselect">
-            <div class="rating-type border-1px">
-                <span (click)="doFilter(0)" class="block positive" [class.active]="selectType===0">全部<span
-          class="count">1231</span></span>
-                <span (click)="doFilter(3)" class="block positive" [class.active]="selectType===3">好评<span
-          class="count">132</span></span>
-                <span (click)="doFilter(2)" class="block ordinary" [class.active]="selectType===2">中评<span
-          class="count">111</span></span>
-                <span (click)="doFilter(1)" class="block negative" [class.active]="selectType===1">差评<span
-          class="count">11</span></span>
-            </div>
-            <!--<div (click)="toggleContent()" class="switch" [class.on]="onlyContent">
-                <i class="fa fa-check-circle"></i>
-                <span class="text">只看有内容的评价</span>
-            </div>-->
-        </div>
-        <!--<wm-ratingselect [selectType]="selectType" [onlyContent]="onlyContent" [desc]="desc" [ratings]="ratings" (contentToggle)="onToggleContent($event)" (typeSelect)="onSelectType($event)"></wm-ratingselect>-->
+
+        <mt-ratingselect [selectType]="selectType" [onlyContent]="onlyContent" [desc]="desc" (contentToggle)="onToggleContent($event)" (typeSelect)="onSelectType($event)"></mt-ratingselect>
         <div class="rating-wrapper">
             <ul>
                 <li *ngFor="let rating of ratings" [class.hidden]="!needShow(rating.rateType, rating.text)" class="rating-item">
@@ -67,7 +52,8 @@
         </div>
 
     </div>
-    <ion-infinite-scroll (ionInfinite)="doLoadMore($event) ">
+    <div *ngIf="!hasMore">没有更多的数据了</div>
+    <ion-infinite-scroll (ionInfinite)="doLoadMore($event)" [enabled]="hasMore">
         <ion-infinite-scroll-content></ion-infinite-scroll-content>
     </ion-infinite-scroll>
 </ion-content>

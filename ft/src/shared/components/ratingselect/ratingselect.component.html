@@ -1,0 +1,14 @@
+<div class="ratingselect">
+    <div class="rating-type border-1px">
+        <span (click)="select(2,$event)" class="block positive" [class.active]="selectType===2">{{desc?.all}}<span
+          class="count">111</span></span>
+        <span (click)="select(0,$event)" class="block positive" [class.active]="selectType===0">{{desc?.positive}}<span
+          class="count">21</span></span>
+        <span (click)="select(1,$event)" class="block negative" [class.active]="selectType===1">{{desc?.negative}}<span
+          class="count">3</span></span>
+    </div>
+    <div (click)="toggleContent($event)" class="switch" [class.on]="onlyContent">
+        <i class="fa fa-check-circle"></i>
+        <span class="text">只看有内容的评价</span>
+    </div>
+</div>
