@@ -1,28 +1,15 @@
 <ion-header>
-  <ion-navbar color="green">
-    <ion-buttons start>
-      <button ion-button icon-right small clear color="white">
-        舟山
-        <ion-icon name="arrow-down"></ion-icon>
-      </button>
-    </ion-buttons>
-    <ion-title>
-      <button ion-button icon-left small round color="white">
-        <ion-icon name="ios-search-outline" color="green"></ion-icon>
-        <span color="light">搜索商家或商圈等</span>
-      </button>
-    </ion-title>
-    <ion-buttons end>
-      <button ion-button icon-only small clear color="white">
-        <ion-icon name="ios-qr-scanner"></ion-icon>
-      </button>
-      <button ion-button icon-only small clear color="white">
-        <ion-icon name="ios-notifications-outline"></ion-icon>
-      </button>
-    </ion-buttons>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>
+            订单
+        </ion-title>
+    </ion-navbar>
 </ion-header>
 
 <ion-content>
-
+    <div class="loginPage">
+        <ion-icon name="touxiang2" color="gray"></ion-icon>
+        <p>登陆后可查看订单、收藏记录</p>
+        <button ion-button color="secondary" (click)="doLogin()">登录</button>
+    </div>
 </ion-content>

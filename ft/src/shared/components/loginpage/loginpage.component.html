@@ -1,0 +1,35 @@
+<ion-header>
+    <ion-navbar>
+        <ion-buttons start>
+            <button ion-button small clear color="white" (click)="doClose()">
+              <ion-icon name="cha"></ion-icon>
+            </button>
+        </ion-buttons>
+        <ion-title>
+            登录
+        </ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only small clear color="white" (click)="doRegsiter()">
+              注册
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <ion-list>
+        <ion-item>
+            <ion-label>账号</ion-label>
+            <ion-input type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>密码</ion-label>
+            <ion-input type="password"></ion-input>
+            <button ion-button small clear item-right color="white">
+              <ion-icon name="cha"></ion-icon>
+            </button>
+        </ion-item>
+    </ion-list>
+    <div padding>
+        <button ion-button block>登录</button>
+    </div>
+</ion-content>

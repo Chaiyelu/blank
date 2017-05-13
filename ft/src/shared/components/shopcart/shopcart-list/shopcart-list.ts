@@ -1,5 +1,4 @@
-import { Component, OnInit, OnChanges, AfterViewChecked, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
-import { NavParams, ViewController } from 'ionic-angular';
+import { Component } from '@angular/core';
 @Component({
   selector: 'shopcart-list',
   templateUrl: 'shopcart-list.html'

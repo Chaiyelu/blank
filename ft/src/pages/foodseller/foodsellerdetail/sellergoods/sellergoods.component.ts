@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild, ElementRef, AfterViewInit, AfterViewChecked } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, AfterViewChecked } from '@angular/core';
 import { NavParams, Content, ViewController, ModalController, Config } from 'ionic-angular';
 import { FoodSellerDetailService } from '../foodsellerdetail.service';
 import { GoodModel } from "../../../../shared/models/good.model";

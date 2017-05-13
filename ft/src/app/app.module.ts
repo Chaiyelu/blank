@@ -1,7 +1,7 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpModule, Http } from '@angular/http';
+import { HttpModule } from '@angular/http';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -11,8 +11,6 @@ import { Ionic2RatingModule } from 'ionic2-rating';
 
 import { FoodSellerModule } from "../pages/foodseller/foodseller.module";
 import { SharedModule } from "../shared/shared.module";
-import { FoodSellerComponent } from "../pages/foodseller/foodseller.component";
-import { FoodSellerDetailComponent } from '../pages/foodseller/foodsellerdetail/foodsellerdetail.component';
 
 import { MyApp } from './app.component';
 import { AboutComponent } from '../pages/about/about.component';

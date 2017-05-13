@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, SimpleChanges ,Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, SimpleChanges, Input, Output, EventEmitter } from '@angular/core';
 import { FoodModel } from "../../models/food.model";
 import { moveIn, roll } from './carcontrol.animations';
 
@@ -19,12 +19,10 @@ export class CartcontrolComponent implements OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    for (let propName in changes) {
-      if (this.food.count > 0) {
-        this.isRoll = 'active';
-      } else {
-        this.isRoll = 'inactive';
-      }
+    if (this.food.count > 0) {
+      this.isRoll = 'active';
+    } else {
+      this.isRoll = 'inactive';
     }
   }
 

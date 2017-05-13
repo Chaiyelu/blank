@@ -16,7 +16,6 @@ export class SellerratingsComponent implements OnInit, OnChanges, AfterViewCheck
   private selectType: number;
   private onlyContent: boolean = false;
   private desc: object;
-  private scroll: any;
   private queryParams: RatingQueryParams = <RatingQueryParams>{};
   hasMore : boolean = true;
 

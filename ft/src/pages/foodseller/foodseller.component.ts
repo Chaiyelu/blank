@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FoodSellerService } from './foodseller.service';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 import { FoodSellerDetailComponent } from "./foodsellerdetail/foodsellerdetail.component";
 import { FoodSellerModel } from "./foodseller.model";
 

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
-import { NavController } from 'ionic-angular';
+import { NavController, ModalController } from 'ionic-angular';
+import { LoginpageComponent } from "../../shared/components/loginpage/loginpage.component";
 
 @Component({
   selector: 'page-order',
@@ -8,8 +9,15 @@ import { NavController } from 'ionic-angular';
 })
 export class OrderComponent {
 
-  constructor(public navCtrl: NavController) {
+  constructor(
+    public navCtrl: NavController,
+    public modalCtrl: ModalController
+  ) {
 
   }
 
+  doLogin(){
+    let LoginModal = this.modalCtrl.create(LoginpageComponent);
+    LoginModal.present();
+  }
 }
