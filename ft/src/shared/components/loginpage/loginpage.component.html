@@ -14,22 +14,57 @@
             </button>
         </ion-buttons>
     </ion-navbar>
+    <ion-toolbar color="light">
+        <ion-segment class="top_segment" [(ngModel)]="top_segment">
+            <ion-segment-button (click)="select(0)" value="top_0">
+                账号密码登录
+            </ion-segment-button>
+            <ion-segment-button (click)="select(1)" value="top_1">
+                手机号快捷登陆
+            </ion-segment-button>
+        </ion-segment>
+    </ion-toolbar>
 </ion-header>
 <ion-content>
-    <ion-list>
-        <ion-item>
-            <ion-label>账号</ion-label>
-            <ion-input type="text"></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label>密码</ion-label>
-            <ion-input type="password"></ion-input>
-            <button ion-button small clear item-right color="white">
-              <ion-icon name="cha"></ion-icon>
-            </button>
-        </ion-item>
-    </ion-list>
-    <div padding>
-        <button ion-button block>登录</button>
-    </div>
+    <ion-slides (ionSlideDidChange)="panEvent($event)" #mySlider>
+        <ion-slide>
+            <ion-content class="fixed-content">
+                <ion-list>
+                    <ion-item>
+                        <ion-label>账号</ion-label>
+                        <ion-input type="text"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>密码</ion-label>
+                        <ion-input type="password"></ion-input>
+                        <button ion-button small clear item-right color="white">
+                          <ion-icon name="cha"></ion-icon>
+                        </button>
+                    </ion-item>
+                </ion-list>
+                <div padding>
+                    <button ion-button block>登录</button>
+                </div>
+            </ion-content>
+        </ion-slide>
+        <ion-slide>
+            <ion-content class="fixed-content">
+                <ion-list>
+                    <ion-item>
+                        <ion-label>手机号</ion-label>
+                        <ion-input type="text"></ion-input>
+                        <button ion-button small item-right color="gray">获取验证码</button>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>验证码</ion-label>
+                        <ion-input type="password"></ion-input>
+                    </ion-item>
+                </ion-list>
+                <div padding>
+                    <button ion-button block>登录</button>
+                </div>
+            </ion-content>
+        </ion-slide>
+
+    </ion-slides>
 </ion-content>
