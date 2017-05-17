@@ -3,11 +3,14 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
+var expressJwt = require('express-jwt');
 var bodyParser = require('body-parser');
+var config = require('./config/config.json');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
 var seller = require('./routes/seller');
+var auth = require('./routes/auth');
 var tag = require('./routes/tag');
 var food_categories = require('./routes/food_categories');
 var food_ratings = require('./routes/food_ratings');
@@ -27,12 +30,22 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 
+app.use(expressJwt({ secret: config.secret }).unless({ path: ["/auth", "/seller"] }));
+
 app.use('/', index);
 app.use('/users', users);
 app.use('/seller', seller);
 app.use('/tag', tag);
 app.use('/food_categories', food_categories);
 app.use('/food_ratings', food_ratings);
+app.use('/auth', auth);
+
+
+app.use(function(err, req, res, next) {
+    if (err.name === "UnauthorizedError") {
+        res.status(401).send("invalid token");
+    }
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

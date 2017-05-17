@@ -12,6 +12,7 @@ import { Ionic2RatingModule } from 'ionic2-rating';
 import { AuthHttp, AuthConfig } from 'angular2-jwt';
 
 import { FoodSellerModule } from "../pages/foodseller/foodseller.module";
+import { UserModule } from "../pages/user/user.module";
 import { SharedModule } from "../shared/shared.module";
 
 import { MyApp } from './app.component';
@@ -27,10 +28,11 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
 
 export function getAuthHttp(http, storage) {
   return new AuthHttp(new AuthConfig({
+    tokenName: 'token',
     headerPrefix: 'Bearer',
     noJwtError: true,
     globalHeaders: [{ 'Accept': 'application/json' }],
-    tokenGetter: (() => storage.get('access_token')),
+    tokenGetter: (() => storage.get('token')),
   }), http);
 }
 
@@ -48,6 +50,7 @@ export function getAuthHttp(http, storage) {
     BrowserModule,
     BrowserAnimationsModule,
     FoodSellerModule,
+    UserModule,
     SharedModule,
     Ionic2RatingModule,
     IonicModule.forRoot(MyApp, {
@@ -61,7 +64,10 @@ export function getAuthHttp(http, storage) {
         ]
       }),
     SuperTabsModule.forRoot(),
-    IonicStorageModule.forRoot(),
+    IonicStorageModule.forRoot({
+      name: '__mydb',
+      driverOrder: ['indexeddb', 'sqlite', 'websql']
+    }),
   ],
   bootstrap: [IonicApp],
   entryComponents: [

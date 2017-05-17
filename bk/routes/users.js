@@ -1,15 +1,25 @@
 var express = require('express');
 var router = express.Router();
-var Project = require('../models').Project;
+var Users = require('../models').Users;
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-    Project.findAll({
-
-    }).then(function(data) {
-        Project.getUser();
-        res.json(data);
+router.post('/', function(req, res) {
+    var form = req.body;
+    form.createdAt = Date.now();
+    form.updatedAt = Date.now();
+    Users.create(form).then(function(data) {
+        res.status(201).json(data);
     });
 });
 
+//登录
+router.get('/login', function(req, res) {
+    Users.findAll({
+        where: {
+            email: req.email,
+            password: req.password
+        }
+    }).then(function(data) {
+        res.json(data)
+    });
+});
 module.exports = router;

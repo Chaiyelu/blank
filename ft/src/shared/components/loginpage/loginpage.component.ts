@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ViewController, NavController, Slides, NavParams, Platform } from "ionic-angular";
+import { FormGroup, FormControl, FormBuilder, AbstractControl, Validators } from '@angular/forms';
 import { RegsiterpageComponent } from "../regsiterpage/regsiterpage.component";
+import { UserService } from "../../../pages/user/user.service";
 
 @Component({
   selector: 'loginpage',
@@ -11,6 +13,9 @@ export class LoginpageComponent implements OnInit {
   @ViewChild('mySlider') slider: Slides;
 
   private selected_segment = 0;
+  public loginForm: FormGroup;
+  mobile: any;
+  password: any;
   top_segment = 'top_0';
   segment = 'sites';
 
@@ -20,11 +25,18 @@ export class LoginpageComponent implements OnInit {
     public navCtrl: NavController,
     public viewCtrl: ViewController,
     public navParams: NavParams,
-    public platform: Platform
+    public platform: Platform,
+    public formBuilder: FormBuilder,
+    public userService: UserService
   ) {
     this.rootNavCtrl = navParams.get('rootNavCtrl');
     this.platform = platform;
-
+    this.loginForm = formBuilder.group({
+      mobile: ['', Validators.compose([Validators.minLength(11), Validators.maxLength(11), Validators.required, Validators.pattern("^(13[0-9]|15[012356789]|17[03678]|18[0-9]|14[57])[0-9]{8}$")])],
+      password: ['', Validators.compose([Validators.required, Validators.minLength(6)])]
+    })
+    this.mobile = this.loginForm.controls['mobile'];
+    this.password = this.loginForm.controls['password'];
   }
   ngOnInit() { }
 
@@ -66,6 +78,19 @@ export class LoginpageComponent implements OnInit {
     }
     if (currentIndex === 0) {
       this.top_segment = 'top_0';
+    }
+  }
+
+  doLogin(){
+    if (this.loginForm.valid) {
+      this.userService.login(this.loginForm.value).subscribe((res: any) => {
+        //let body = res.json();
+        if (res && res.success) {
+
+        }
+      }, error => {
+        console.error(error);
+      });;
     }
   }
 

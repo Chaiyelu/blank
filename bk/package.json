@@ -6,6 +6,7 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "bcrypt": "^1.0.2",
     "body-parser": "~1.17.1",
     "cookie-parser": "~1.4.3",
     "cors": "^2.8.3",
@@ -18,5 +19,8 @@
     "sequelize-cli": "^2.7.0",
     "serve-favicon": "~2.4.2",
     "utils": "^0.3.1"
+  },
+  "devDependencies": {
+    "bcrypt-nodejs": "0.0.3"
   }
 }

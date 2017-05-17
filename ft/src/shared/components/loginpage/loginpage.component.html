@@ -29,22 +29,24 @@
     <ion-slides (ionSlideDidChange)="panEvent($event)" #mySlider>
         <ion-slide>
             <ion-content class="fixed-content">
-                <ion-list>
-                    <ion-item>
-                        <ion-label>账号</ion-label>
-                        <ion-input type="text"></ion-input>
-                    </ion-item>
-                    <ion-item>
-                        <ion-label>密码</ion-label>
-                        <ion-input type="password"></ion-input>
-                        <button ion-button small clear item-right color="white">
+                <form [formGroup]="loginForm" (ngSubmit)="doLogin(loginForm.value)" novalidate>
+                    <ion-list>
+                        <ion-item>
+                            <ion-label>账号</ion-label>
+                            <ion-input type="tel" placeholder="请输入用户名" value="" [formControl]="mobile" clearInput=true></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label>密码</ion-label>
+                            <ion-input type="password" placeholder="请输入密码" value="" [formControl]="password" clearInput=true></ion-input>
+                            <button ion-button small clear item-right color="white">
                           <ion-icon name="cha"></ion-icon>
                         </button>
-                    </ion-item>
-                </ion-list>
-                <div padding>
-                    <button ion-button block>登录</button>
-                </div>
+                        </ion-item>
+                    </ion-list>
+                    <div padding>
+                        <button ion-button block type="submit" [disabled]="!loginForm.valid">登录</button>
+                    </div>
+                </form>
             </ion-content>
         </ion-slide>
         <ion-slide>
