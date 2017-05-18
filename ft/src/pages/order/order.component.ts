@@ -1,23 +1,36 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 
-import { NavController, ModalController } from 'ionic-angular';
-import { LoginpageComponent } from "../../shared/components/loginpage/loginpage.component";
+import { Store } from '@ngrx/store';
+import { AppState } from "../../shared/domain/state";
+import { Auth } from "../../shared/models/auth.model";
+
+import { HomeComponent } from "../home/home.component";
+import { SigninComponent } from "./signin/signin.component";
 
 @Component({
   selector: 'page-order',
   templateUrl: 'order.component.html'
 })
-export class OrderComponent {
-
+export class OrderComponent implements OnInit {
+  auth: Observable<Auth>;
+  orderPage: any;
   constructor(
-    public navCtrl: NavController,
-    public modalCtrl: ModalController
+    public store$: Store<AppState>
   ) {
+    this.auth = this.store$.select(appState => appState.auth);
+    this.auth.map(auth => auth.isLogin).subscribe((isLogin) => {
+      if (isLogin) {
+        this.orderPage = HomeComponent;
+      } else {
+        this.orderPage = SigninComponent;
+      }
+    });
 
   }
 
-  doLogin(){
-    let LoginModal = this.modalCtrl.create(LoginpageComponent);
-    LoginModal.present();
+  ngOnInit() {
+
   }
+
 }

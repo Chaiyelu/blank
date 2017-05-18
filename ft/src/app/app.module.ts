@@ -10,10 +10,13 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { SuperTabsModule } from 'ionic2-super-tabs';
 import { Ionic2RatingModule } from 'ionic2-rating';
 import { AuthHttp, AuthConfig } from 'angular2-jwt';
+import { StoreModule } from "@ngrx/store";
 
 import { FoodSellerModule } from "../pages/foodseller/foodseller.module";
+import { OrderModule } from "../pages/order/order.module";
 import { UserModule } from "../pages/user/user.module";
 import { SharedModule } from "../shared/shared.module";
+import { authReducer } from "../shared/reducers/auth.reducer";
 
 import { MyApp } from './app.component';
 import { AboutComponent } from '../pages/about/about.component';
@@ -50,6 +53,7 @@ export function getAuthHttp(http, storage) {
     BrowserModule,
     BrowserAnimationsModule,
     FoodSellerModule,
+    OrderModule,
     UserModule,
     SharedModule,
     Ionic2RatingModule,
@@ -68,6 +72,9 @@ export function getAuthHttp(http, storage) {
       name: '__mydb',
       driverOrder: ['indexeddb', 'sqlite', 'websql']
     }),
+    StoreModule.provideStore({
+      auth: authReducer
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [

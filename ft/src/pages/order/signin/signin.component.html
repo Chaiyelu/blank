@@ -1,0 +1,7 @@
+<ion-content>
+    <div class="loginPage" *ngIf="!isSignIn">
+        <ion-icon name="touxiang2" color="gray"></ion-icon>
+        <p>登陆后可查看订单、收藏记录</p>
+        <button ion-button color="secondary" (click)="doLogin()">登录</button>
+    </div>
+</ion-content>

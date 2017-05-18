@@ -86,7 +86,7 @@ export class LoginpageComponent implements OnInit {
       this.userService.login(this.loginForm.value).subscribe((res: any) => {
         //let body = res.json();
         if (res && res.success) {
-
+          this.viewCtrl.dismiss();
         }
       }, error => {
         console.error(error);
