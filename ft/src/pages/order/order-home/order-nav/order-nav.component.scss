@@ -1,0 +1,17 @@
+order-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    height: 100%;
+    button {
+        flex: 0 0 20%;
+        height: 70px;
+        background: none;
+        ion-icon {
+            font-size: 2.4rem;
+        }
+        p {
+            margin: 3px 0;
+        }
+    }
+}

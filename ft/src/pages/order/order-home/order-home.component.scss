@@ -1,0 +1,28 @@
+order-home {
+    padding-top: 40px;
+    mt-list-header {
+        h3 {
+            margin: 0;
+            font-size: 1.4rem;
+            line-height: 40px;
+        }
+    }
+    .order-list {
+        h2 {
+            font-size: 1.4rem;
+        }
+        h3 {
+            font-size: 1.0rem;
+        }
+        p {
+            font-size: 1.2rem;
+        }
+        button {
+            font-size: 1rem;
+        }
+        .status {
+            text-align: right;
+            margin: 0 0.2rem 1rem 0;
+        }
+    }
+}

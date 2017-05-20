@@ -1,0 +1,13 @@
+mt-list-header {
+    display: flex;
+    padding-left: 16px;
+    border-bottom: 1px solid #ddd;
+    height: 40px;
+    line-height: 40px;
+    .center {
+        flex: 1;
+    }
+    [right] {
+        order: 3;
+    }
+}

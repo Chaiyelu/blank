@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from "../../shared/domain/state";
 import { Auth } from "../../shared/models/auth.model";
 
-import { HomeComponent } from "../home/home.component";
+import { OrderHomeComponent } from "./order-home/order-home.component";
 import { SigninComponent } from "./signin/signin.component";
 
 @Component({
@@ -21,7 +21,7 @@ export class OrderComponent implements OnInit {
     this.auth = this.store$.select(appState => appState.auth);
     this.auth.map(auth => auth.isLogin).subscribe((isLogin) => {
       if (isLogin) {
-        this.orderPage = HomeComponent;
+        this.orderPage = OrderHomeComponent;
       } else {
         this.orderPage = SigninComponent;
       }
