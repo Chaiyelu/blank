@@ -4,6 +4,8 @@ import { FoodSellerDetailService } from '../foodsellerdetail.service';
 import { GoodModel } from "../../../../shared/models/good.model";
 import { FooddetailComponent } from '../fooddetail/fooddetail.component';
 import { ModalSlideInFromRight, ModalSlideOutToRight } from "../../../../shared/animations/custom-transitions";
+import { Store } from "@ngrx/store";
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'sellergoods',
@@ -18,7 +20,8 @@ export class SellergoodsComponent implements OnInit, AfterViewInit, AfterViewChe
   currentIndex: number = 0;
   scrollTop: number = 0;
   afterDataLoad: boolean = false;
-  choosedFoods: any[] = [];
+  // choosedFoods: any[] = [];
+  choosedFoods: Observable<any>;
 
   constructor(
     public foodSellerDetailService: FoodSellerDetailService,
@@ -26,7 +29,8 @@ export class SellergoodsComponent implements OnInit, AfterViewInit, AfterViewChe
     public elementRef: ElementRef,
     public viewCtrl: ViewController,
     public modalCtrl: ModalController,
-    config: Config
+    config: Config,
+    private store$: Store<any>
   ) {
     this.foodSellerDetailService.doChoose.subscribe(() => {
       this.chooseFoods();
@@ -34,6 +38,7 @@ export class SellergoodsComponent implements OnInit, AfterViewInit, AfterViewChe
     this.sellergoods = [];
     config.setTransition('modal-slide-in-from-right', ModalSlideInFromRight);
     config.setTransition('modal-slide-out-to-right', ModalSlideOutToRight);
+    this.choosedFoods = this.store$.select('choosedFoods');
   }
 
   ngOnInit() {
@@ -64,7 +69,8 @@ export class SellergoodsComponent implements OnInit, AfterViewInit, AfterViewChe
     console.log(food);
 
     let foodDetailModal = this.modalCtrl.create(FooddetailComponent,
-      { food: food, choosedFoods: this.choosedFoods, sellergoods: this.sellergoods },
+      // { food: food, choosedFoods: this.choosedFoods, sellergoods: this.sellergoods },
+      { food: food, sellergoods: this.sellergoods },
       { enterAnimation: 'modal-slide-in-from-right', leaveAnimation: 'modal-slide-out-to-right' }
     );
     foodDetailModal.present().then(() => {
@@ -115,8 +121,8 @@ export class SellergoodsComponent implements OnInit, AfterViewInit, AfterViewChe
         }
       })
     });
-    this.choosedFoods = foods;
-    this.foodSellerDetailService.doChoose1.emit(foods);
+    this.store$.dispatch({type: 'UPDATE', payload:foods});
+    // this.foodSellerDetailService.doChoose1.emit(foods);
     console.log(this.choosedFoods);
   }
 }

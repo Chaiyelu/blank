@@ -1,6 +1,7 @@
-import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, Renderer, Renderer2 } from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { Content, NavParams } from 'ionic-angular';
 import { FoodSellerDetailService } from './foodsellerdetail.service';
+import { Store } from "@ngrx/store";
 
 import { SellerdetailComponent } from "./sellerdetail/sellerdetail.component";
 import { SellergoodsComponent } from "./sellergoods/sellergoods.component";
@@ -11,7 +12,7 @@ import { SellerratingsComponent } from "./sellerratings/sellerratings.component"
   templateUrl: 'foodsellerdetail.component.html'
 })
 
-export class FoodSellerDetailComponent implements OnInit, AfterViewInit {
+export class FoodSellerDetailComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild(Content) content: Content;
   @ViewChild('superTabs') superTabs: ElementRef;
   sellerGoodsPage: any = SellergoodsComponent;
@@ -24,8 +25,7 @@ export class FoodSellerDetailComponent implements OnInit, AfterViewInit {
   constructor(
     public navParams: NavParams,
     public foodSellerDetailService: FoodSellerDetailService,
-    public renderer: Renderer,
-    public renderer2: Renderer2,
+    public store$: Store<any>
   ) { }
 
   ngOnInit() {
@@ -45,10 +45,14 @@ export class FoodSellerDetailComponent implements OnInit, AfterViewInit {
     // this.renderer.setElementStyle(this.superTabs.nativeElement,'height',this.h+'px');
   }
 
+  ngOnDestroy(){
+    this.store$.dispatch({type:'EMPTY'});
+  }
+
   onScroll($event){
-    let el = this.content._elementRef.nativeElement.getElementsByClassName('shopcartwrapper')[0];
-    let h = 134-this.content.scrollTop;
-    this.renderer2.setStyle(el,'bottom',h+'px');
+    // let el = this.content._elementRef.nativeElement.getElementsByClassName('shopcartwrapper')[0];
+    // let h = 134-this.content.scrollTop;
+    // this.renderer2.setStyle(el,'bottom',h+'px');
   }
 
 }

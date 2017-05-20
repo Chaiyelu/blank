@@ -29,7 +29,7 @@
                                 <span class="old" *ngIf="food['oldPrice']">￥{{food['oldPrice']}}</span>
                             </div>
                             <div class="cartcontrol-wrapper">
-                                <mt-cartcontrol [food]="food" (chooseFoodsEmit)="chooseFoods($event)"></mt-cartcontrol>
+                                <mt-cartcontrol [food]="food"></mt-cartcontrol>
                             </div>
                         </div>
                     </li>
@@ -38,6 +38,7 @@
         </ul>
     </ion-content>
     <!--<div #shopcart>-->
-    <mt-shopcart class="shopcartwrapper" [choosedFoods]="choosedFoods" [deliveryPrice]="5" [minPrice]="20" (chooseFoodsEmit)="chooseFoods($event)"></mt-shopcart>
+    <!--<mt-shopcart class="shopcartwrapper" [choosedFoods]="choosedFoods" [deliveryPrice]="5" [minPrice]="20" (chooseFoodsEmit)="chooseFoods($event)"></mt-shopcart>-->
+    <!--<mt-shopcart class="shopcartwrapper" [deliveryPrice]="5" [minPrice]="20"></mt-shopcart>-->
     <!--</div>-->
 </div>

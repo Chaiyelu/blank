@@ -7,6 +7,7 @@ import { Auth } from "../../shared/models/auth.model";
 
 import { OrderHomeComponent } from "./order-home/order-home.component";
 import { SigninComponent } from "./signin/signin.component";
+import { UserService } from "../user/user.service";
 
 @Component({
   selector: 'page-order',
@@ -16,7 +17,8 @@ export class OrderComponent implements OnInit {
   auth: Observable<Auth>;
   orderPage: any;
   constructor(
-    public store$: Store<AppState>
+    public store$: Store<AppState>,
+    public userService: UserService
   ) {
     this.auth = this.store$.select(appState => appState.auth);
     this.auth.map(auth => auth.isLogin).subscribe((isLogin) => {
@@ -30,7 +32,10 @@ export class OrderComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.userService.isLoggedIn();
   }
 
+  ionViewDidEnter(){
+    this.userService.isLoggedIn();
+  }
 }

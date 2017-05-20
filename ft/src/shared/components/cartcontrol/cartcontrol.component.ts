@@ -1,6 +1,7 @@
 import { Component, OnInit, SimpleChanges, Input, Output, EventEmitter } from '@angular/core';
 import { FoodModel } from "../../models/food.model";
 import { moveIn, roll } from './carcontrol.animations';
+import { FoodSellerDetailService } from "../../../pages/foodseller/foodsellerdetail/foodsellerdetail.service";
 
 @Component({
   selector: 'mt-cartcontrol',
@@ -10,11 +11,13 @@ import { moveIn, roll } from './carcontrol.animations';
 
 export class CartcontrolComponent implements OnInit {
   @Input() food: FoodModel;
-  @Output() chooseFoodsEmit = new EventEmitter();
+  //@Output() chooseFoodsEmit = new EventEmitter();
 
   private isRoll: string;
 
-  constructor() {
+  constructor(
+    public foodSellerDetailService: FoodSellerDetailService
+  ) {
 
   }
 
@@ -37,8 +40,9 @@ export class CartcontrolComponent implements OnInit {
     } else {
       this.food.count++;
     }
-    this.chooseFoodsEmit.emit();
-    console.log(this.food);
+    // this.chooseFoodsEmit.emit();
+    this.foodSellerDetailService.doChoose.emit();
+    // console.log(this.food);
   }
 
   decreaseCart() {
@@ -46,7 +50,7 @@ export class CartcontrolComponent implements OnInit {
     if (this.food.count) {
       this.food.count--;
     }
-    this.chooseFoodsEmit.emit();
+    this.foodSellerDetailService.doChoose.emit();
   }
 
 

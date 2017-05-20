@@ -21,6 +21,7 @@ export class FoodSellerDetailService {
       .catch((error: any) => Observable.throw(error || 'Server error'));
   }
 
+  //获取商品列表
   getGoodsList(sellerId) {
     let params = new URLSearchParams();
     params.set('sellerId', sellerId);

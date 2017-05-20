@@ -16,7 +16,10 @@ import { FoodSellerModule } from "../pages/foodseller/foodseller.module";
 import { OrderModule } from "../pages/order/order.module";
 import { UserModule } from "../pages/user/user.module";
 import { SharedModule } from "../shared/shared.module";
+
 import { authReducer } from "../shared/reducers/auth.reducer";
+import { choosedFoodsReducer } from "../shared/reducers/choosedfoods.reducer";
+import { sellerGoodsReducer } from "../shared/reducers/sellergoods.reducer";
 
 import { MyApp } from './app.component';
 import { AboutComponent } from '../pages/about/about.component';
@@ -32,10 +35,10 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
 export function getAuthHttp(http, storage) {
   return new AuthHttp(new AuthConfig({
     tokenName: 'token',
-    headerPrefix: 'Bearer',
     noJwtError: true,
     globalHeaders: [{ 'Accept': 'application/json' }],
-    tokenGetter: (() => storage.get('token')),
+    // tokenGetter: (() => storage.get('token')),
+    tokenGetter: (() => localStorage.getItem('token')),
   }), http);
 }
 
@@ -73,7 +76,9 @@ export function getAuthHttp(http, storage) {
       driverOrder: ['indexeddb', 'sqlite', 'websql']
     }),
     StoreModule.provideStore({
-      auth: authReducer
+      auth: authReducer,
+      choosedFoods: choosedFoodsReducer,
+      sellerGoods: sellerGoodsReducer
     })
   ],
   bootstrap: [IonicApp],
@@ -89,9 +94,12 @@ export function getAuthHttp(http, storage) {
     StatusBar,
     SplashScreen,
     {
+      // provide: AuthHttp,
+      // useFactory: getAuthHttp,
+      // deps: [Http, Storage]
       provide: AuthHttp,
-      useFactory: getAuthHttp,
-      deps: [Http, Storage]
+      useFactory: authHttpServiceFactory,
+      deps: [Http, RequestOptions]
     },
     { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]

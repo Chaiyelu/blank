@@ -34,7 +34,7 @@ router.post('/', function(req, res) {
                 });
             } else {
                 const payload = { mobile: user.mobile };
-                var token = jwt.sign(payload, config.secret, { expiresIn: 60 * 5 });
+                var token = jwt.sign(payload, config.secret, { expiresIn: 60 * 1 });
                 // return res.status(201).send(token);
                 user.token = token;
                 user.save().then(function() {});

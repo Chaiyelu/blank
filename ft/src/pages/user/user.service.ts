@@ -28,9 +28,11 @@ export class UserService {
         let result = res.json();
         if (result && result.success) {
           if (result && result.token) {
-            // localStorage.setItem("token",result.token);
-            this.storage.set("token", result.token);
-            this.store$.dispatch({type: 'LOGIN', payload: {
+            localStorage.setItem("token", result.token);
+            // this.storage.set("token", result.token);
+            this.store$.dispatch({
+              type: 'LOGIN',
+              payload: {
                 user: null,
                 isLogin: true,
                 errMsg: null,
@@ -46,8 +48,28 @@ export class UserService {
   }
 
   isLoggedIn() {
-    console.log(tokenNotExpired());
-    this.store$.dispatch({ type: 'CHECK_LOGIN', payload: tokenNotExpired() });
+    this.store$.dispatch({
+      type: 'LOGIN',
+      payload: {
+        user: null,
+        isLogin: tokenNotExpired(),
+        errMsg: null,
+        redirectUrl: null
+      }
+    });
+
+    // this.storage.get("token").then((token) => {
+    //   this.store$.dispatch({
+    //     type: 'LOGIN',
+    //     payload: {
+    //       user: null,
+    //       isLogin: tokenNotExpired(null, token),
+    //       errMsg: null,
+    //       redirectUrl: null
+    //     }
+    //   });
+    // });
+
   }
 
 }

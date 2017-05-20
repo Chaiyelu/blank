@@ -1,6 +1,9 @@
 import { Component, OnInit, OnChanges, AfterViewChecked, Input, Output, EventEmitter, ViewChild, ElementRef, Renderer2 } from '@angular/core';
 import { ModalController, Content } from 'ionic-angular';
 import { fade, fold } from "./shopcart.animations";
+import { Store } from "@ngrx/store";
+import { Observable } from 'rxjs/Observable';
+import { FoodSellerDetailService } from "../../../pages/foodseller/foodsellerdetail/foodsellerdetail.service";
 
 @Component({
   selector: 'mt-shopcart',
@@ -9,7 +12,8 @@ import { fade, fold } from "./shopcart.animations";
 })
 
 export class ShopcartComponent implements OnInit, OnChanges, AfterViewChecked {
-  @Input() choosedFoods: any = [1, 2];
+  choosedFoods: any = [];
+  // choosedFoods:Observable<any>;
   @Input() deliveryPrice: number;
   @Input() minPrice: number;
   @Output() chooseFoodsEmit = new EventEmitter();
@@ -26,10 +30,20 @@ export class ShopcartComponent implements OnInit, OnChanges, AfterViewChecked {
 
   constructor(
     public modalCtrl: ModalController,
-    public renderer: Renderer2
+    public renderer: Renderer2,
+    public store$: Store<any>,
+    public foodSellerDetailService: FoodSellerDetailService
   ) {
     this.isFold = true;
-    this.choosedFoods = [1, 2];
+    this.store$.select('choosedFoods').subscribe((choosedFoods) => {
+      this.choosedFoods = choosedFoods;
+      this.ttPrice = this.totalPrice();
+      this.ttCount = this.totalCount();
+      this.payState();
+      this.ischoosedFoodsChange = true;
+      this.status = this.listShow();
+      console.log('choosedFoods is change');
+    });
   }
 
   ngOnChanges() {
@@ -95,22 +109,21 @@ export class ShopcartComponent implements OnInit, OnChanges, AfterViewChecked {
     }
     this.isFold = !this.isFold;
     this.status = this.listShow();
-  }
-
-  chooseFoods() {
-    this.chooseFoodsEmit.emit();
+    console.log(this.choosedFoods);
   }
 
   empty() {
-    this.choosedFoods.forEach((food) => {
-      food.count = 0;
-    });
-    this.status = this.listShow();
-    this.ttPrice = this.totalPrice();
-    this.ttCount = this.totalCount();
-    this.chooseFoods();
-    this.payState();
+    this.store$.dispatch({type:'EMPTY'});
+    // this.choosedFoods.forEach((food) => {
+    //   food.count = 0;
+    // });
+    // this.status = this.listShow();
+    // this.ttPrice = this.totalPrice();
+    // this.ttCount = this.totalCount();
+    // this.payState();
+    this.foodSellerDetailService.doChoose.emit();
   }
+
   hideList() {
     this.isFold = true;
     this.status = this.listShow();
