@@ -1,16 +1,17 @@
 import { NgModule } from '@angular/core';
-//import { IonicModule } from 'ionic-angular';
+import { IonicPageModule } from 'ionic-angular';
+
 import { SuperTabsModule } from 'ionic2-super-tabs';
 import { Ionic2RatingModule } from 'ionic2-rating';
 import { SharedModule } from "../../shared/shared.module";
 
 import { UserService } from "./user.service";
 
-
+import { PerinfoComponent } from "./perinfo/perinfo.component";
 
 @NgModule({
   declarations: [
-
+    PerinfoComponent
   ],
   imports: [
     SuperTabsModule,
@@ -18,7 +19,7 @@ import { UserService } from "./user.service";
     Ionic2RatingModule
   ],
   entryComponents: [
-
+    PerinfoComponent
   ],
   providers: [
     UserService,

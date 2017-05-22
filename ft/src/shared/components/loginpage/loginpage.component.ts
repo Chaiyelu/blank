@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ViewController, NavController, Slides, NavParams, Platform } from "ionic-angular";
-import { FormGroup, FormControl, FormBuilder, AbstractControl, Validators } from '@angular/forms';
+import { ViewController, NavController, Slides, NavParams, Platform, ToastController } from "ionic-angular";
+import { FormGroup, FormControl, FormBuilder, /*AbstractControl,*/ Validators } from '@angular/forms';
 import { RegsiterpageComponent } from "../regsiterpage/regsiterpage.component";
 import { UserService } from "../../../pages/user/user.service";
 
@@ -27,7 +27,8 @@ export class LoginpageComponent implements OnInit {
     public navParams: NavParams,
     public platform: Platform,
     public formBuilder: FormBuilder,
-    public userService: UserService
+    public userService: UserService,
+    public toastCtrl: ToastController
   ) {
     this.rootNavCtrl = navParams.get('rootNavCtrl');
     this.platform = platform;
@@ -81,12 +82,22 @@ export class LoginpageComponent implements OnInit {
     }
   }
 
-  doLogin(){
+  doLogin() {
     if (this.loginForm.valid) {
       this.userService.login(this.loginForm.value).subscribe((res: any) => {
         //let body = res.json();
+        console.log(res);
         if (res && res.success) {
           this.viewCtrl.dismiss();
+        } else {
+          console.log(res);
+          let toast = this.toastCtrl.create({
+            message: res.message,
+            duration: 3000,
+            position: 'middle',
+            cssClass: 'login-toast'
+          });
+          toast.present();
         }
       }, error => {
         console.error(error);

@@ -40,9 +40,9 @@ export class UserService {
               }
             });
           }
-          observer.next(result);
-          observer.complete();
         }
+        observer.next(result);
+        observer.complete();
       });
     });
   }

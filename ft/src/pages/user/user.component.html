@@ -1,1 +1,73 @@
-<div class="user"> Hello UserComponent! </div>
+<ion-header no-border>
+
+    <ion-navbar color="blue">
+        <ion-title>Devon</ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only>
+              <ion-icon name="text"></ion-icon>
+            </button>
+        </ion-buttons>
+        <ion-buttons end>
+            <button ion-button icon-only>
+              <ion-icon name="more"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content (ionScroll)="onScroll($event)">
+    <section class="dv_top_ban" (click)="goToPerInfo()">
+        <div [style.opacity]="opacity">
+            <img src="https://avatars2.githubusercontent.com/u/11835988?v=3&u=2a181779eb2164666606366a1df31f9c17cf7a20&s=100" />
+            <h2>Devon</h2>
+        </div>
+    </section>
+    <ion-list no-border>
+
+        <ion-item>
+            <ion-icon name='eye' item-left color="h"></ion-icon>
+            我的钱包
+        </ion-item>
+        <ion-item>
+            <ion-icon name='star' item-left color="h"></ion-icon>
+            余额
+        </ion-item>
+        <ion-item>
+            <ion-icon name='document' item-left color="h"></ion-icon>
+            抵用劵
+        </ion-item>
+        <ion-item>
+            <ion-icon name='time' item-left color="h"></ion-icon>
+            卡包
+        </ion-item>
+
+    </ion-list>
+
+    <ion-list no-border>
+
+        <ion-item>
+            <ion-icon name='eye' item-left color="h"></ion-icon>
+            好友去哪
+        </ion-item>
+        <ion-item>
+            <ion-icon name='star' item-left color="h"></ion-icon>
+            我的评价
+        </ion-item>
+        <ion-item>
+            <ion-icon name='document' item-left color="h"></ion-icon>
+            我的收藏
+        </ion-item>
+        <ion-item>
+            <ion-icon name='time' item-left color="h"></ion-icon>
+            会员中心
+        </ion-item>
+        <ion-item>
+            <ion-icon name='bookmarks' item-left color="h"></ion-icon>
+            积分商城
+        </ion-item>
+
+    </ion-list>
+
+</ion-content>

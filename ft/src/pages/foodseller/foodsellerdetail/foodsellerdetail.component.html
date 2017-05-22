@@ -1,7 +1,7 @@
 <ion-header class="header-ios">
     <ion-navbar>
-        <ion-title>
-            Page Title
+        <ion-title *ngIf="seller">
+            {{seller.name}}
         </ion-title>
         <ion-buttons end>
             <button ion-button icon-only>

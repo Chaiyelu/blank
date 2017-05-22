@@ -27,6 +27,7 @@ import { ContactComponent } from '../pages/contact/contact.component';
 import { HomeComponent } from '../pages/home/home.component';
 import { TabsComponent } from '../pages/tabs/tabs.component';
 import { OrderComponent } from '../pages/order/order.component';
+import { UserComponent } from '../pages/user/user.component';
 
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   return new AuthHttp(new AuthConfig({ noJwtError: true }), http, options);
@@ -49,7 +50,8 @@ export function getAuthHttp(http, storage) {
     ContactComponent,
     HomeComponent,
     TabsComponent,
-    OrderComponent
+    OrderComponent,
+    UserComponent
   ],
   imports: [
     HttpModule,
@@ -88,7 +90,8 @@ export function getAuthHttp(http, storage) {
     ContactComponent,
     HomeComponent,
     TabsComponent,
-    OrderComponent
+    OrderComponent,
+    UserComponent
   ],
   providers: [
     StatusBar,

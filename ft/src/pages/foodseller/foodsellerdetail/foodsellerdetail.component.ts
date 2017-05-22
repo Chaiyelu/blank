@@ -34,6 +34,7 @@ export class FoodSellerDetailComponent implements OnInit, AfterViewInit, OnDestr
     this.foodSellerDetailService.getSeller(id).subscribe(
       seller => {
         this.seller = seller;
+        console.log(seller);
       }
     );
 

@@ -41,7 +41,6 @@ export class ShopcartComponent implements OnInit, OnChanges, AfterViewChecked {
       this.ttCount = this.totalCount();
       this.payState();
       this.ischoosedFoodsChange = true;
-      this.status = this.listShow();
       console.log('choosedFoods is change');
     });
   }
@@ -114,6 +113,7 @@ export class ShopcartComponent implements OnInit, OnChanges, AfterViewChecked {
 
   empty() {
     this.store$.dispatch({type:'EMPTY'});
+    this.status = this.listShow();
     // this.choosedFoods.forEach((food) => {
     //   food.count = 0;
     // });
