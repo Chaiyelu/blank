@@ -8,10 +8,11 @@ import { Store } from '@ngrx/store';
 import { AppState } from "../../shared/domain/state";
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import { SITE_HOST_URL } from "../../shared/config/env.config";
 
 @Injectable()
 export class UserService {
-  public userLoginUrl = "http://localhost:3011/auth";
+  public userLoginUrl = `${SITE_HOST_URL}auth`;
 
   constructor(
     private http: Http,
@@ -33,7 +34,7 @@ export class UserService {
             this.store$.dispatch({
               type: 'LOGIN',
               payload: {
-                user: null,
+                user: result.user,
                 isLogin: true,
                 errMsg: null,
                 redirectUrl: null
@@ -48,28 +49,15 @@ export class UserService {
   }
 
   isLoggedIn() {
-    this.store$.dispatch({
-      type: 'LOGIN',
-      payload: {
-        user: null,
-        isLogin: tokenNotExpired(),
-        errMsg: null,
-        redirectUrl: null
-      }
-    });
-
-    // this.storage.get("token").then((token) => {
-    //   this.store$.dispatch({
-    //     type: 'LOGIN',
-    //     payload: {
-    //       user: null,
-    //       isLogin: tokenNotExpired(null, token),
-    //       errMsg: null,
-    //       redirectUrl: null
-    //     }
-    //   });
-    // });
-
+    console.log('check login');
+    if (!tokenNotExpired()) {
+      this.store$.dispatch({
+        type: 'LOGOUT'
+      });
+    }
   }
 
+  getUserInfo() {
+
+  }
 }

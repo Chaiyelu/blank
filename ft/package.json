@@ -19,14 +19,24 @@
     "@angular/http": "4.0.0",
     "@angular/platform-browser": "4.0.0",
     "@angular/platform-browser-dynamic": "4.0.0",
-    "@ionic-native/core": "3.4.2",
+    "@ionic-native/core": "^3.10.3",
+    "@ionic-native/image-picker": "^3.10.3",
     "@ionic-native/splash-screen": "3.4.2",
     "@ionic-native/status-bar": "3.4.2",
     "@ionic/storage": "^2.0.1",
     "@ngrx/core": "^1.2.0",
     "@ngrx/store": "^2.2.2",
     "angular2-jwt": "^0.2.3",
+    "cordova-plugin-console": "1.0.5",
+    "cordova-plugin-device": "1.1.4",
+    "cordova-plugin-image-picker": "^1.1.3",
+    "cordova-plugin-splashscreen": "~4.0.1",
+    "cordova-plugin-statusbar": "2.2.1",
+    "cordova-plugin-whitelist": "1.3.1",
+    "cordova-sqlite-storage": "~2.0.4",
     "ionic-angular": "3.0.1",
+    "ionic-plugin-keyboard": "~2.2.1",
+    "ionic2-city-picker": "0.0.10",
     "ionic2-rating": "^1.2.2",
     "ionic2-super-tabs": "^2.3.3",
     "ionicons": "3.0.0",
@@ -36,6 +46,8 @@
   },
   "devDependencies": {
     "@ionic/app-scripts": "1.3.0",
+    "@ionic/cli-plugin-cordova": "1.2.1",
+    "@ionic/cli-plugin-ionic-angular": "1.2.0",
     "typescript": "~2.2.1"
   },
   "cordovaPlugins": [
@@ -47,5 +59,16 @@
     "ionic-plugin-keyboard"
   ],
   "cordovaPlatforms": [],
-  "description": "ft: An Ionic project"
+  "description": "ft: An Ionic project",
+  "cordova": {
+    "plugins": {
+      "cordova-plugin-console": {},
+      "cordova-plugin-device": {},
+      "cordova-plugin-splashscreen": {},
+      "cordova-plugin-statusbar": {},
+      "cordova-plugin-whitelist": {},
+      "cordova-sqlite-storage": {},
+      "ionic-plugin-keyboard": {}
+    }
+  }
 }

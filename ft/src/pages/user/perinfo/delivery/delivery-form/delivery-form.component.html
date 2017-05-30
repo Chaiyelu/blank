@@ -1,0 +1,51 @@
+<ion-header>
+    <ion-navbar>
+        <!--<ion-buttons start>
+            <button ion-button small clear color="white" (click)="doClose()">
+              <ion-icon name="cha"></ion-icon>
+            </button>
+        </ion-buttons>-->
+        <ion-title *ngIf="delivery.id; else elseBlock">
+            修改收货地址
+        </ion-title>
+        <ng-template #elseBlock>
+            <ion-title>新建收货地址</ion-title>
+        </ng-template>
+        <ion-buttons end>
+            <button ion-button icon-only small clear color="white" (click)="doSubmit()">
+              保存
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+<ion-content class="fixed-content">
+    <form (ngSubmit)="doSave()" novalidate>
+        <ion-list>
+            <ion-item>
+                <ion-label>姓名</ion-label>
+                <ion-input type="text" [(ngModel)]="delivery.consignee" name="consignee"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label>电话</ion-label>
+                <ion-input type="text" [(ngModel)]="delivery.tel" name="tel"></ion-input>
+            </ion-item>
+            <ion-item class="item-input">
+                <ion-label>地区</ion-label>
+                <city-picker item-content [cancelText]="'取消'" [doneText]="'完成'" [separator]="' '" [citiesData]="cityData" [(ngModel)]="delivery.area" name="area" (ionChange)="cityChange($event)">
+                </city-picker>
+            </ion-item>
+            <ion-item>
+                <ion-label>地址</ion-label>
+                <ion-input type="text" [(ngModel)]="delivery.address" name="address"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label>邮编</ion-label>
+                <ion-input type="number" [(ngModel)]="delivery.zipcode" name="zipcode"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label>设置成默认收货地址</ion-label>
+                <ion-checkbox></ion-checkbox>
+            </ion-item>
+        </ion-list>
+    </form>
+</ion-content>

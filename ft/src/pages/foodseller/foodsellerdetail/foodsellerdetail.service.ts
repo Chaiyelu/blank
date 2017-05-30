@@ -5,6 +5,7 @@ import { RatingQueryParams } from "../../../shared/models/rating.model";
 import { AuthHttp } from 'angular2-jwt';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import { SITE_HOST_URL } from "../../../shared/config/env.config";
 
 @Injectable()
 export class FoodSellerDetailService {
@@ -16,7 +17,7 @@ export class FoodSellerDetailService {
     private authHttp: AuthHttp
   ) { }
   getSeller(sellerId) {
-    return this.authHttp.get('http://localhost:3011/seller/' + sellerId)
+    return this.http.get(`${SITE_HOST_URL}seller/${sellerId}`)
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error || 'Server error'));
   }
@@ -26,7 +27,7 @@ export class FoodSellerDetailService {
     let params = new URLSearchParams();
     params.set('sellerId', sellerId);
     console.log(params.toString()) // name=huge
-    return this.authHttp.get('http://localhost:3011/food_categories', { search: params })
+    return this.http.get(`${SITE_HOST_URL}food_categories`, { search: params })
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error || 'Server error'));
   }
@@ -40,7 +41,7 @@ export class FoodSellerDetailService {
       }
     }
     console.log(params.toString())
-    return this.authHttp.get('http://localhost:3011/food_ratings', { search: params })
+    return this.http.get(`${SITE_HOST_URL}food_ratings`, { search: params })
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error || 'Server error'));
   }

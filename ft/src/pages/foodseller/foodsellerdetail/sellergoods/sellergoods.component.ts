@@ -102,9 +102,10 @@ export class SellergoodsComponent implements OnInit, AfterViewInit, AfterViewChe
   }
 
   onSelectMenu(index: number, $event: any) {
+    let self = this;
     let foodLists = this.foodsWrapper._elementRef.nativeElement.getElementsByClassName('food-list-hook');
     let hg = foodLists[index].offsetTop;
-    this.foodsWrapper.scrollTo(0, hg, 300).then(() => this._currentIndex());
+    this.foodsWrapper.scrollTo(0, hg, 300).then(() => self._currentIndex());
   }
 
 

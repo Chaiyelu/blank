@@ -19,7 +19,6 @@ router.post('/', function(req, res) {
             mobile: req.body.mobile,
         }
     }).then(user => {
-        console.log(user);
         if (!user) {
             res.send({
                 success: false,
@@ -34,15 +33,22 @@ router.post('/', function(req, res) {
                 });
             } else {
                 const payload = { mobile: user.mobile };
-                var token = jwt.sign(payload, config.secret, { expiresIn: 60 * 1 });
+                var token = jwt.sign(payload, config.secret, { expiresIn: 60 * 60 });
+                var userInfo = {};
+                userInfo.id = user.id;
+                userInfo.username = user.username;
+                userInfo.avatar = user.avatar;
                 // return res.status(201).send(token);
                 user.token = token;
                 user.save().then(function() {});
+                console.log(user.password);
+                delete user.password;
+                console.log(user);
                 return res.status(201).json({
                     success: true,
                     message: '验证成功!',
                     token: token,
-                    name: user.name
+                    user: userInfo
                 });
             }
         }

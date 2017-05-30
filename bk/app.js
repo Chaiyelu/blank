@@ -14,6 +14,7 @@ var auth = require('./routes/auth');
 var tag = require('./routes/tag');
 var food_categories = require('./routes/food_categories');
 var food_ratings = require('./routes/food_ratings');
+var deliveries = require('./routes/deliveries');
 var cors = require('cors');
 var app = express();
 
@@ -30,7 +31,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 
-app.use(expressJwt({ secret: config.secret }).unless({ path: ["/auth", "/seller"] }));
+app.use(expressJwt({ secret: config.secret }).unless({ path: ["/auth", "/seller", /^\/seller\/.*/, "/food_categories", "/food_ratings"] }));
 
 app.use('/', index);
 app.use('/users', users);
@@ -38,6 +39,7 @@ app.use('/seller', seller);
 app.use('/tag', tag);
 app.use('/food_categories', food_categories);
 app.use('/food_ratings', food_ratings);
+app.use('/deliveries', deliveries);
 app.use('/auth', auth);
 
 

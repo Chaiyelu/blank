@@ -10,6 +10,8 @@ import { LoginpageComponent } from "./components/loginpage/loginpage.component";
 import { RegsiterpageComponent } from "./components/regsiterpage/regsiterpage.component";
 import { ListHeaderComponent } from "./components/list-header/list-header.component";
 
+import { CityPickerService } from "./service/city-data.service";
+
 @NgModule({
   declarations: [
     CartcontrolComponent,
@@ -46,7 +48,7 @@ import { ListHeaderComponent } from "./components/list-header/list-header.compon
     ListHeaderComponent
   ],
   providers: [
-
+    CityPickerService
   ]
 })
 export class SharedModule {

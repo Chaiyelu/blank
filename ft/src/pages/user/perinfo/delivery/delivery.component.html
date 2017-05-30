@@ -1,0 +1,24 @@
+<ion-header no-border>
+
+    <ion-navbar>
+        <ion-title>我的收货地址</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+    <ion-list no-border>
+
+        <ion-item-sliding *ngFor="let delivery of deliveries">
+            <button ion-item (click)="addEditDelivery(delivery)">
+                {{delivery.consignee}} {{delivery.tel}}
+                <p>{{delivery.area}} {{delivery.address}}</p>
+            </button>
+            <ion-item-options>
+                <button ion-button color="danger">删除</button>
+            </ion-item-options>
+        </ion-item-sliding>
+
+    </ion-list>
+    <button class="addBtn" ion-button full (click)="addEditDelivery()">新增收货地址</button>
+</ion-content>
