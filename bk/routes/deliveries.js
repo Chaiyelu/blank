@@ -58,7 +58,6 @@ router.put('/', function(req, res) {
     var form = req.body;
     form.updatetime = Date.now();
     var stoken = req.get('Authorization').split(" ");
-    console.log(stoken[1]);
     Users.findOne({
         where: {
             token: stoken[1]
@@ -68,6 +67,25 @@ router.put('/', function(req, res) {
         form.userId = user.id;
         Delivery.upsert(form).then(function(data) {
             res.status(201).send({ message: '修改成功' });
+        });
+    });
+});
+
+router.delete('/:id', function(req, res) {
+    var stoken = req.get('Authorization').split(" ");
+    console.log(stoken[1]);
+    Users.findOne({
+        where: {
+            token: stoken[1]
+        }
+    }).then(function(user) {
+        var form = {};
+        form.id = req.params.id;
+        form.userId = user.id;
+        Delivery.destroy({
+            where: form
+        }).then(function(data) {
+            res.status(201).send({ message: '删除成功' });
         });
     });
 });

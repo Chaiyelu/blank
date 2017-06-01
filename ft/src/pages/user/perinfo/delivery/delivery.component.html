@@ -9,13 +9,13 @@
 <ion-content>
     <ion-list no-border>
 
-        <ion-item-sliding *ngFor="let delivery of deliveries">
+        <ion-item-sliding *ngFor="let delivery of deliveries; let i = index">
             <button ion-item (click)="addEditDelivery(delivery)">
                 {{delivery.consignee}} {{delivery.tel}}
                 <p>{{delivery.area}} {{delivery.address}}</p>
             </button>
             <ion-item-options>
-                <button ion-button color="danger">删除</button>
+                <button ion-button color="danger" (click)="delDelivery(delivery.id,i)">删除</button>
             </ion-item-options>
         </ion-item-sliding>
 

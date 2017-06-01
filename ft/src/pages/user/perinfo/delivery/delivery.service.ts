@@ -34,4 +34,10 @@ export class DeliveryService {
         .catch((error: any) => Observable.throw(error || 'Server error'));
     }
   }
+
+  delDelivery(id:number) {
+    return this.authHttp.delete(`${SITE_HOST_URL}deliveries/${id}`)
+        .map((res: Response) => res)
+        .catch((error: any) => Observable.throw(error || 'Server error'));
+  }
 }
