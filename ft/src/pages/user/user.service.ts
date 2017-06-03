@@ -2,13 +2,15 @@ import { Injectable } from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
-import { tokenNotExpired } from 'angular2-jwt';
+import { tokenNotExpired, AuthHttp } from 'angular2-jwt';
 import { Storage } from "@ionic/storage";
 import { Store } from '@ngrx/store';
 import { AppState } from "../../shared/domain/state";
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
 import { SITE_HOST_URL } from "../../shared/config/env.config";
+import { UserModel } from "../../shared/models/user.model";
 
 @Injectable()
 export class UserService {
@@ -16,6 +18,7 @@ export class UserService {
 
   constructor(
     private http: Http,
+    private authHttp: AuthHttp,
     private storage: Storage,
     private store$: Store<AppState>
   ) { }
@@ -58,6 +61,14 @@ export class UserService {
   }
 
   getUserInfo() {
+    return this.authHttp.get(`${SITE_HOST_URL}users`)
+      .map((res: Response) => res.json())
+      .catch((error: any) => Observable.throw(error || 'Server error'));
+  }
 
+  saveUserInfo(userInfo: object) {
+    return this.authHttp.put(`${SITE_HOST_URL}users`, userInfo)
+      .map((res: Response) => res)
+      .catch((error: any) => Observable.throw(error || 'Server error'));
   }
 }

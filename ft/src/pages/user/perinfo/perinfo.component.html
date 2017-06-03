@@ -10,22 +10,22 @@
     <mt-split></mt-split>
     <ion-list no-border>
 
-        <button ion-item>
+        <button ion-item (click)="goEditAvatar()">
             头像
             <ion-avatar item-right>
-              <img src="https://avatars2.githubusercontent.com/u/11835988?v=3&u=2a181779eb2164666606366a1df31f9c17cf7a20&s=100">
+              <img [src]="userInfo.avatar">
             </ion-avatar>
         </button>
-        <button ion-item>
+        <button ion-item (click)="goEditUsername()">
             昵称
             <ion-note item-right>
-              <p>扬笑留影</p>
+              <p>{{userInfo.username}}</p>
             </ion-note>
         </button>
-        <button ion-item>
+        <button ion-item (click)="goEditBirthday()">
             生日
             <ion-note item-right>
-              <p>1991-10-09</p>
+              <p>{{userInfo.birthday}}</p>
             </ion-note>
         </button>
         <button ion-item (click)="goDelivery()">

@@ -36,7 +36,7 @@
     "cordova-sqlite-storage": "~2.0.4",
     "ionic-angular": "3.0.1",
     "ionic-plugin-keyboard": "~2.2.1",
-    "ionic2-city-picker": "0.0.10",
+    "ionic2-city-picker": "0.0.11",
     "ionic2-rating": "^1.2.2",
     "ionic2-super-tabs": "^2.3.3",
     "ionicons": "3.0.0",

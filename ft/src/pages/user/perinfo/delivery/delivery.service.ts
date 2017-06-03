@@ -19,7 +19,7 @@ export class DeliveryService {
   getDeliveryByUserId() {
     return this.authHttp.get(`${SITE_HOST_URL}deliveries`)
       .map((res: Response) => res.json())
-      .catch(() => Observable.throw('Server error'));
+      .catch((error: any) => Observable.throw(error || 'Server error'));
   }
 
   saveDelivery(delivery: DeliveryModel) {
@@ -35,9 +35,9 @@ export class DeliveryService {
     }
   }
 
-  delDelivery(id:number) {
+  delDelivery(id: number) {
     return this.authHttp.delete(`${SITE_HOST_URL}deliveries/${id}`)
-        .map((res: Response) => res)
-        .catch((error: any) => Observable.throw(error || 'Server error'));
+      .map((res: Response) => res)
+      .catch((error: any) => Observable.throw(error || 'Server error'));
   }
 }

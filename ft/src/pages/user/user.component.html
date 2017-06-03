@@ -18,10 +18,16 @@
 
 <ion-content (ionScroll)="onScroll($event)">
     <section class="dv_top_ban" (click)="goToPerInfo()">
-        <div [style.opacity]="opacity">
-            <img *ngIf="userInfo" [src]="userInfo.avatar" />
+        <div *ngIf="userInfo.avatar; else elseBlock" [style.opacity]="opacity">
+            <img [src]="userInfo.avatar" />
             <h2>{{userInfo.username}}</h2>
         </div>
+        <ng-template #elseBlock>
+            <div [style.opacity]="opacity">
+                <ion-icon name="touxiang2" color="light"></ion-icon>
+                <h2>请点击登录</h2>
+            </div>
+        </ng-template>
     </section>
     <ion-list no-border>
 

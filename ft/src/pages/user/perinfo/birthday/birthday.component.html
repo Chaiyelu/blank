@@ -1,0 +1,27 @@
+<ion-header>
+    <ion-navbar>
+        <ion-buttons start>
+            <button ion-button small clear color="white" (click)="doClose()">
+              <ion-icon name="cha"></ion-icon>
+            </button>
+        </ion-buttons>
+        <ion-title>
+            修改生日
+        </ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only small clear color="white" (click)="doSubmit()">
+              确定
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+<ion-content class="fixed-content">
+    <form (ngSubmit)="doSave()" novalidate>
+        <ion-list>
+            <ion-item class="item-input">
+                <ion-label>生日</ion-label>
+                <ion-datetime displayFormat="YYYY-MM-DD" pickerFormat="YYYY-MM-DD" cancelText="取消" doneText="完成" [(ngModel)]="birthday" name="birthday"></ion-datetime>
+            </ion-item>
+        </ion-list>
+    </form>
+</ion-content>

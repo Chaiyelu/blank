@@ -18,6 +18,7 @@ module.exports = function(sequelize, DataTypes) {
         mobile: DataTypes.STRING,
         username: DataTypes.STRING,
         password: DataTypes.STRING,
+        birthday: DataTypes.STRING,
         token: DataTypes.STRING,
         avatar: DataTypes.STRING
     }, {

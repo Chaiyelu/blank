@@ -12,14 +12,35 @@ router.post('/', function(req, res) {
 });
 
 //登录
-router.get('/login', function(req, res) {
-    Users.findAll({
+router.get('/', function(req, res) {
+    var stoken = req.get('Authorization').split(" ");
+    Users.findOne({
         where: {
-            email: req.email,
-            password: req.password
+            token: stoken[1]
+        }
+    }).then(function(user) {
+        console.log(user.birthday);
+        var data = {};
+        data.id = user.id;
+        data.mobile = user.mobile;
+        data.username = user.username;
+        data.birthday = user.birthday;
+        data.avatar = user.avatar;
+        res.json(data);
+    });
+});
+
+//修改用户信息
+router.put('/', function(req, res) {
+    var stoken = req.get('Authorization').split(" ");
+    var form = req.body;
+    Users.update(form, {
+        where: {
+            token: stoken[1]
         }
     }).then(function(data) {
-        res.json(data)
+        res.status(201).send({ message: '修改成功' });
     });
+
 });
 module.exports = router;

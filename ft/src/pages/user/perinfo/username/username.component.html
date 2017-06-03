@@ -1,0 +1,27 @@
+<ion-header>
+    <ion-navbar>
+        <ion-buttons start>
+            <button ion-button small clear color="white" (click)="doClose()">
+              <ion-icon name="cha"></ion-icon>
+            </button>
+        </ion-buttons>
+        <ion-title>
+            修改用户名
+        </ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only small clear color="white" (click)="doSubmit()">
+              确定
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+<ion-content class="fixed-content">
+    <form (ngSubmit)="doSave()" novalidate>
+        <ion-list>
+            <ion-item>
+                <ion-label>用户名</ion-label>
+                <ion-input type="text" [(ngModel)]="username" name="username"></ion-input>
+            </ion-item>
+        </ion-list>
+    </form>
+</ion-content>
