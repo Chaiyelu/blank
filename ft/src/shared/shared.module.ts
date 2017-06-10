@@ -9,8 +9,14 @@ import { RatingselectComponent } from "./components/ratingselect/ratingselect.co
 import { LoginpageComponent } from "./components/loginpage/loginpage.component";
 import { RegsiterpageComponent } from "./components/regsiterpage/regsiterpage.component";
 import { ListHeaderComponent } from "./components/list-header/list-header.component";
+import { RegStep1Component } from "./components/regsiterpage/reg-step1/reg-step1.component";
+import { RegStep2Component } from "./components/regsiterpage/reg-step2/reg-step2.component";
+import { StepComponent } from "./components/step/step.component";
+
+import { HideMobilePipe } from "./pipes/hidemobile.pipe";
 
 import { CityPickerService } from "./service/city-data.service";
+import { VercodeService } from "./service/vercode.service";
 
 @NgModule({
   declarations: [
@@ -21,7 +27,11 @@ import { CityPickerService } from "./service/city-data.service";
     RatingselectComponent,
     LoginpageComponent,
     RegsiterpageComponent,
-    ListHeaderComponent
+    ListHeaderComponent,
+    RegStep1Component,
+    RegStep2Component,
+    StepComponent,
+    HideMobilePipe
   ],
   imports: [
     IonicModule
@@ -34,7 +44,10 @@ import { CityPickerService } from "./service/city-data.service";
     RatingselectComponent,
     LoginpageComponent,
     RegsiterpageComponent,
-    ListHeaderComponent
+    ListHeaderComponent,
+    RegStep1Component,
+    RegStep2Component,
+    StepComponent
   ],
   exports: [
     CartcontrolComponent,
@@ -45,10 +58,14 @@ import { CityPickerService } from "./service/city-data.service";
     LoginpageComponent,
     RegsiterpageComponent,
     IonicModule,
-    ListHeaderComponent
+    ListHeaderComponent,
+    RegStep1Component,
+    RegStep2Component,
+    StepComponent
   ],
   providers: [
-    CityPickerService
+    CityPickerService,
+    VercodeService
   ]
 })
 export class SharedModule {

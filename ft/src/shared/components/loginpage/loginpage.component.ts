@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ViewController, NavController, Slides, NavParams, Platform, ToastController } from "ionic-angular";
 import { FormGroup, FormControl, FormBuilder, /*AbstractControl,*/ Validators } from '@angular/forms';
-import { RegsiterpageComponent } from "../regsiterpage/regsiterpage.component";
+import { RegStep1Component } from "../regsiterpage/reg-step1/reg-step1.component";
 import { UserService } from "../../../pages/user/user.service";
 
 @Component({
@@ -86,11 +86,9 @@ export class LoginpageComponent implements OnInit {
     if (this.loginForm.valid) {
       this.userService.login(this.loginForm.value).subscribe((res: any) => {
         //let body = res.json();
-        console.log(res);
         if (res && res.success) {
           this.viewCtrl.dismiss();
         } else {
-          console.log(res);
           let toast = this.toastCtrl.create({
             message: res.message,
             duration: 3000,
@@ -110,6 +108,6 @@ export class LoginpageComponent implements OnInit {
   }
 
   doRegsiter() {
-    this.navCtrl.push(RegsiterpageComponent);
+    this.navCtrl.push(RegStep1Component);
   }
 }

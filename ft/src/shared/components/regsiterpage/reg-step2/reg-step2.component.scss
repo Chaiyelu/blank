@@ -1,0 +1,18 @@
+reg-step2 {
+    ion-content {
+        background: #f3f5f7 !important;
+        .padding {
+            padding: 16px;
+        }
+        .prompt {
+            height: 40px;
+            font-size: 1rem;
+            line-height: 40px;
+            text-align: center;
+        }
+    }
+    ion-input {
+        background: #fff;
+        padding: 0 5px;
+    }
+}

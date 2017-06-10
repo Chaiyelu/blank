@@ -1,0 +1,6 @@
+<ul>
+    <li *ngFor="let item of stepArr; let i = index" [class.current]="currentStep-i==1">
+        <span>{{i+1}}.{{item}}</span>
+        <ion-icon name="right"></ion-icon>
+    </li>
+</ul>

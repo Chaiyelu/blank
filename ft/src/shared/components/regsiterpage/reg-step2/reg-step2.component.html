@@ -1,0 +1,20 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            注册
+        </ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only small clear color="white" [disabled]="!btnStatus" (click)="getVercode()">
+              {{btnText}}
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <mt-step [stepArr]="stepArr" [currentStep]="2"></mt-step>
+    <div class="prompt">验证码短信已经发送到{{mobile | hideMobile}}</div>
+    <ion-input type="text" name="mobile" placeholder="请输入短信中的验证码"></ion-input>
+    <div class="padding">
+        <button class="addBtn" ion-button block (click)="postVercode()">提交验证码</button>
+    </div>
+</ion-content>

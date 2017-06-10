@@ -5,8 +5,9 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var expressJwt = require('express-jwt');
 var bodyParser = require('body-parser');
-var config = require('./config/config.json');
+var RateLimit = require('express-rate-limit');
 
+var config = require('./config/config.json');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var seller = require('./routes/seller');
@@ -15,6 +16,7 @@ var tag = require('./routes/tag');
 var food_categories = require('./routes/food_categories');
 var food_ratings = require('./routes/food_ratings');
 var deliveries = require('./routes/deliveries');
+var checkcodes = require('./routes/checkcodes');
 var cors = require('cors');
 var app = express();
 
@@ -31,7 +33,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 
-app.use(expressJwt({ secret: config.secret }).unless({ path: ["/auth", "/seller", /^\/seller\/.*/, "/food_categories", "/food_ratings"] }));
+app.use(expressJwt({ secret: config.secret }).unless({ path: ["/auth", "/seller", /^\/seller\/.*/, "/food_categories", "/food_ratings", "/checkcodes"] }));
 
 app.use('/', index);
 app.use('/users', users);
@@ -40,6 +42,7 @@ app.use('/tag', tag);
 app.use('/food_categories', food_categories);
 app.use('/food_ratings', food_ratings);
 app.use('/deliveries', deliveries);
+app.use('/checkcodes', checkcodes);
 app.use('/auth', auth);
 
 

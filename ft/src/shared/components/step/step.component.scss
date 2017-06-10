@@ -1,0 +1,25 @@
+mt-step {
+    ul {
+        display: flex;
+        height: 40px;
+        background: #fff;
+        line-height: 40px;
+        li {
+            display: flex;
+            flex: 1;
+            height: 40px;
+            line-height: 40px;
+            padding: 0 5px;
+            justify-content: space-between;
+            ion-icon {
+                font-size: 0.8rem;
+                line-height: 40px;
+            }
+            &.current {
+                span {
+                    color: #488aff;
+                }
+            }
+        }
+    }
+}

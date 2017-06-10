@@ -1,0 +1,17 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            注册
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <mt-step [stepArr]="stepArr" [currentStep]="1"></mt-step>
+    <mt-split></mt-split>
+    <form [formGroup]="mobileForm" novalidate>
+        <ion-input type="text" [(ngModel)]="mobile" name="mobile" formControlName="mobile" placeholder="请输入您的手机号码"></ion-input>
+        <div class="padding">
+            <button class="addBtn" ion-button block [disabled]="!mobileForm.valid" (click)="getVercode()">获取验证码</button>
+        </div>
+    </form>
+</ion-content>
