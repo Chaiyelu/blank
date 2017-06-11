@@ -11,12 +11,13 @@ import { RegsiterpageComponent } from "./components/regsiterpage/regsiterpage.co
 import { ListHeaderComponent } from "./components/list-header/list-header.component";
 import { RegStep1Component } from "./components/regsiterpage/reg-step1/reg-step1.component";
 import { RegStep2Component } from "./components/regsiterpage/reg-step2/reg-step2.component";
+import { RegStep3Component } from "./components/regsiterpage/reg-step3/reg-step3.component";
 import { StepComponent } from "./components/step/step.component";
 
 import { HideMobilePipe } from "./pipes/hidemobile.pipe";
 
 import { CityPickerService } from "./service/city-data.service";
-import { VercodeService } from "./service/vercode.service";
+import { CheckcodeService } from "./service/checkcode.service";
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { VercodeService } from "./service/vercode.service";
     ListHeaderComponent,
     RegStep1Component,
     RegStep2Component,
+    RegStep3Component,
     StepComponent,
     HideMobilePipe
   ],
@@ -47,6 +49,7 @@ import { VercodeService } from "./service/vercode.service";
     ListHeaderComponent,
     RegStep1Component,
     RegStep2Component,
+    RegStep3Component,
     StepComponent
   ],
   exports: [
@@ -61,11 +64,12 @@ import { VercodeService } from "./service/vercode.service";
     ListHeaderComponent,
     RegStep1Component,
     RegStep2Component,
+    RegStep3Component,
     StepComponent
   ],
   providers: [
     CityPickerService,
-    VercodeService
+    CheckcodeService
   ]
 })
 export class SharedModule {

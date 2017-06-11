@@ -33,7 +33,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 
-app.use(expressJwt({ secret: config.secret }).unless({ path: ["/auth", "/seller", /^\/seller\/.*/, "/food_categories", "/food_ratings", "/checkcodes"] }));
+app.use(expressJwt({ secret: config.secret }).unless({ path: ["/auth", "/seller", /^\/seller\/.*/, "/food_categories", "/food_ratings", "/checkcodes", { url: '/users', methods: ['POST'] }] }));
 
 app.use('/', index);
 app.use('/users', users);

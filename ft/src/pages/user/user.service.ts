@@ -51,6 +51,35 @@ export class UserService {
     });
   }
 
+  register(mobile: string, code: string, password: string) {
+    var body = { mobile: mobile, code: code, password: password };
+    return new Observable((observer: Observer<any>) => {
+      this.http.post(`${SITE_HOST_URL}users`, body).subscribe(res => {
+        let result = res.json();
+        if (result && result.success) {
+          if (result && result.token) {
+            localStorage.setItem("token", result.token);
+            // this.storage.set("token", result.token);
+            this.store$.dispatch({
+              type: 'LOGIN',
+              payload: {
+                user: result.user,
+                isLogin: true,
+                errMsg: null,
+                redirectUrl: null
+              }
+            });
+          }
+        }
+        observer.next(result);
+        observer.complete();
+      },(err)=>{
+        observer.error(err);
+        observer.complete();
+      });
+    });
+  }
+
   isLoggedIn() {
     console.log('check login');
     if (!tokenNotExpired()) {

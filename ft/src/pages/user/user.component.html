@@ -18,7 +18,7 @@
 
 <ion-content (ionScroll)="onScroll($event)">
     <section class="dv_top_ban" (click)="goToPerInfo()">
-        <div *ngIf="userInfo.avatar; else elseBlock" [style.opacity]="opacity">
+        <div *ngIf="userInfo; else elseBlock" [style.opacity]="opacity">
             <img [src]="userInfo.avatar" />
             <h2>{{userInfo.username}}</h2>
         </div>

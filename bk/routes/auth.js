@@ -41,9 +41,6 @@ router.post('/', function(req, res) {
                 // return res.status(201).send(token);
                 user.token = token;
                 user.save().then(function() {});
-                console.log(user.password);
-                delete user.password;
-                console.log(user);
                 return res.status(201).json({
                     success: true,
                     message: '验证成功!',

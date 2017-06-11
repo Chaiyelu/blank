@@ -1,0 +1,18 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            注册
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <mt-step [stepArr]="stepArr" [currentStep]="3"></mt-step>
+    <mt-split></mt-split>
+    <form [formGroup]="registerForm">
+        <ion-input type="text" [(ngModel)]="password" name="password" formControlName="password" placeholder="请输入密码（长度在6-32个字符之间）"></ion-input>
+        <ion-input type="text" [(ngModel)]="repassword" name="repassword" formControlName="repassword" placeholder="请再次输入密码"></ion-input>
+        <div class="padding">
+            <button class="addBtn" ion-button block [disabled]="!registerForm.valid" (click)="register()">注册</button>
+        </div>
+    </form>
+</ion-content>

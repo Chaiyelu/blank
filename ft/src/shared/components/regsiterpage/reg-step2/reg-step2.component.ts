@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NavParams, AlertController } from "ionic-angular";
-import { VercodeService } from "../../../service/vercode.service";
+import { NavParams, AlertController, NavController } from "ionic-angular";
+import { RegStep3Component } from "../reg-step3/reg-step3.component";
+import { CheckcodeService } from "../../../service/checkcode.service";
 @Component({
   selector: 'reg-step2',
   templateUrl: 'reg-step2.component.html'
@@ -9,6 +10,7 @@ import { VercodeService } from "../../../service/vercode.service";
 export class RegStep2Component implements OnInit {
 
   mobile: string;
+  code: string;
   stepArr: any[] = ['输入手机号', '输入验证码', '设置密码'];
   displayMobile: string;
   btnStatus: boolean;
@@ -17,9 +19,10 @@ export class RegStep2Component implements OnInit {
   constructor(
     public navParams: NavParams,
     private alertCtrl: AlertController,
-    private vercodeService: VercodeService
+    private navCtrl: NavController,
+    private checkcodeService: CheckcodeService
   ) {
-    this.mobile = this.navParams.data;
+    this.mobile = navParams.data;
   }
 
   ngOnInit() {
@@ -42,8 +45,8 @@ export class RegStep2Component implements OnInit {
     }, 1000)
   }
 
-  getVercode() {
-    this.vercodeService.sendVercode(this.mobile).subscribe((res) => {
+  getCheckcode() {
+    this.checkcodeService.sendCheckcode(this.mobile).subscribe((res) => {
       if (201 == res.status) {
         this._disableBtn();
         let alert = this.alertCtrl.create({
@@ -62,12 +65,12 @@ export class RegStep2Component implements OnInit {
       } else {
 
       }
-    }, (error) => {
-      console.log(error);
+    }, (err) => {
+      console.log(err);
       //请求次数过于频繁
       let alert = this.alertCtrl.create({
         title: '验证码发送失败',
-        message: error._body,
+        message: err._body,
         buttons: [
           {
             text: '确定',
@@ -80,6 +83,31 @@ export class RegStep2Component implements OnInit {
       });
       alert.present();
     });
-
   }
+
+  checkCheckcode() {
+    this.checkcodeService.checkCheckcode(this.mobile, this.code).subscribe((res) => {
+      if (200 == res.status) {
+        //验证成功，跳转到步骤三
+        this.navCtrl.push(RegStep3Component, { mobile: this.mobile, code: this.code });
+      }
+    }, (err) => {
+      //验证失败
+      let alert = this.alertCtrl.create({
+        title: '验证码验证失败',
+        message: err._body,
+        buttons: [
+          {
+            text: '确定',
+            role: 'cancel',
+            handler: () => {
+              console.log('Cancel clicked');
+            }
+          }
+        ]
+      });
+      alert.present();
+    })
+  }
+
 }

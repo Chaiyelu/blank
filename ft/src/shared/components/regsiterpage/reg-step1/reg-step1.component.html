@@ -11,7 +11,7 @@
     <form [formGroup]="mobileForm" novalidate>
         <ion-input type="text" [(ngModel)]="mobile" name="mobile" formControlName="mobile" placeholder="请输入您的手机号码"></ion-input>
         <div class="padding">
-            <button class="addBtn" ion-button block [disabled]="!mobileForm.valid" (click)="getVercode()">获取验证码</button>
+            <button class="addBtn" ion-button block [disabled]="!mobileForm.valid" (click)="getCheckcode()">获取验证码</button>
         </div>
     </form>
 </ion-content>
