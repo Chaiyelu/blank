@@ -21,7 +21,12 @@ router.post('/', function(req, res) {
     body.createdAt = Date.now();
     body.updatedAt = Date.now();
     body.avatar = 'https://avatars2.githubusercontent.com/u/11835988?v=3&u=2a181779eb2164666606366a1df31f9c17cf7a20&s=100';
-    body.token = jwt.sign({ mobile: body.mobile }, config.secret, { expiresIn: 60 * 60 });
+    body.username = `mt-${body.mobile}`;
+    body.token = jwt.sign({
+        mobile: body.mobile
+    }, config.secret, {
+        expiresIn: 60 * 60
+    });
     //先判断短信验证码是否有效
     client.get(`checkcode${body.mobile}`, function(err, reply) {
         if (err) {
@@ -51,8 +56,8 @@ router.post('/', function(req, res) {
 
 });
 
-//登录
-router.get('/', function(req, res) {
+//获取用户信息
+router.get('/:id', function(req, res) {
     var stoken = req.get('Authorization').split(" ");
     Users.findOne({
         where: {
@@ -70,6 +75,20 @@ router.get('/', function(req, res) {
     });
 });
 
+//查询用户
+router.get('/', function(req, res) {
+    var query = req.query;
+    Users.findAll({
+        where: query
+    }).then(function(users) {
+        if (users.length > 0) {
+            res.status(200).send(users);
+        } else {
+            res.status(400);
+        }
+    });
+});
+
 //修改用户信息
 router.put('/', function(req, res) {
     var stoken = req.get('Authorization').split(" ");
@@ -79,7 +98,9 @@ router.put('/', function(req, res) {
             token: stoken[1]
         }
     }).then(function(data) {
-        res.status(201).send({ message: '修改成功' });
+        res.status(201).send({
+            message: '修改成功'
+        });
     });
 
 });

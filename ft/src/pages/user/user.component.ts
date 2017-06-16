@@ -17,7 +17,6 @@ import { LoginpageComponent } from "../../shared/components/loginpage/loginpage.
 export class UserComponent implements OnInit {
   auth: Observable<Auth>;
   userInfo: UserModel;
-  aaa: any = '';
   isLogin: boolean;
   constructor(
     public navCtrl: NavController,
@@ -40,7 +39,7 @@ export class UserComponent implements OnInit {
 
   goToPerInfo() {
     if (this.isLogin) {
-      this.navCtrl.push(PerinfoComponent);
+      this.navCtrl.push(PerinfoComponent,this.userInfo.id);
     } else {
       let LoginModal = this.modalCtrl.create(LoginpageComponent);
       LoginModal.present();
@@ -53,7 +52,6 @@ export class UserComponent implements OnInit {
   }
 
   uploadImage() {
-    this.aaa = 'aaaaa';
     this.imagePicker.getPictures({ maximumImagesCount: 1 }).then((results) => {
       for (var i = 0; i < results.length; i++) {
         console.log('Image URI: ' + results[i]);

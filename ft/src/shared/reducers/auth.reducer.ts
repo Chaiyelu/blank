@@ -17,6 +17,10 @@ export const authReducer = (state: Auth = {
         errMsg: 'no credentials',
         redirectUrl: ''
       });
+    case 'UPDATE_USERINFO':
+      //更新store中的用户信息
+      Object.assign(state.user, action.payload);
+      return state;
     default:
       return state;
   }

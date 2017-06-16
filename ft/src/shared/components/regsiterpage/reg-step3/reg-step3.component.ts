@@ -44,13 +44,12 @@ export class RegStep3Component implements OnInit {
         cssClass: 'login-toast'
       });
       toast.present();
-    }
-    this.userService.register(this.mobile, this.code, this.password).subscribe((res) => {
-      this.navCtrl.popToRoot().then(()=>{
-        this.viewCtrl.dismiss();
-      });
-    }, (err) => {
+    } else {
+      this.userService.register(this.mobile, this.code, this.password).subscribe((res) => {
+        this.navCtrl.popToRoot();
+      }, (err) => {
 
-    })
+      })
+    }
   }
 }

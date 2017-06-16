@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response, Headers } from '@angular/http';
+import { Http, Response, Headers, URLSearchParams } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
 import { tokenNotExpired, AuthHttp } from 'angular2-jwt';
@@ -73,7 +73,7 @@ export class UserService {
         }
         observer.next(result);
         observer.complete();
-      },(err)=>{
+      }, (err) => {
         observer.error(err);
         observer.complete();
       });
@@ -89,15 +89,44 @@ export class UserService {
     }
   }
 
-  getUserInfo() {
-    return this.authHttp.get(`${SITE_HOST_URL}users`)
+  checkMobileIsRegistered(mobile: string) {
+    let params = new URLSearchParams();
+    params.set('mobile', mobile);
+    return this.http.get(`${SITE_HOST_URL}auth`, { search: params })
+      .map((res: Response) => res)
+      .catch((error: any) => Observable.throw(error || 'Server error'));
+  }
+
+  getUserInfo(id: number) {
+    return this.authHttp.get(`${SITE_HOST_URL}users/` + id)
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error || 'Server error'));
   }
 
-  saveUserInfo(userInfo: object) {
-    return this.authHttp.put(`${SITE_HOST_URL}users`, userInfo)
-      .map((res: Response) => res)
-      .catch((error: any) => Observable.throw(error || 'Server error'));
+  saveUserInfo(userInfo: Object) {
+    return new Observable((observer: Observer<any>) => {
+      this.authHttp.put(`${SITE_HOST_URL}users`, userInfo).subscribe((res) => {
+        //dispatch userInfo store
+        let updatedUserInfo = {};
+        for (var key in userInfo) {
+          if (userInfo.hasOwnProperty(key)) {
+            updatedUserInfo[key] = userInfo[key];
+          }
+        }
+        this.store$.dispatch({
+          type: 'UPDATE_USERINFO',
+          payload: updatedUserInfo
+        });
+
+        observer.next(res);
+        observer.complete;
+      }, (err) => {
+        observer.error(err);
+        observer.complete;
+      });
+
+    });
   }
+
+
 }

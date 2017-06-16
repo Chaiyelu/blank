@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var jwt = require('jsonwebtoken');
-var UsersModel = require('../models').Users;
+var Users = require('../models').Users;
 var config = require(__dirname + '/../config/config.json');
 
 //登录验证
@@ -14,7 +14,7 @@ router.post('/', function(req, res) {
         return res.send(401);
     }
 
-    UsersModel.find({
+    Users.find({
         where: {
             mobile: req.body.mobile,
         }
@@ -25,7 +25,7 @@ router.post('/', function(req, res) {
                 message: '该用户不存在'
             });
         } else {
-            var result = UsersModel.build().verifyPassword(password, user.password);
+            var result = Users.build().verifyPassword(password, user.password);
             if (!result) {
                 res.send({
                     success: false,
@@ -51,4 +51,23 @@ router.post('/', function(req, res) {
         }
     })
 });
+
+//检查账号是否已经被注册
+router.get('/', function(req, res) {
+    var query = req.query;
+    Users.findOne({
+        where: query
+    }).then(function(user) {
+        console.log('-------res---------');
+        if (user) {
+            res.status(200).send(user);
+        } else {
+            res.status(400).send(user);
+        }
+    }, function(err) {
+        console.log('-------err---------');
+        res.status(400).send(err);
+    });
+});
+
 module.exports = router;

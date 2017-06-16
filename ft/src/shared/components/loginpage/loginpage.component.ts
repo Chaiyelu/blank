@@ -3,6 +3,10 @@ import { ViewController, NavController, Slides, NavParams, Platform, ToastContro
 import { FormGroup, FormControl, FormBuilder, /*AbstractControl,*/ Validators } from '@angular/forms';
 import { RegStep1Component } from "../regsiterpage/reg-step1/reg-step1.component";
 import { UserService } from "../../../pages/user/user.service";
+import { Observable } from 'rxjs/Observable';
+import { Store } from '@ngrx/store';
+import { AppState } from "../../domain/state";
+import { Auth } from "../../models/auth.model";
 
 @Component({
   selector: 'loginpage',
@@ -17,7 +21,8 @@ export class LoginpageComponent implements OnInit {
   mobile: any;
   password: any;
   top_segment = 'top_0';
-  segment = 'sites';
+  auth: Observable<Auth>;
+  isLogin: boolean;
 
   rootNavCtrl: NavController;
 
@@ -28,9 +33,10 @@ export class LoginpageComponent implements OnInit {
     public platform: Platform,
     public formBuilder: FormBuilder,
     public userService: UserService,
-    public toastCtrl: ToastController
+    public toastCtrl: ToastController,
+    public store$: Store<AppState>
   ) {
-    this.rootNavCtrl = navParams.get('rootNavCtrl');
+    this.selected_segment = navParams.data;
     this.platform = platform;
     this.loginForm = formBuilder.group({
       mobile: ['', Validators.compose([Validators.minLength(11), Validators.maxLength(11), Validators.required, Validators.pattern("^(13[0-9]|15[012356789]|17[03678]|18[0-9]|14[57])[0-9]{8}$")])],
@@ -38,13 +44,21 @@ export class LoginpageComponent implements OnInit {
     })
     this.mobile = this.loginForm.controls['mobile'];
     this.password = this.loginForm.controls['password'];
+    this.auth = this.store$.select(appState => appState.auth);
+    this.auth.subscribe((auth) => {
+      this.isLogin = auth.isLogin;
+    });
   }
-  ngOnInit() { }
+  ngOnInit() {}
+
+  ionViewDidEnter(){
+    if (this.isLogin) {
+      this.viewCtrl.dismiss();
+    }
+    this.select(this.selected_segment);
+  }
 
   select(index) {
-    if (index === 2) {
-      this.top_segment = 'top_2';
-    }
     if (index === 1) {
       this.top_segment = 'top_1';
     }
@@ -71,9 +85,6 @@ export class LoginpageComponent implements OnInit {
 
   panEvent(e) {
     let currentIndex = this.slider.getActiveIndex();
-    if (currentIndex === 2) {
-      this.top_segment = 'top_2';
-    }
     if (currentIndex === 1) {
       this.top_segment = 'top_1';
     }

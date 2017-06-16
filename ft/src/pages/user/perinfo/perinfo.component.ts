@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, ModalController, ActionSheetController } from "ionic-angular";
+import { IonicPage, NavController, NavParams, ModalController, ActionSheetController } from "ionic-angular";
 
 import { UserService } from "../user.service";
 import { UserModel } from "../../../shared/models/user.model";
@@ -19,9 +19,12 @@ export class PerinfoComponent implements OnInit {
     private navCtrl: NavController,
     private modalCtrl: ModalController,
     public actionSheetCtrl: ActionSheetController,
-    private userService: UserService
+    private userService: UserService,
+    private navParams: NavParams
   ) {
-    this.userService.getUserInfo().subscribe((result) => {
+    let uid = navParams.data;
+    console.log(uid);
+    this.userService.getUserInfo(uid).subscribe((result) => {
       this.userInfo = result;
     });
   }

@@ -8,7 +8,6 @@ import { CheckcodeService } from "../../../service/checkcode.service";
 })
 
 export class RegStep2Component implements OnInit {
-
   mobile: string;
   code: string;
   stepArr: any[] = ['输入手机号', '输入验证码', '设置密码'];

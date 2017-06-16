@@ -18,7 +18,7 @@
 
 <ion-content (ionScroll)="onScroll($event)">
     <section class="dv_top_ban" (click)="goToPerInfo()">
-        <div *ngIf="userInfo; else elseBlock" [style.opacity]="opacity">
+        <div *ngIf="isLogin; else elseBlock" [style.opacity]="opacity">
             <img [src]="userInfo.avatar" />
             <h2>{{userInfo.username}}</h2>
         </div>
@@ -33,7 +33,7 @@
 
         <ion-item (click)="uploadImage()">
             <ion-icon name='eye' item-left color="h"></ion-icon>
-            我的钱包{{aaa}}
+            我的钱包
         </ion-item>
         <ion-item>
             <ion-icon name='star' item-left color="h"></ion-icon>
