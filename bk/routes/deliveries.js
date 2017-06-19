@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var Delivery = require('../models').Delivery;
 var Users = require('../models').Users;
+var db = require('../models/index');
 
 /**/
 router.get('/', function(req, res, next) {
@@ -16,7 +17,10 @@ router.get('/', function(req, res, next) {
         Delivery.findAll({
             where: {
                 userId: user.id
-            }
+            },
+            order: [
+                ['selected', 'DESC']
+            ]
         }).then(function(data) {
             res.json(data);
         });
@@ -65,9 +69,46 @@ router.put('/', function(req, res) {
     }).then(function(user) {
         console.log(JSON.stringify(user));
         form.userId = user.id;
-        Delivery.upsert(form).then(function(data) {
-            res.status(201).send({ message: '修改成功' });
-        });
+        if (1 == form.selected) {
+            db.sequelize.transaction(function(t) {
+                // 注意，这时使用的是callback而不是promise.then()
+                return Delivery.update({ 'selected': 0 }, {
+                    where: {
+                        userId: user.id
+                    },
+                    transaction: t
+                }).then(function() {
+                    return Delivery.upsert(form, { transaction: t });
+                })
+            }).then(function() {
+                // Committed
+                res.status(201).send({ message: '修改成功' });
+            }).catch(function(err) {
+                // Rolled back
+                res.status(400).send({ message: '修改失败' });
+                console.error(err);
+            });
+            // db.sequelize.transaction().then(function(t) {
+            //     Delivery.update({ 'selected': 0 }, {
+            //             where: {
+            //                 userId: user.id
+            //             },
+            //             transaction: t
+            //         }).then(function() {
+            //             return Delivery.upsert(form, { transaction: t });
+            //         })
+            //         .then(() => {
+            //             res.status(201).send({ message: '修改成功' });
+            //             t.commit.bind(t);
+            //         })
+            //         .catch(t.rollback.bind(t));
+            // })
+        } else {
+            Delivery.upsert(form).then(function(data) {
+                res.status(201).send({ message: '修改成功' });
+            });
+        }
+
     });
 });
 
