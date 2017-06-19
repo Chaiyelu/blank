@@ -44,7 +44,7 @@
             </ion-item>
             <ion-item>
                 <ion-label>设置成默认收货地址</ion-label>
-                <ion-checkbox></ion-checkbox>
+                <ion-checkbox [(ngModel)]="delivery.selected" name="selected" value="1"></ion-checkbox>
             </ion-item>
         </ion-list>
     </form>
