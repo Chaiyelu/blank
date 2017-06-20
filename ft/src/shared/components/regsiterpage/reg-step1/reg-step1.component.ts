@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
-import { NavController, AlertController } from "ionic-angular";
+import { NavController, AlertController, ModalController } from "ionic-angular";
 import { RegStep2Component } from "../reg-step2/reg-step2.component";
 import { LoginpageComponent } from "../../loginpage/loginpage.component";
 import { CheckcodeService } from "../../../service/checkcode.service";
@@ -18,6 +18,7 @@ export class RegStep1Component implements OnInit {
   mobileForm: FormGroup;
   constructor(
     public navCtrl: NavController,
+    public modalCtrl: ModalController,
     public formBuilder: FormBuilder,
     private alertCtrl: AlertController,
     private checkcodeService: CheckcodeService,
@@ -52,9 +53,11 @@ export class RegStep1Component implements OnInit {
             text: '发送验证码',
             handler: () => {
               alert.dismiss();
-              this.sendCheckCode().subscribe(()=>{
+              this.sendCheckCode().subscribe(() => {
                 //跳转到验证码登录页面
-                this.navCtrl.push(LoginpageComponent,1);
+                console.log('11');
+                let loginModal = this.modalCtrl.create(LoginpageComponent, { currentPage: 1, isSended: true });
+                loginModal.present();
               });
 
             }
@@ -65,13 +68,11 @@ export class RegStep1Component implements OnInit {
     }, (err) => {
       if (400 == err.status) {
         //改手机号未被注册
-        this.sendCheckCode().subscribe(()=>{
+        this.sendCheckCode().subscribe(() => {
           this.navCtrl.push(RegStep2Component, this.mobile);
         });
       }
     })
-
-
 
   }
 

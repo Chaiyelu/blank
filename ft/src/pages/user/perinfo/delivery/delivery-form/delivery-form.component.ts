@@ -25,13 +25,13 @@ export class DeliveryFormComponent implements OnInit {
     public toastCtrl: ToastController
   ) {
     this.setCityPickerData();
-    this.delivery = this.navParams.data;
+    this.backupDelivery = this.navParams.data;
   }
 
 
 
   ngOnInit() {
-    this.backupDelivery = this.copy(this.delivery);
+    this.delivery = this.copy(this.backupDelivery);
   }
 
   //深拷贝

@@ -61,8 +61,6 @@ export class RegStep2Component implements OnInit {
           ]
         });
         alert.present();
-      } else {
-
       }
     }, (err) => {
       console.log(err);

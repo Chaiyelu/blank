@@ -33,11 +33,11 @@
                     <ion-list>
                         <ion-item>
                             <ion-label>账号</ion-label>
-                            <ion-input type="tel" placeholder="请输入用户名" [formControl]="mobile" clearInput=true></ion-input>
+                            <ion-input type="tel" placeholder="请输入手机号" formControlName="mobile" clearInput=true></ion-input>
                         </ion-item>
                         <ion-item>
                             <ion-label>密码</ion-label>
-                            <ion-input type="password" placeholder="请输入密码" [formControl]="password" clearInput=true></ion-input>
+                            <ion-input type="password" placeholder="请输入密码" formControlName="password" clearInput=true></ion-input>
                             <button ion-button small clear item-right color="white">
                               <ion-icon name="eye"></ion-icon>
                             </button>
@@ -51,20 +51,22 @@
         </ion-slide>
         <ion-slide>
             <ion-content class="fixed-content">
-                <ion-list>
-                    <ion-item>
-                        <ion-label>手机号</ion-label>
-                        <ion-input type="text"></ion-input>
-                        <button ion-button small item-right color="gray">获取验证码</button>
-                    </ion-item>
-                    <ion-item>
-                        <ion-label>验证码</ion-label>
-                        <ion-input type="password"></ion-input>
-                    </ion-item>
-                </ion-list>
-                <div padding>
-                    <button ion-button block>登录</button>
-                </div>
+                <form [formGroup]="loginFormByCheckcode" novalidate>
+                    <ion-list>
+                        <ion-item>
+                            <ion-label>手机号</ion-label>
+                            <ion-input type="text" placeholder="请输入手机号" formControlName="mobile"></ion-input>
+                            <button ion-button small item-right color="gray" [disabled]="!mobile.valid?true:!btnStatus" (click)="getCheckcode()">{{btnText}}</button>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label>验证码</ion-label>
+                            <ion-input type="number" placeholder="请输入验证码" formControlName="code" clearInput=true></ion-input>
+                        </ion-item>
+                    </ion-list>
+                    <div padding>
+                        <button ion-button block [disabled]="!loginFormByCheckcode.valid" (click)="doLogin(loginFormByCheckcode.value)">登录</button>
+                    </div>
+                </form>
             </ion-content>
         </ion-slide>
 
