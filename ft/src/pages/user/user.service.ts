@@ -14,7 +14,6 @@ import { UserModel } from "../../shared/models/user.model";
 
 @Injectable()
 export class UserService {
-  public userLoginUrl = `${SITE_HOST_URL}auth`;
 
   constructor(
     private http: Http,
@@ -28,7 +27,7 @@ export class UserService {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     return new Observable((observer: Observer<any>) => {
-      this.http.post(this.userLoginUrl, body, { headers }).subscribe(res => {
+      this.http.post(`${SITE_HOST_URL}auth`, body, { headers }).subscribe(res => {
         let result = res.json();
         if (result && result.success) {
           if (result && result.token) {

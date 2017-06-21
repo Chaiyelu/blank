@@ -1,0 +1,31 @@
+<ion-header no-border>
+
+    <ion-navbar color="blue">
+        <ion-title>设置</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+    <mt-split></mt-split>
+    <ion-list no-border>
+        <button ion-item (click)="goToPerInfo()">
+            个人信息
+        </button>
+        <button ion-item>
+            账号与安全
+            <ion-note item-right>
+              <p>换手机号/改密码</p>
+            </ion-note>
+        </button>
+    </ion-list>
+    <mt-split></mt-split>
+    <ion-list no-border>
+        <button ion-item>
+            通用
+        </button>
+    </ion-list>
+    <div padding>
+        <button ion-button block>退出账号</button>
+    </div>
+</ion-content>

@@ -14,6 +14,7 @@ import { DeliveryComponent } from "./perinfo/delivery/delivery.component";
 import { DeliveryFormComponent } from "./perinfo/delivery/delivery-form/delivery-form.component";
 import { UsernameComponent } from "./perinfo/username/username.component";
 import { BirthdayComponent } from "./perinfo/birthday/birthday.component";
+import { SetComponent } from "./set/set.component";
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { BirthdayComponent } from "./perinfo/birthday/birthday.component";
     DeliveryComponent,
     DeliveryFormComponent,
     UsernameComponent,
-    BirthdayComponent
+    BirthdayComponent,
+    SetComponent
   ],
   imports: [
     SuperTabsModule,
@@ -34,7 +36,16 @@ import { BirthdayComponent } from "./perinfo/birthday/birthday.component";
     DeliveryComponent,
     DeliveryFormComponent,
     UsernameComponent,
-    BirthdayComponent
+    BirthdayComponent,
+    SetComponent
+  ],
+  exports: [
+    PerinfoComponent,
+    DeliveryComponent,
+    DeliveryFormComponent,
+    UsernameComponent,
+    BirthdayComponent,
+    SetComponent
   ],
   providers: [
     UserService,

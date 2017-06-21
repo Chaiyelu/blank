@@ -29,7 +29,7 @@
     <ion-slides (ionSlideDidChange)="panEvent($event)" #mySlider>
         <ion-slide>
             <ion-content class="fixed-content">
-                <form [formGroup]="loginForm" (ngSubmit)="doLogin(loginForm.value)" novalidate>
+                <form [formGroup]="loginForm" novalidate>
                     <ion-list>
                         <ion-item>
                             <ion-label>账号</ion-label>
@@ -44,7 +44,7 @@
                         </ion-item>
                     </ion-list>
                     <div padding>
-                        <button ion-button block type="submit" [disabled]="!loginForm.valid">登录</button>
+                        <button ion-button block type="submit" [disabled]="!loginForm.valid" (click)="doLogin(loginForm.value)">登录</button>
                     </div>
                 </form>
             </ion-content>

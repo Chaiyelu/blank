@@ -16,6 +16,7 @@ $font-path: "../assets/fonts";
 // colors so you can add, rename and remove colors as needed.
 // The "primary" color is the only required color in the map.
 $colors: ( primary: #488aff, secondary: #32db64, danger: #f53d3d, light: #f4f4f4, dark: #222, pink:pink, green:green, orange:orange, coffee:#e0620d, yellow:yellow, gray:gray, blue:blue, );
+$list-ios-margin-bottom: 0px;
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here
@@ -465,6 +466,42 @@ $colors: ( primary: #488aff, secondary: #32db64, danger: #f53d3d, light: #f4f4f4
 
 .ion-md-card:before {
     content: "\e677";
+}
+
+.ion-md-clothes:before {
+    content: "\e67d";
+}
+
+.ion-ios-clothes:before {
+    content: "\e67d";
+}
+
+.ion-ios-clothes-outline:before {
+    content: "\e67d";
+}
+
+.ion-md-set:before {
+    content: "\e61a";
+}
+
+.ion-ios-set:before {
+    content: "\e61a";
+}
+
+.ion-ios-set-outline:before {
+    content: "\e61a";
+}
+
+.ion-md-xiaoxizhuanhuan01:before {
+    content: "\e60d";
+}
+
+.ion-ios-xiaoxizhuanhuan01:before {
+    content: "\e60d";
+}
+
+.ion-ios-xiaoxizhuanhuan01-outline:before {
+    content: "\e60d";
 }
 
 

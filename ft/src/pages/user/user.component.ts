@@ -2,12 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { NavController, ModalController } from "ionic-angular";
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
+import { ImagePicker } from '@ionic-native/image-picker';
+
 import { AppState } from "../../shared/domain/state";
 import { Auth } from "../../shared/models/auth.model";
-import { PerinfoComponent } from "./perinfo/perinfo.component";
 import { UserModel } from "../../shared/models/user.model";
-import { ImagePicker } from '@ionic-native/image-picker';
+
+import { PerinfoComponent } from "./perinfo/perinfo.component";
 import { LoginpageComponent } from "../../shared/components/loginpage/loginpage.component";
+import { SetComponent } from "./set/set.component";
 
 @Component({
   selector: 'user',
@@ -39,12 +42,21 @@ export class UserComponent implements OnInit {
 
   goToPerInfo() {
     if (this.isLogin) {
-      this.navCtrl.push(PerinfoComponent,this.userInfo.id);
+      this.navCtrl.push(PerinfoComponent, this.userInfo.id);
     } else {
       let LoginModal = this.modalCtrl.create(LoginpageComponent);
       LoginModal.present();
     }
 
+  }
+
+  goToSet() {
+    if (this.isLogin) {
+      this.navCtrl.push(SetComponent, this.userInfo.id);
+    } else {
+      let LoginModal = this.modalCtrl.create(LoginpageComponent);
+      LoginModal.present();
+    }
   }
 
   onScroll($event) {

@@ -110,9 +110,9 @@ export class LoginpageComponent implements OnInit {
     }
   }
 
-  doLogin() {
+  doLogin(value: Object) {
     if (this.loginForm.valid) {
-      this.userService.login(this.loginForm.value).subscribe((res: any) => {
+      this.userService.login(value).subscribe((res: any) => {
         //let body = res.json();
         if (res && res.success) {
           this.viewCtrl.dismiss();
