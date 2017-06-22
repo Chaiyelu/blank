@@ -24,18 +24,11 @@ export class UserComponent implements OnInit {
   constructor(
     public navCtrl: NavController,
     public store$: Store<AppState>,
-    private imagePicker: ImagePicker,
-    private modalCtrl: ModalController
+    public imagePicker: ImagePicker,
+    public modalCtrl: ModalController
   ) {
     this.auth = this.store$.select(appState => appState.auth);
-    this.auth.subscribe((auth) => {
-      this.isLogin = auth.isLogin;
-      if (auth.isLogin) {
-        this.userInfo = auth.user;
-      } else {
-        this.userInfo = <UserModel>{};
-      }
-    });
+
   }
 
   ngOnInit() { }
@@ -48,6 +41,17 @@ export class UserComponent implements OnInit {
       LoginModal.present();
     }
 
+  }
+
+  ionViewDidEnter(){
+    this.auth.subscribe((auth) => {
+      this.isLogin = auth.isLogin;
+      if (auth.isLogin) {
+        this.userInfo = auth.user;
+      } else {
+        this.userInfo = <UserModel>{};
+      }
+    });
   }
 
   goToSet() {

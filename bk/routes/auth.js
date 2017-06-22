@@ -117,15 +117,32 @@ router.get('/', function(req, res) {
     Users.findOne({
         where: query
     }).then(function(user) {
-        console.log('-------res---------');
         if (user) {
             res.status(200).send(user);
         } else {
             res.status(400).send(user);
         }
     }, function(err) {
-        console.log('-------err---------');
-        res.status(400).send(err);
+        res.status(500).send(err);
+    });
+});
+
+//检查账号是否已经被注册
+router.post('/logout', function(req, res) {
+    var body = req.body;
+    var stoken = req.get('Authorization').split(" ");
+    Users.update({ token: '' }, {
+        where: {
+            token: stoken[1]
+        }
+    }).then(function(result) {
+        if (result[0]) {
+            res.status(200).send('注销成功');
+        } else {
+            res.status(400).send('注销失败');
+        }
+    }, function(err) {
+        res.status(500).send(err);
     });
 });
 

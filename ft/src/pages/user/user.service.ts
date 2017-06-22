@@ -79,6 +79,23 @@ export class UserService {
     });
   }
 
+  logout(uid) {
+    return new Observable((observer: Observer<any>) => {
+      this.authHttp.post(`${SITE_HOST_URL}auth/logout`, { id: uid }).subscribe((res) => {
+        //dispatch userInfo store
+        this.store$.dispatch({
+          type: 'LOGOUT'
+        });
+        observer.next(res);
+        observer.complete;
+      }, (err) => {
+        observer.error(err);
+        observer.complete;
+      });
+
+    });
+  }
+
   isLoggedIn() {
     console.log('check login');
     if (!tokenNotExpired()) {
