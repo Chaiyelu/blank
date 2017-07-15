@@ -504,6 +504,17 @@ $list-ios-margin-bottom: 0px;
     content: "\e60d";
 }
 
+.ion-md-list:before { content: "\e61e"; }
+.ion-ios-list:before { content: "\e61e"; }
+.ion-ios-list-outline:before { content: "\e61e"; }
+
+.ion-md-orderdet:before { content: "\e61c"; }
+.ion-ios-orderdet:before { content: "\e61c"; }
+.ion-ios-orderdet-outline:before { content: "\e61c"; }
+
+.ion-md-staro:before { content: "\e82a"; }
+.ion-ios-staro:before { content: "\e82a"; }
+.ion-ios-staro-outline:before { content: "\e82a"; }
 
 /**
  * Eric Meyer's Reset CSS v2.0 (http://meyerweb.com/eric/tools/css/reset/)

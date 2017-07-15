@@ -17,7 +17,7 @@ export class FoodSellerDetailService {
     private authHttp: AuthHttp
   ) { }
   getSeller(sellerId) {
-    return this.http.get(`${SITE_HOST_URL}seller/${sellerId}`)
+    return this.http.get(`${SITE_HOST_URL}sellers/${sellerId}`)
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error || 'Server error'));
   }

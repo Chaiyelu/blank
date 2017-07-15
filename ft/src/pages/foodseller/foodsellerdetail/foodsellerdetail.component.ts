@@ -16,7 +16,7 @@ export class FoodSellerDetailComponent implements OnInit, AfterViewInit, OnDestr
   @ViewChild(Content) content: Content;
   @ViewChild('superTabs') superTabs: ElementRef;
   sellerGoodsPage: any = SellergoodsComponent;
-  SellerRatingsPage: any = SellerratingsComponent;
+  sellerRatingsPage: any = SellerratingsComponent;
   sellerDetailpage: any = SellerdetailComponent;
   goods: any[] = [];
   seller: object;

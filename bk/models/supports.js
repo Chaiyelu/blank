@@ -11,7 +11,7 @@ module.exports = function(sequelize, DataTypes) {
         classMethods: {
             associate: function(models) {
                 // associations can be defined here
-                Supports.belongsTo(models.Seller, { foreignKey: 'sellerId' });
+                Supports.belongsTo(models.Sellers, { foreignKey: 'sellerId' });
             }
         }
     });

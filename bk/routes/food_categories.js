@@ -10,7 +10,7 @@ router.get('/', function(req, res) {
         where: {
             sellerId: req.query.sellerId,
         },
-        include: [{ model: Foods, as: 'foods' }]
+        include: [{ model: Foods, required: true, as: 'foods' }]
     }).then(function(data) {
         res.json(data);
     });

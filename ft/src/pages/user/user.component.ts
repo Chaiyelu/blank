@@ -11,6 +11,9 @@ import { UserModel } from "../../shared/models/user.model";
 import { PerinfoComponent } from "./perinfo/perinfo.component";
 import { LoginpageComponent } from "../../shared/components/loginpage/loginpage.component";
 import { SetComponent } from "./set/set.component";
+import { CollectComponent } from "./collect/collect.component";
+
+import { UserService } from "./user.service";
 
 @Component({
   selector: 'user',
@@ -25,10 +28,18 @@ export class UserComponent implements OnInit {
     public navCtrl: NavController,
     public store$: Store<AppState>,
     public imagePicker: ImagePicker,
-    public modalCtrl: ModalController
+    public modalCtrl: ModalController,
+    public userService: UserService
   ) {
     this.auth = this.store$.select(appState => appState.auth);
-
+    this.auth.subscribe((auth) => {
+      this.isLogin = auth.isLogin;
+      if (auth.isLogin) {
+        this.userInfo = auth.user;
+      } else {
+        this.userInfo = <UserModel>{};
+      }
+    });
   }
 
   ngOnInit() { }
@@ -43,15 +54,8 @@ export class UserComponent implements OnInit {
 
   }
 
-  ionViewDidEnter(){
-    this.auth.subscribe((auth) => {
-      this.isLogin = auth.isLogin;
-      if (auth.isLogin) {
-        this.userInfo = auth.user;
-      } else {
-        this.userInfo = <UserModel>{};
-      }
-    });
+  ionViewDidEnter() {
+    this.userService.isLoggedIn();
   }
 
   goToSet() {
@@ -60,6 +64,25 @@ export class UserComponent implements OnInit {
     } else {
       let LoginModal = this.modalCtrl.create(LoginpageComponent);
       LoginModal.present();
+      LoginModal.onDidDismiss(()=>{
+        if (this.isLogin) {
+          this.navCtrl.push(SetComponent, this.userInfo.id);
+        }
+      });
+    }
+  }
+
+  goToCollect() {
+    if (this.isLogin) {
+      this.navCtrl.push(CollectComponent, this.userInfo.id);
+    } else {
+      let LoginModal = this.modalCtrl.create(LoginpageComponent);
+      LoginModal.present();
+      LoginModal.onDidDismiss(()=>{
+        if (this.isLogin) {
+          this.navCtrl.push(CollectComponent, this.userInfo.id);
+        }
+      });
     }
   }
 

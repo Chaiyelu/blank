@@ -15,6 +15,10 @@ import { DeliveryFormComponent } from "./perinfo/delivery/delivery-form/delivery
 import { UsernameComponent } from "./perinfo/username/username.component";
 import { BirthdayComponent } from "./perinfo/birthday/birthday.component";
 import { SetComponent } from "./set/set.component";
+import { CollectComponent } from "./collect/collect.component";
+import { BusinessComponent } from "./collect/business/business.component";
+import { ContentComponent } from "./collect/content/content.component";
+import { GroupComponent } from "./collect/group/group.component";
 
 @NgModule({
   declarations: [
@@ -23,7 +27,11 @@ import { SetComponent } from "./set/set.component";
     DeliveryFormComponent,
     UsernameComponent,
     BirthdayComponent,
-    SetComponent
+    SetComponent,
+    CollectComponent,
+    BusinessComponent,
+    ContentComponent,
+    GroupComponent
   ],
   imports: [
     SuperTabsModule,
@@ -37,7 +45,11 @@ import { SetComponent } from "./set/set.component";
     DeliveryFormComponent,
     UsernameComponent,
     BirthdayComponent,
-    SetComponent
+    SetComponent,
+    CollectComponent,
+    BusinessComponent,
+    ContentComponent,
+    GroupComponent
   ],
   exports: [
     PerinfoComponent,
@@ -45,7 +57,11 @@ import { SetComponent } from "./set/set.component";
     DeliveryFormComponent,
     UsernameComponent,
     BirthdayComponent,
-    SetComponent
+    SetComponent,
+    CollectComponent,
+    BusinessComponent,
+    ContentComponent,
+    GroupComponent
   ],
   providers: [
     UserService,

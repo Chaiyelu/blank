@@ -10,7 +10,7 @@ var RateLimit = require('express-rate-limit');
 var config = require('./config/config.json');
 var index = require('./routes/index');
 var users = require('./routes/users');
-var seller = require('./routes/seller');
+var sellers = require('./routes/sellers');
 var auth = require('./routes/auth');
 var tag = require('./routes/tag');
 var food_categories = require('./routes/food_categories');
@@ -33,11 +33,11 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 
-app.use(expressJwt({ secret: config.secret }).unless({ path: ["/auth", "/seller", /^\/seller\/.*/, "/food_categories", "/food_ratings", "/checkcodes", { url: '/users', methods: ['POST'] }] }));
+app.use(expressJwt({ secret: config.secret }).unless({ path: ["/auth", "/sellers", /^\/sellers\/.*/, "/food_categories", "/food_ratings", "/checkcodes", { url: '/users', methods: ['POST'] }] }));
 
 app.use('/', index);
 app.use('/users', users);
-app.use('/seller', seller);
+app.use('/sellers', sellers);
 app.use('/tag', tag);
 app.use('/food_categories', food_categories);
 app.use('/food_ratings', food_ratings);

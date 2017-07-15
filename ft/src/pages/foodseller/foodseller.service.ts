@@ -9,7 +9,7 @@ import { SITE_HOST_URL } from "../../shared/config/env.config";
 export class FoodSellerService {
   constructor(private http: Http) { }
   getSeller(){
-    return this.http.get(`${SITE_HOST_URL}seller`)
+    return this.http.get(`${SITE_HOST_URL}sellers`)
       .map((res:Response) => res.json())
       .catch((error:any) => Observable.throw(error || 'Server error'));
   }

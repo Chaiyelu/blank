@@ -1,79 +1,93 @@
 <ion-header no-border>
 
-    <ion-navbar color="blue">
-        <ion-title></ion-title>
-        <ion-buttons end>
-            <button ion-button icon-only>
+  <ion-navbar color="blue">
+    <ion-title></ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only>
               <ion-icon name="clothes"></ion-icon>
             </button>
-            <button ion-button icon-only (click)="goToSet()">
+      <button ion-button icon-only (click)="goToSet()">
               <ion-icon name="set"></ion-icon>
             </button>
-            <button ion-button icon-only>
+      <button ion-button icon-only>
               <ion-icon name="xiaoxizhuanhuan01"></ion-icon>
             </button>
-        </ion-buttons>
-    </ion-navbar>
+    </ion-buttons>
+  </ion-navbar>
 
 </ion-header>
 
 <ion-content (ionScroll)="onScroll($event)">
-    <section class="dv_top_ban" (click)="goToPerInfo()">
-        <div *ngIf="isLogin; else elseBlock" [style.opacity]="opacity">
-            <img [src]="userInfo.avatar" />
-            <h2>{{userInfo.username}}</h2>
-        </div>
-        <ng-template #elseBlock>
-            <div [style.opacity]="opacity">
-                <ion-icon name="touxiang2" color="light"></ion-icon>
-                <h2>请点击登录</h2>
-            </div>
-        </ng-template>
-    </section>
-    <ion-list no-border>
+  <section class="dv_top_ban" (click)="goToPerInfo()">
+    <div *ngIf="isLogin; else elseBlock" [style.opacity]="opacity">
+      <img [src]="userInfo.avatar" />
+      <h2>{{userInfo.username}}</h2>
+    </div>
+    <ng-template #elseBlock>
+      <div [style.opacity]="opacity">
+        <ion-icon name="touxiang2" color="light"></ion-icon>
+        <h2>请点击登录</h2>
+      </div>
+    </ng-template>
+  </section>
+  <div class="btn-nav">
+    <button (click)="goToCollect()">
+        <ion-icon name="staro"></ion-icon>
+        <p>收藏</p>
+    </button>
+    <button>
+        <ion-icon name="list"></ion-icon>
+        <p>清单</p>
+    </button>
+    <button>
+        <ion-icon name="orderdet"></ion-icon>
+        <p>评价</p>
+    </button>
+  </div>
+  <ion-list no-border>
 
-        <ion-item (click)="uploadImage()">
-            <ion-icon name='eye' item-left color="h"></ion-icon>
-            我的钱包
-        </ion-item>
-        <ion-item>
-            <ion-icon name='star' item-left color="h"></ion-icon>
-            余额
-        </ion-item>
-        <ion-item>
-            <ion-icon name='document' item-left color="h"></ion-icon>
-            抵用劵
-        </ion-item>
-        <ion-item>
-            <ion-icon name='time' item-left color="h"></ion-icon>
-            卡包
-        </ion-item>
+    <ion-item (click)="uploadImage()">
+      <ion-icon name='eye' item-left color="h"></ion-icon>
+      我的钱包
+    </ion-item>
+    <ion-item>
+      <ion-icon name='star' item-left color="h"></ion-icon>
+      余额
+    </ion-item>
+    <ion-item>
+      <ion-icon name='document' item-left color="h"></ion-icon>
+      抵用劵
+    </ion-item>
+    <ion-item>
+      <ion-icon name='time' item-left color="h"></ion-icon>
+      卡包
+    </ion-item>
 
-    </ion-list>
+  </ion-list>
 
-    <ion-list no-border>
+  <ion-list no-border>
 
-        <ion-item>
-            <ion-icon name='eye' item-left color="h"></ion-icon>
-            好友去哪
-        </ion-item>
-        <ion-item>
-            <ion-icon name='star' item-left color="h"></ion-icon>
-            我的评价
-        </ion-item>
-        <ion-item>
-            <ion-icon name='document' item-left color="h"></ion-icon>
-            我的收藏
-        </ion-item>
-        <ion-item>
-            <ion-icon name='time' item-left color="h"></ion-icon>
-            会员中心
-        </ion-item>
-        <ion-item>
-            <ion-icon name='bookmarks' item-left color="h"></ion-icon>
-            积分商城
-        </ion-item>
+    <ion-item>
+      <ion-icon name='eye' item-left color="h"></ion-icon>
+      好友去哪
+    </ion-item>
+    <ion-item>
+      <ion-icon name='star' item-left color="h"></ion-icon>
+      我的评价
+    </ion-item>
+    <ion-item>
+      <ion-icon name='document' item-left color="h"></ion-icon>
+      我的收藏
+    </ion-item>
+    <ion-item>
+      <ion-icon name='time' item-left color="h"></ion-icon>
+      会员中心
+    </ion-item>
+    <ion-item>
+      <ion-icon name='bookmarks' item-left color="h"></ion-icon>
+      积分商城
+    </ion-item>
 
-    </ion-list>
+  </ion-list>
 
 </ion-content>
