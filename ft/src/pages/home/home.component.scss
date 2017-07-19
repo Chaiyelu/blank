@@ -7,6 +7,7 @@ page-home {
                     bottom: 0;
                 }
                 ion-slide {
+                    padding-bottom: 10px;
                     .slide-zoom {
                         display: flex;
                         flex-wrap: wrap;
@@ -30,6 +31,7 @@ page-home {
         ion-grid {
             padding: 0;
             border-bottom: 1px solid #efeff4;
+            border-top: 1px solid #efeff4;
             margin-bottom: 10px;
             background-color: #fff;
             ion-row {

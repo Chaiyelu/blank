@@ -16,7 +16,7 @@ import { UsernameComponent } from "./perinfo/username/username.component";
 import { BirthdayComponent } from "./perinfo/birthday/birthday.component";
 import { SetComponent } from "./set/set.component";
 import { CollectComponent } from "./collect/collect.component";
-import { BusinessComponent } from "./collect/business/business.component";
+import { MerchantComponent } from "./collect/merchant/merchant.component";
 import { ContentComponent } from "./collect/content/content.component";
 import { GroupComponent } from "./collect/group/group.component";
 
@@ -29,7 +29,7 @@ import { GroupComponent } from "./collect/group/group.component";
     BirthdayComponent,
     SetComponent,
     CollectComponent,
-    BusinessComponent,
+    MerchantComponent,
     ContentComponent,
     GroupComponent
   ],
@@ -47,7 +47,7 @@ import { GroupComponent } from "./collect/group/group.component";
     BirthdayComponent,
     SetComponent,
     CollectComponent,
-    BusinessComponent,
+    MerchantComponent,
     ContentComponent,
     GroupComponent
   ],
@@ -59,7 +59,7 @@ import { GroupComponent } from "./collect/group/group.component";
     BirthdayComponent,
     SetComponent,
     CollectComponent,
-    BusinessComponent,
+    MerchantComponent,
     ContentComponent,
     GroupComponent
   ],

@@ -22,6 +22,7 @@ import { SharedModule } from "../shared/shared.module";
 import { authReducer } from "../shared/reducers/auth.reducer";
 import { choosedFoodsReducer } from "../shared/reducers/choosedfoods.reducer";
 import { sellerGoodsReducer } from "../shared/reducers/sellergoods.reducer";
+import { collectEditStatusReducer } from "../shared/reducers/collect-edit-status.reducer";
 
 import { MyApp } from './app.component';
 import { AboutComponent } from '../pages/about/about.component';
@@ -88,7 +89,8 @@ export function getAuthHttp(http, storage) {
     StoreModule.provideStore({
       auth: authReducer,
       choosedFoods: choosedFoodsReducer,
-      sellerGoods: sellerGoodsReducer
+      sellerGoods: sellerGoodsReducer,
+      collEditStat: collectEditStatusReducer
     })
   ],
   bootstrap: [IonicApp],

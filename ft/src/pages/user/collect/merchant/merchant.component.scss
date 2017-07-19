@@ -1,0 +1,18 @@
+.business {
+  ion-item-sliding:not(:last-child) {
+    border-bottom: 0.55px solid #c8c7cc;
+  }
+  ion-item {
+    height:95px;
+  }
+  .delBtn {
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    padding: 5px 50px;
+    background-color: #f8f8f8;
+  }
+  .block {
+    height:65px;
+  }
+}
