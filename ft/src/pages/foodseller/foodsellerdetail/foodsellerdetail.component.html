@@ -1,23 +1,26 @@
-<ion-header class="header-ios">
-    <ion-navbar>
-        <ion-title *ngIf="seller">
+<ion-header>
+    <ion-navbar color="blue" >
+         <ion-title *ngIf="seller">
             {{seller.name}}
         </ion-title>
         <ion-buttons end>
             <button ion-button icon-only>
                 <ion-icon name="more"></ion-icon>
             </button>
-        </ion-buttons>
+        </ion-buttons> 
     </ion-navbar>
 </ion-header>
-<ion-content (ionScroll)="onScroll($event)">
-    <sellerheader *ngIf="seller" [seller]="seller"></sellerheader>
-    <div #superTabs style="height:100%">
+<ion-content>
+     <sellerheader *ngIf="seller" [seller]="seller"></sellerheader> 
+     <div #superTabs style="height:100%">
         <super-tabs *ngIf="seller">
             <super-tab [root]="sellerGoodsPage" [rootParams]="seller" title="点菜"></super-tab>
             <super-tab [root]="sellerRatingsPage" [rootParams]="seller" title="评价"></super-tab>
             <super-tab [root]="sellerDetailpage" [rootParams]="seller" title="详情"></super-tab>
         </super-tabs>
-    </div>
-    <mt-shopcart class="shopcartwrapper" [deliveryPrice]="5" [minPrice]="20"></mt-shopcart>
+    </div> 
+    
 </ion-content>
+<ion-footer>
+    <mt-shopcart class="shopcartwrapper" [deliveryPrice]="5" [minPrice]="20"></mt-shopcart>
+</ion-footer> 

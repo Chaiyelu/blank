@@ -1,1 +1,19 @@
-food-seller {}
+food-seller {
+  ion-slides {
+    height: 150px;
+    img {
+      width: 100%;
+      height: 150px;
+    }
+  }
+  ion-list {
+    background-color: #fff;
+    ion-item {
+      border-bottom: 0.55px solid #c8c7cc !important;
+    }
+  }
+  ion-list-header {
+    border-bottom: 0.55px solid #c8c7cc !important;
+    text-align: center;
+  }
+}

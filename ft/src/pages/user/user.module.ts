@@ -8,6 +8,7 @@ import { SharedModule } from "../../shared/shared.module";
 
 import { UserService } from "./user.service";
 import { DeliveryService } from "./perinfo/delivery/delivery.service";
+import { CollectionMerchantService } from "./collect/merchant/merchant.service";
 
 import { PerinfoComponent } from "./perinfo/perinfo.component";
 import { DeliveryComponent } from "./perinfo/delivery/delivery.component";
@@ -65,7 +66,8 @@ import { GroupComponent } from "./collect/group/group.component";
   ],
   providers: [
     UserService,
-    DeliveryService
+    DeliveryService,
+    CollectionMerchantService
   ]
 })
 export class UserModule { }

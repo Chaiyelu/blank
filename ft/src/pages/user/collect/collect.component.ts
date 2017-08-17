@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
-import { SegmentButton } from 'ionic-angular';
+import { SegmentButton, NavController } from 'ionic-angular';
 import { SuperTabsController, SuperTabs } from 'ionic2-super-tabs';
 import { MerchantComponent } from "./merchant/merchant.component";
 import { ContentComponent } from "./content/content.component";
@@ -18,17 +18,20 @@ export class CollectComponent implements OnInit, AfterViewInit {
 	editBtnText: string = '编辑';
 	isEdit: any;
 
+	nav:any;
+
 	constructor(
 		private superTabsCtrl: SuperTabsController,
-		private store$: Store<any>
+		private store$: Store<any>,
+		public navCtrl: NavController
 	) {
-		store$.select('collEditStat').subscribe((status)=>{
+		store$.select('collEditStat').subscribe((status) => {
 			this.isEdit = status;
 		})
 	}
 
 	ngOnInit() {
-		
+		this.nav = this.navCtrl;
 	}
 
 	ngAfterViewInit() {
@@ -40,6 +43,6 @@ export class CollectComponent implements OnInit, AfterViewInit {
 
 	doEdit() {
 		this.editBtnText = this.isEdit ? '编辑' : '完成';
-		this.store$.dispatch({type:'TOGGLE_COLL_EDIT_STAT'});
+		this.store$.dispatch({ type: 'TOGGLE_COLL_EDIT_STAT' });
 	}
 }

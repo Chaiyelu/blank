@@ -1,7 +1,7 @@
 <ion-header>
     <ion-navbar>
         <ion-title>
-            Page Title
+            商家
         </ion-title>
         <ion-buttons end>
             <button ion-button icon-only (click)="openModal()">
@@ -11,10 +11,25 @@
     </ion-navbar>
 </ion-header>
 <ion-content>
+    <ion-list-header>
+        — 优惠活动 —
+    </ion-list-header>  
+    <ion-slides autoplay="4000" loop="true" pager="true">
+        <ion-slide>
+            <img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1492956182438&amp;di=b762ba5ccefbd14c249807601b933806&amp;imgtype=0&amp;src=http%3A%2F%2Fp1.pccoo.cn%2Ftuan%2F20140106%2F201401061124003759.jpg">
+        </ion-slide>
+        <ion-slide>
+            <img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1492956182438&amp;di=b762ba5ccefbd14c249807601b933806&amp;imgtype=0&amp;src=http%3A%2F%2Fp1.pccoo.cn%2Ftuan%2F20140106%2F201401061124003759.jpg">
+        </ion-slide>
+    </ion-slides>
     <ion-list no-lines>
         <ion-list-header>
-            — 猜你喜欢 —
+            — 附近商家 —
         </ion-list-header>
+        <mt-sortbar>
+            <mt-sortbar-button>aa</mt-sortbar-button>
+            <mt-sortbar-button>aa</mt-sortbar-button>
+        </mt-sortbar>
         <ion-item *ngFor="let item of foodSeller" (click)="goFoodSellerDetail(item)">
             <ion-thumbnail item-left>
                 <img [src]="item.avatar">
@@ -27,23 +42,5 @@
                 <p class="end">已售321</p>
             </ion-note>
         </ion-item>
-
-        <ion-item-sliding>
-            <ion-item>
-                <ion-thumbnail item-left>
-                    <img src="img/thumbnail-totoro.png">
-                </ion-thumbnail>
-                <h2>Finn</h2>
-                <h3>Don't Know What To Do!</h3>
-                <p>Hayao Miyazaki • 1988</p>
-                <button ion-button item-right>View</button>
-            </ion-item>
-            <ion-item-options>
-                <button ion-button color="danger" icon-left>
-          <ion-icon name="trash"></ion-icon>
-          删除
-        </button>
-            </ion-item-options>
-        </ion-item-sliding>
     </ion-list>
 </ion-content>

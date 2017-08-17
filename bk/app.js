@@ -16,6 +16,7 @@ var tag = require('./routes/tag');
 var food_categories = require('./routes/food_categories');
 var food_ratings = require('./routes/food_ratings');
 var deliveries = require('./routes/deliveries');
+var user_collections = require('./routes/user_collections');
 var checkcodes = require('./routes/checkcodes');
 var cors = require('cors');
 var app = express();
@@ -43,6 +44,7 @@ app.use('/food_categories', food_categories);
 app.use('/food_ratings', food_ratings);
 app.use('/deliveries', deliveries);
 app.use('/checkcodes', checkcodes);
+app.use('/user_collections', user_collections);
 app.use('/auth', auth);
 
 

@@ -20,7 +20,7 @@ router.post('/', function(req, res) {
     var body = req.body;
     body.createdAt = Date.now();
     body.updatedAt = Date.now();
-    body.avatar = 'https://avatars2.githubusercontent.com/u/11835988?v=3&u=2a181779eb2164666606366a1df31f9c17cf7a20&s=100';
+    body.avatar = 'https://avatars2.githubusercontent.com/u/13944889?v=4&u=2b4eb58b32d1930057d54a42cd2c5fdc9b836d6c&s=100';
     body.username = `mt-${body.mobile}`;
     body.token = jwt.sign({
         mobile: body.mobile

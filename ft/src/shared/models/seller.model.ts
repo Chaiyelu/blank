@@ -1,6 +1,7 @@
 import { SupportModel } from './support.model';
 
 export interface SellerModel {
+  id: number;
   name: string;
   description: string;
   deliveryTime: number;
@@ -10,11 +11,13 @@ export interface SellerModel {
   rankRate: number;
   minPrice: number;
   deliveryPrice: number;
-  ratingCount: number;
-  sellCount: number;
   bulletin: string;
-  supports:SupportModel[];
   avatar: string;
-  pics: any[];
-  infos: any[]
+  address: string;
+  mobile: string;
+  disInfo: string;
+  disStartTime: string;
+  disEndTime: string;
+  supports: SupportModel[];
+  collectionId: number;
 }

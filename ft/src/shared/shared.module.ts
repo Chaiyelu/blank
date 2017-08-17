@@ -13,6 +13,8 @@ import { RegStep1Component } from "./components/regsiterpage/reg-step1/reg-step1
 import { RegStep2Component } from "./components/regsiterpage/reg-step2/reg-step2.component";
 import { RegStep3Component } from "./components/regsiterpage/reg-step3/reg-step3.component";
 import { StepComponent } from "./components/step/step.component";
+import { SortbarComponent } from "./components/sortbar/sortbar.component";
+import { SortbarButtonComponent } from "./components/sortbar-button/sortbar-button.component";
 
 import { HideMobilePipe } from "./pipes/hidemobile.pipe";
 
@@ -33,6 +35,8 @@ import { CheckcodeService } from "./service/checkcode.service";
     RegStep2Component,
     RegStep3Component,
     StepComponent,
+    SortbarComponent,
+    SortbarButtonComponent,
     HideMobilePipe
   ],
   imports: [
@@ -50,7 +54,9 @@ import { CheckcodeService } from "./service/checkcode.service";
     RegStep1Component,
     RegStep2Component,
     RegStep3Component,
-    StepComponent
+    StepComponent,
+    SortbarComponent,
+    SortbarButtonComponent
   ],
   exports: [
     CartcontrolComponent,
@@ -65,7 +71,9 @@ import { CheckcodeService } from "./service/checkcode.service";
     RegStep1Component,
     RegStep2Component,
     RegStep3Component,
-    StepComponent
+    StepComponent,
+    SortbarComponent,
+    SortbarButtonComponent
   ],
   providers: [
     CityPickerService,
