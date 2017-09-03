@@ -19,4 +19,4 @@
 
 
 ![示例图](https://github.com/Chaiyelu/blank/blob/master/meituan02.gif)
-![示例图](https://github.com/Chaiyelu/blank/blob/master/demogif/%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF%E4%BF%AE%E6%94%B9.gif)
+![示例图](https://github.com/Chaiyelu/blank/blob/master/demogif/%E6%B3%A8%E5%86%8C%E6%B5%81%E7%A8%8B1.gif)
