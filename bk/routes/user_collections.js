@@ -14,8 +14,8 @@ router.get('/', function (req, res, next) {
         }
     }).then(function (user) {
         db.sequelize.query(`select uc.id as id, merchant_id, merchant_type, coalesce(s.name, h.name) as merchant_name, coalesce(s.avatar, h.avatar) as merchant_avatar, min_price, delivery_price
-        from meituan.user_collections uc
-        left join meituan.sellers s
+        from meituan.user_collection uc
+        left join meituan.seller s
             on uc.merchant_id = s.id and uc.merchant_type = 'seller'
         left join meituan.hotel h
             on uc.merchant_id = h.id and uc.merchant_type = 'hotel'

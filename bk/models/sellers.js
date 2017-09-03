@@ -20,6 +20,7 @@ module.exports = function(sequelize, DataTypes) {
         disEndTime: { type: DataTypes.STRING(20), field: 'dist_end_time' },
     }, {
         timestamps: false,
+        tableName: 'seller',
         classMethods: {
             associate: function(models) {
                 // associations can be defined here

@@ -12,7 +12,7 @@ module.exports = function(sequelize, DataTypes) {
         image: DataTypes.STRING(200)
     }, {
         timestamps: false,
-        tableName: 'foods',
+        tableName: 'food',
         classMethods: {
             associate: function(models) {
                 // associations can be defined here

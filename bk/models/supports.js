@@ -7,7 +7,7 @@ module.exports = function(sequelize, DataTypes) {
         description: DataTypes.STRING,
     }, {
         timestamps: false,
-        tableName: 'supports',
+        tableName: 'support',
         classMethods: {
             associate: function(models) {
                 // associations can be defined here

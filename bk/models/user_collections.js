@@ -8,7 +8,7 @@ module.exports = function(sequelize, DataTypes) {
         createTime: { type: DataTypes.DATE, field: 'create_time' }
     }, {
         timestamps: false,
-        tableName: 'user_collections',
+        tableName: 'user_collection',
         classMethods: {
             associate: function(models) {
                 // associations can be defined here

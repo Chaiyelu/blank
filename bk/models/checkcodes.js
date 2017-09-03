@@ -12,7 +12,7 @@ module.exports = function(sequelize, DataTypes) {
         createtime: DataTypes.STRING(20)
     }, {
         timestamps: false,
-        tableName: 'checkcodes',
+        tableName: 'checkcode',
         classMethods: {
             associate: function(models) {
                 // associations can be defined here

@@ -11,7 +11,7 @@ module.exports = function(sequelize, DataTypes) {
         text: DataTypes.STRING
     }, {
         timestamps: false,
-        tableName: 'food_ratings',
+        tableName: 'food_rating',
         classMethods: {
             associate: function(models) {
                 // associations can be defined here

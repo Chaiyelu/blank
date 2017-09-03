@@ -13,7 +13,7 @@ module.exports = function(sequelize, DataTypes) {
         updatetime: DataTypes.DATE,
     }, {
         timestamps: false,
-        tableName: 'deliveries',
+        tableName: 'deliverie',
         classMethods: {
             associate: function(models) {
                 // associations can be defined here

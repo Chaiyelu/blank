@@ -23,7 +23,7 @@ module.exports = function(sequelize, DataTypes) {
         avatar: DataTypes.STRING
     }, {
         timestamps: false,
-        tableName: 'users',
+        tableName: 'user',
         classMethods: {
             associate: function(models) {
                 // associations can be defined here

@@ -37,7 +37,6 @@ router.get('/:id', function (req, res, next) {
                 })
             ]).then(result => {
             const [seller, user] = result;
-            console.log(user);
             if (!user) {
                 seller.dataValues.collectionId = 0;
                 res.json(seller);
@@ -72,8 +71,6 @@ router.get('/:id', function (req, res, next) {
             res.json(seller);
         })
     }
-    console.log(req);
-
 
 });
 

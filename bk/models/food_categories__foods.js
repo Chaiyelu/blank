@@ -5,7 +5,7 @@ module.exports = function(sequelize, DataTypes) {
         cateId: { type: DataTypes.INTEGER, field: 'cate_id' }
     }, {
         timestamps: false,
-        tableName: 'food_categories__foods',
+        tableName: 'food_category_food',
         classMethods: {
             associate: function(models) {
                 // associations can be defined here
