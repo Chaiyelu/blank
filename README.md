@@ -1,6 +1,6 @@
 # blank
 ## 仿美团app的一个demo
-目前刚完成外卖部分，和用户信息设置部分
+目前已完成外卖部分，和用户信息设置，用户登录注销，用户收藏商户部分
 
 ![示例图](https://github.com/Chaiyelu/blank/blob/master/demogif/TIM%E6%88%AA%E5%9B%BE20170903134938.png)
 
