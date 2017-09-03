@@ -9,10 +9,13 @@
 > 数据库采用mysql。
 
 ## 部署过程
-本地部署需要安装redis(默认端口即可)，mysql
-安装完mysql之后将主目录下的数据源文件（meituan.sql）导入
-安装完成之后进入bk目录npm start即可
-最后进入前端ft目录ionic serve即可
+> 本地部署需要安装redis(默认端口即可)，mysql
+
+> 安装完mysql之后将主目录下的数据源文件（meituan.sql）导入
+
+> 安装完成之后进入bk目录npm start即可
+
+> 最后进入前端ft目录ionic serve即可
 
 
 ![示例图](https://github.com/Chaiyelu/blank/blob/master/meituan02.gif)
