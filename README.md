@@ -13,7 +13,12 @@
 ## 部署过程
 > 本地部署需要安装redis(默认端口即可)，mysql
 
-> 安装完mysql之后将主目录下的数据源文件（meituan.sql）导入
+> 安装完mysql之后将主目录下的数据源文件（meituan.sql）导入，修改sequelize配置文件
+
+![示例图](https://github.com/Chaiyelu/blank/blob/master/demogif/TIM%E5%9B%BE%E7%89%8720170903135620.png)
+
+> meituan.mwb是er模型图
+![示例图](https://github.com/Chaiyelu/blank/blob/master/demogif/TIM%E5%9B%BE%E7%89%8720170903142408.png)
 
 > 安装完成之后进入bk目录npm start即可
 
