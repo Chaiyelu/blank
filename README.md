@@ -2,6 +2,8 @@
 ## 仿美团app的一个demo
 目前刚完成外卖部分，和用户信息设置部分
 
+![示例图](https://github.com/Chaiyelu/blank/blob/master/demogif/TIM%E6%88%AA%E5%9B%BE20170903134938.png)
+
 > ft是前端系统，采用的技术是ionic2+，angular2+，rudex，Cordova
 
 > bk是数据接口，采用的技术是express，sequelize，用户登录认证采用jsonwebtoken技术。
