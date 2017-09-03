@@ -11,6 +11,8 @@
 > 数据库采用mysql。
 
 ## 部署过程
+> clone完代码之后进入ft和bk目录，分别npm install，完成之后
+
 > 本地部署需要安装redis(默认端口即可)，mysql
 
 > 安装完mysql之后将主目录下的数据源文件（meituan.sql）导入，修改sequelize配置文件
